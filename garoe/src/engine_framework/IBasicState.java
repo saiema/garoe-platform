@@ -2,7 +2,7 @@ package engine_framework;
 
 
 /**
- * Interfaz que define las operaciones b‡sicas para los estados utilizados en problemas de busqueda
+ * Interfaz que define las operaciones basicas para los estados utilizados en problemas de busqueda
  * @author Carla Noelia Fiori, Simon Emmanuel Gutierrez Brida
  * @version 0.2
  */

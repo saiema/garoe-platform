@@ -1,0 +1,8 @@
+--Dividir istate?
+--Dividir search engine
+Documentar Scope
+--Documentar getsuccesors en searchproblem
+--Estudiar la posibilidad de cambiar evaluate -> int a evaluate -> comparable
+modificar minmax para guardar el mejor
+pasar performSearch a SearchEngine -> modificar nextMove
+buscar y correr profiler

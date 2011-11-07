@@ -43,7 +43,7 @@ public class AboutFloodit extends javax.swing.JDialog {
 	private void initGUI() {
 		try {
 			{
-				infoText = "Floodit ver 0.1 alfa\nAutores:\nCarla Noelia Fiori  Simón Emmanuel Gutiérrez Brida\nFecha:27/10/2011\n\n\nAgracedimientos: A todos los tajaritos de tolores en sus tarbolitos\n";
+				infoText = "Floodit ver 0.1 alfa\nAutores:\nCarla Noelia Fiori  Simon Emmanuel Gutierrez Brida\nFecha:27/10/2011\n\n\nAgracedimientos: A todos los tajaritos de tolores en sus tarbolitos\n";
 				aboutText = new JTextArea();
 				getContentPane().add(getAboutText(), BorderLayout.CENTER);
 				aboutText.setText(infoText);

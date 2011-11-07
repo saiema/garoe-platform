@@ -151,7 +151,7 @@ public class MinMaxABSearchEngine<AdversaryState extends IStateAdversary> extend
 
 	@Override
 	public String status() {
-		return "ac‡ se informaria el status";
+		return "aca se informaria el status";
 	}
 
 	@Override

@@ -6,8 +6,8 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
 public class FlooditController implements ActionListener{
-	FlooditMainGui gui;
-	FlooditState model;
+	private FlooditMainGui gui;
+	private FlooditState model;
 	
 	public FlooditController(FlooditMainGui gui, FlooditState model) {
 		this.gui = gui;
@@ -27,7 +27,7 @@ public class FlooditController implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
-		Object source = (Object) arg0.getSource();
+		Object source = arg0.getSource();
 		boolean update = false;
 		if (source instanceof JButton) {
 			String color = ((JButton) source).getText();

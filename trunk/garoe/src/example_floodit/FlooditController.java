@@ -55,7 +55,7 @@ public class FlooditController implements ActionListener{
 			this.gui.enableButtons(true);
 			update = true;
 		} else if (this.gui.getAboutMenuItem() == source) {
-			AboutFloodit about = new AboutFloodit(this.gui);
+			AboutFloodit about = new AboutFloodit(this.gui, true);
 			about.setVisible(true);
 		} else if (this.gui.getPistaMenuItem() == source) {
 			IAController iaController = new IAController(this.gui, new IAGui(), this, this.model);

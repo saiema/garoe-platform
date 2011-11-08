@@ -9,7 +9,7 @@ public class Test {
 		/*FlooditState test = new FlooditState();
 		test.populateBoard();
 		System.out.println(test.toString());*/
-		FlooditMainAppGui mainWindow = new FlooditMainAppGui();
+		FlooditMainGui mainWindow = new FlooditMainGui();
 		FlooditState gameState = new FlooditState();
 		gameState.populateBoard();
 		FlooditController controller = new FlooditController(mainWindow, gameState);

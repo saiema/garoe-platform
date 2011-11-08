@@ -12,18 +12,18 @@ import engines.BestFirstSearchEngine;
 
 public class IAController implements ActionListener {
 	private FlooditController mainController;
-	private FlooditMainAppGui mainGui;
+	private FlooditMainGui mainGui;
 	private IAGui iaGui;
 	private FlooditState model;
 	private BestFirstSearchEngine<FlooditState> searchEngine;
 	private List<FlooditState> moves;
 	
-	public IAController (FlooditMainAppGui mainGui, IAGui iaGui, FlooditController mainController, FlooditState model) {
+	public IAController (FlooditMainGui mainGui, IAGui iaGui, FlooditController mainController, FlooditState model) {
 		this.mainGui = mainGui;
 		this.iaGui = iaGui;
 		this.model = model;
 		this.mainController = mainController;
-		List<IRule<FlooditState>> rules = new LinkedList<IRule<FlooditState>>();
+		List<IRule<FlooditState>> rules = new LinkedList<>();
 		rules.add(new FlooditMoveRule());
 		SearchProblem<FlooditState> problem = new SearchProblem<FlooditState>(model,rules);
 		this.searchEngine = new BestFirstSearchEngine<FlooditState>(problem);
@@ -110,17 +110,17 @@ public class IAController implements ActionListener {
 		if (!this.moves.isEmpty()) {
 			int nextMove = this.moves.get(0).getColorOfToken(0, 0);
 			if (nextMove == FlooditState.azul) {
-				this.mainGui.getButton1().setBackground(Color.GREEN);
+				this.mainGui.getBotonAzul().setBackground(Color.GREEN);
 			} else if (nextMove == FlooditState.verde) {
-				this.mainGui.getButton2().setBackground(Color.GREEN);
+				this.mainGui.getBotonVerde().setBackground(Color.GREEN);
 			} else if (nextMove == FlooditState.rojo) {
-				this.mainGui.getButton3().setBackground(Color.GREEN);
+				this.mainGui.getBotonRojo().setBackground(Color.GREEN);
 			} else if (nextMove == FlooditState.amarillo) {
-				this.mainGui.getButton4().setBackground(Color.GREEN);
+				this.mainGui.getBotonAmarillo().setBackground(Color.GREEN);
 			} else if (nextMove == FlooditState.celeste) {
-				this.mainGui.getButton5().setBackground(Color.GREEN);
+				this.mainGui.getBotonCeleste().setBackground(Color.GREEN);
 			} else if (nextMove == FlooditState.rosa) {
-				this.mainGui.getButton6().setBackground(Color.GREEN);
+				this.mainGui.getBotonRosa().setBackground(Color.GREEN);
 			}
 		}
 	}

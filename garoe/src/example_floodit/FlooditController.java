@@ -6,10 +6,10 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
 public class FlooditController implements ActionListener{
-	FlooditMainAppGui gui;
+	FlooditMainGui gui;
 	FlooditState model;
 	
-	public FlooditController(FlooditMainAppGui gui, FlooditState model) {
+	public FlooditController(FlooditMainGui gui, FlooditState model) {
 		this.gui = gui;
 		this.model = model;
 	}
@@ -49,12 +49,12 @@ public class FlooditController implements ActionListener{
 			this.gui.setVisible(false);
 			this.gui.dispose();
 			System.exit(0);
-		} else if (this.gui.getNewFileMenuItem() == source) {
+		} else if (this.gui.getNewGameMenuItem() == source) {
 			this.model = new FlooditState();
 			this.model.populateBoard();
 			this.gui.enableButtons(true);
 			update = true;
-		} else if (this.gui.getHelpMenuItem() == source) {
+		} else if (this.gui.getAboutMenuItem() == source) {
 			AboutFloodit about = new AboutFloodit(this.gui);
 			about.setVisible(true);
 		} else if (this.gui.getPistaMenuItem() == source) {
@@ -64,7 +64,7 @@ public class FlooditController implements ActionListener{
 			} else {
 				System.out.println("NO SE PUEDE GANAR EN MENOS DE 25 MOVIMIENTOS");
 			}
-		} else if (this.gui.getIaPlayMenuItem() == source) {
+		} else if (this.gui.getJugarMenuItem() == source) {
 			IAController iaController = new IAController(this.gui, new IAGui(), this, this.model);
 			if (iaController.runSearchEngine()) {
 				iaController.show();

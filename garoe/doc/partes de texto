@@ -1,4 +1,4 @@
-Orientado a objetos
+﻿Orientado a objetos
 La primera característica, orientado a objetos (“OO”), se refiere a un método de programación y al diseño del lenguaje. Aunque hay muchas interpretaciones para OO, una primera idea es diseñar el software de forma que los distintos tipos de datos que usen estén unidos a sus operaciones. Así, los datos y el código (funciones o métodos) se combinan en entidades llamadas objetos. Un objeto puede verse como un paquete que contiene el “comportamiento” (el código) y el “estado” (datos). El principio es separar aquello que cambia de las cosas que permanecen inalterables. Frecuentemente, cambiar una estructura de datos implica un cambio en el código que opera sobre los mismos, o viceversa. Esta separación en objetos coherentes e independientes ofrece una base más estable para el diseño de un sistema software. El objetivo es hacer que grandes proyectos sean fáciles de gestionar y manejar, mejorando como consecuencia su calidad y reduciendo el número de proyectos fallidos. Otra de las grandes promesas de la programación orientada a objetos es la creación de entidades más genéricas (objetos) que permitan la reutilización del software entre proyectos, una de las premisas fundamentales de la Ingeniería del Software. Un objeto genérico “cliente”, por ejemplo, debería en teoría tener el mismo conjunto de comportamiento en diferentes proyectos, sobre todo cuando estos coinciden en cierta medida, algo que suele suceder en las grandes organizaciones. En este sentido, los objetos podrían verse como piezas reutilizables que pueden emplearse en múltiples proyectos distintos, posibilitando así a la industria del software a construir proyectos de envergadura empleando componentes ya existentes y de comprobada calidad; conduciendo esto finalmente a una reducción drástica del tiempo de desarrollo.
 
 //AGREGAR DIFERENCIA CON ORIENTADO A CLASES
@@ -12,3 +12,35 @@ En Java el problema de las fugas de memoria se evita en gran medida gracias a la
 //-----PATRONES-----
 
 http://es.wikipedia.org/wiki/Patr%C3%B3n_de_dise%C3%B1o
+
+
+Diseñar software orientado a objetos es dificil, y diseñar software orientado a objetos que sea reutilizable es aún mas dificil.
+Es necesario encontrar objetos pertinentes, factorizarlos en clases con la correcta granularidad, definir interfaces de clase y jerarquías de herencia, y establecer relaciones claves entre si.
+El diseño debería ser especifico al problema que se está resolviendo pero lo suficientemente general para resolver futuros problemas y requerimientos. También es deseable evitar el rediseño o al menos
+minimizarlo. Es muy dificil resolver un problema desde cero, en cambio es mucho mas sencillo reutilizar soluciones que ya han probado ser efectivas anteriormente. En general es comun encontrar patrones
+recurrentes de clases y comunicación entre objetos en muchos sistemas orientados a objetos. Estos patrones resuelven probleas de diseño especificos y hacen a los diseños orientados a objetos mas flexibles,
+elegantes y finalmente reutilizables. Ayudan a los diseñadores a reusar diseños exitosos al basar nuevos diseños en experiencias anteriores.
+En forma simple un patron de diseño ayuda a un diseñador a diseñar "bien" mas rapidamente.
+
+Que es un patrón de diseño?
+
+Christopher Alexander dijo "Cada patron describe un problema que ocurre una y otra vez en nuestro ambiente, y luego describe el nucle de la solución a dicho problema, en una forma que se puede utilizar
+esta solución un millon de veces, nunca haciendola de la misma forma". En general un pareon tiene cuatro elementos esenciales:
+
+1- El nombre del patron es una forma de describir un problema de diseño, sus soluciones y consecuencias en una o dos palabras. Tener un nombre para un patrón nos permite diseñar en un nivel mas alto
+de abstracción, utilizarlo en la documentación, al hablar con colegas, etc.
+
+2- El problema describe cuando aplicar el patron. Explica el problema y su contexto. Puede describir problemas especificos de diseño tales como la forma de representar algoritmos como objetos. Puede
+describir clases o estructuras de objetos que son sintomas de un diseño inflexible. A veces el problema contendra una lista de condiciones que deben ser cumplidas para que tenga sentido aplicar el patron.
+
+3- La solucion describe los elementos que hacen al diseño, sus relaciones, responsabilidades y colaboraciones. La solucion no describe un diseño concreto o implementacion en particular, dado que un patron es
+como un molde que puede ser aplicado en muchas situaciones diferentes. En cambio, el patron provee una descripcion abstracta de un problema de diseño y como una organizacion general de elementos (clases y objetos)
+la resuelve.
+
+4- Las consecuencias son los resultados y "trade-off"??? de aplicar el patron. Si bien las consecuencias son a menudo obviadas cuando se describe un desicion de diseño, estas son criticas
+para eveluar las alternativas de diseño y para entender los costos y beneficios de aplicar el patron. Las consecuencias para el software a menudo conciernen al espacio y tiempo. 
+
+
+Un patron de diseño, nombra, resume e identifica los aspectos clases de una estructura de diseño comun que lo hace util para crear un diseño reutilizable orientado a objetos. El patron de diseño identifica
+las clases e instancias participantes, sus roles y colaboraciones, y la distribucion de responsabilidades. Cada patron de diseño se enfoca en un problema de diseño orientado a objetos particular. Describe
+cuando se aplica, si puede aplicarse en vista de otras restricciones de diseño y las consecuencias y "trade-offs"??? de utilizarlo.

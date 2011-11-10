@@ -76,12 +76,39 @@ public class ReversiGUI extends javax.swing.JFrame implements ActionListener, Mo
         player2Count.setText("XXX");
 
         board.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [8][8],
-            new String [8]
-        ));
-        board.setDefaultRenderer(Object.class, new ReversiBoardRenderer());
+            new Object [][] {
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "", "", "", "", "", "", "", ""
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        board.setDefaultRenderer(Integer.class, new ReversiBoardRenderer());
         board.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
         board.setAutoscrolls(false);
+        board.setColumnSelectionAllowed(true);
         board.setDoubleBuffered(true);
         board.setFillsViewportHeight(true);
         board.setOpaque(false);
@@ -89,10 +116,33 @@ public class ReversiGUI extends javax.swing.JFrame implements ActionListener, Mo
         board.setRowSelectionAllowed(false);
         board.setShowHorizontalLines(false);
         board.setShowVerticalLines(false);
-        board.setTableHeader(null);
         board.addMouseListener(this);
         jScrollPane1.setViewportView(board);
         board.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        board.getColumnModel().getColumn(0).setMinWidth(32);
+        board.getColumnModel().getColumn(0).setPreferredWidth(32);
+        board.getColumnModel().getColumn(0).setMaxWidth(32);
+        board.getColumnModel().getColumn(1).setMinWidth(32);
+        board.getColumnModel().getColumn(1).setPreferredWidth(32);
+        board.getColumnModel().getColumn(1).setMaxWidth(32);
+        board.getColumnModel().getColumn(2).setMinWidth(32);
+        board.getColumnModel().getColumn(2).setPreferredWidth(32);
+        board.getColumnModel().getColumn(2).setMaxWidth(32);
+        board.getColumnModel().getColumn(3).setMinWidth(32);
+        board.getColumnModel().getColumn(3).setPreferredWidth(32);
+        board.getColumnModel().getColumn(3).setMaxWidth(32);
+        board.getColumnModel().getColumn(4).setMinWidth(32);
+        board.getColumnModel().getColumn(4).setPreferredWidth(32);
+        board.getColumnModel().getColumn(4).setMaxWidth(32);
+        board.getColumnModel().getColumn(5).setMinWidth(32);
+        board.getColumnModel().getColumn(5).setPreferredWidth(32);
+        board.getColumnModel().getColumn(5).setMaxWidth(32);
+        board.getColumnModel().getColumn(6).setMinWidth(32);
+        board.getColumnModel().getColumn(6).setPreferredWidth(32);
+        board.getColumnModel().getColumn(6).setMaxWidth(32);
+        board.getColumnModel().getColumn(7).setMinWidth(32);
+        board.getColumnModel().getColumn(7).setPreferredWidth(32);
+        board.getColumnModel().getColumn(7).setMaxWidth(32);
 
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
@@ -102,21 +152,19 @@ public class ReversiGUI extends javax.swing.JFrame implements ActionListener, Mo
                 .addContainerGap()
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 394, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(mainPanelLayout.createSequentialGroup()
+                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(player1Name, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(player2Name, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(player1Name, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
-                            .addComponent(player2Name, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(player2Color, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(player1Color, javax.swing.GroupLayout.Alignment.LEADING))
+                            .addComponent(player1Color)
+                            .addComponent(player2Color))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(player1Count)
-                            .addComponent(player2Count))
-                        .addGap(225, 225, 225))))
+                            .addComponent(player2Count)))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -128,16 +176,17 @@ public class ReversiGUI extends javax.swing.JFrame implements ActionListener, Mo
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(player2Name))
                     .addGroup(mainPanelLayout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(player2Color))
+                    .addGroup(mainPanelLayout.createSequentialGroup()
                         .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(player1Color)
                             .addComponent(player1Count))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(player2Color)
-                            .addComponent(player2Count))))
-                .addGap(22, 22, 22)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
-                .addContainerGap())
+                        .addComponent(player2Count)))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         fileMenu.setMnemonic('f');
@@ -183,11 +232,11 @@ public class ReversiGUI extends javax.swing.JFrame implements ActionListener, Mo
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(mainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -196,11 +245,11 @@ public class ReversiGUI extends javax.swing.JFrame implements ActionListener, Mo
     // Code for dispatching events from components to event handlers.
 
     public void actionPerformed(java.awt.event.ActionEvent evt) {
-        if (evt.getSource() == exitMenuItem) {
-            ReversiGUI.this.exitMenuItemActionPerformed(evt);
-        }
-        else if (evt.getSource() == newGameMenuItem) {
+        if (evt.getSource() == newGameMenuItem) {
             ReversiGUI.this.newGameMenuItemActionPerformed(evt);
+        }
+        else if (evt.getSource() == exitMenuItem) {
+            ReversiGUI.this.exitMenuItemActionPerformed(evt);
         }
         else if (evt.getSource() == settingsMenuItem) {
             ReversiGUI.this.settingsMenuItemActionPerformed(evt);

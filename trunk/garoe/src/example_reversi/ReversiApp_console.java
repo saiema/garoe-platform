@@ -3,15 +3,12 @@
  */
 package example_reversi;
 
-import java.awt.Color;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.LinkedList;
 import java.util.List;
 
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
 
 import utils.Pair;
 
@@ -27,7 +24,7 @@ import engines.MinMaxABSearchEngine;
  * <hr>
  * <p><b>parametros : <"pc"|"human":<nombre p1>> <"pc"|"human":<nombre p2>> <quien empieza 1 o 2> <dificultad></b></p>
  */
-public class ReversiApp {
+public class ReversiApp_console {
 //	private static MediadorGUI gui;
 
 	/**

@@ -76,16 +76,20 @@ public class ReversiGUI extends javax.swing.JFrame implements ActionListener, Mo
         player2Count.setText("XXX");
 
         board.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-
-            }
+            new Object [8][8],
+            new String [8]
         ));
         board.setDefaultRenderer(Object.class, new ReversiBoardRenderer());
-        board.setColumnSelectionAllowed(true);
-        board.getTableHeader().setReorderingAllowed(false);
+        board.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
+        board.setAutoscrolls(false);
+        board.setDoubleBuffered(true);
+        board.setFillsViewportHeight(true);
+        board.setOpaque(false);
+        board.setRowHeight(32);
+        board.setRowSelectionAllowed(false);
+        board.setShowHorizontalLines(false);
+        board.setShowVerticalLines(false);
+        board.setTableHeader(null);
         board.addMouseListener(this);
         jScrollPane1.setViewportView(board);
         board.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
@@ -98,12 +102,12 @@ public class ReversiGUI extends javax.swing.JFrame implements ActionListener, Mo
                 .addContainerGap()
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(mainPanelLayout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 394, Short.MAX_VALUE)
                         .addContainerGap())
                     .addGroup(mainPanelLayout.createSequentialGroup()
                         .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(player1Name, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE)
-                            .addComponent(player2Name, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE))
+                            .addComponent(player1Name, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
+                            .addComponent(player2Name, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(player2Color, javax.swing.GroupLayout.Alignment.LEADING)
@@ -131,8 +135,8 @@ public class ReversiGUI extends javax.swing.JFrame implements ActionListener, Mo
                         .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(player2Color)
                             .addComponent(player2Count))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
                 .addContainerGap())
         );
 

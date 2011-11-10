@@ -4,6 +4,7 @@
  */
 package example_reversi;
 
+import java.awt.Color;
 import java.awt.Component;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -15,18 +16,25 @@ import javax.swing.table.TableCellRenderer;
  * @author BigEma
  */
 @SuppressWarnings("serial")
-public class ReversiBoardRenderer extends JLabel implements TableCellRenderer {
+public class ReversiBoardRenderer implements TableCellRenderer {
     
     public ReversiBoardRenderer() {}
     
     @Override
     public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+        JLabel newLabel = new JLabel();
+        newLabel.setEnabled(true);
+        newLabel.setOpaque(false);
         if (((Integer)value) == ReversiToken.WHITE) {
-            this.setIcon(new ImageIcon("token_white.png"));
+            newLabel.setIcon(new ImageIcon("token_white.png"));
+            //newLabel.setBackground(Color.WHITE);
         } else if (((Integer)value) == ReversiToken.BLACK) {
-            this.setIcon(new ImageIcon("token_black.png"));
+            newLabel.setIcon(new ImageIcon("token_black.png"));
+            //newLabel.setBackground(Color.BLACK);
+        } else if (((Integer)value) == 0) {
+            newLabel.setEnabled(false);
         }
-        return this;
+        return newLabel;
     }
     
 }

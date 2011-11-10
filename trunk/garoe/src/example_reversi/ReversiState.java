@@ -752,7 +752,7 @@ public class ReversiState implements IStateAdversary {
 	}
     
     public int getColorAt(int row, int col) {
-        return this.board[row][col].getColor();
+        return this.board[row][col]!=null? this.board[row][col].getColor():0;
     }
 	
 	

@@ -23,7 +23,7 @@ public class IAController implements ActionListener {
 		this.iaGui = iaGui;
 		this.model = model;
 		this.mainController = mainController;
-		List<IRule<FlooditState>> rules = new LinkedList<>();
+		List<IRule<FlooditState>> rules = new LinkedList<IRule<FlooditState>>();
 		rules.add(new FlooditMoveRule());
 		SearchProblem<FlooditState> problem = new SearchProblem<FlooditState>(model,rules);
 		this.searchEngine = new BestFirstSearchEngine<FlooditState>(problem);

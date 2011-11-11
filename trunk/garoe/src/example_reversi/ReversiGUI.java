@@ -12,7 +12,10 @@ package example_reversi;
 
 import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
+import java.util.LinkedList;
+import java.util.List;
 import javax.swing.JLabel;
+import utils.Pair;
 
 /**
  *
@@ -20,6 +23,7 @@ import javax.swing.JLabel;
  */
 public class ReversiGUI extends javax.swing.JFrame implements ActionListener, MouseListener {
     private ReversiController controller;
+    private List<Pair<Integer,Integer>> currentAvailableMoves = new LinkedList<Pair<Integer,Integer>>();
 
     /** Creates new form ReversiGUI */
     public ReversiGUI() {}
@@ -30,6 +34,10 @@ public class ReversiGUI extends javax.swing.JFrame implements ActionListener, Mo
     
     public void init() {
         initComponents();
+        this.setVisible(true);
+        this.setEnabled(true);
+        this.board.setEnabled(false);
+        this.paintDisabledBoard();
     }
 
     /** This method is called from within the constructor to
@@ -151,6 +159,7 @@ public class ReversiGUI extends javax.swing.JFrame implements ActionListener, Mo
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(mainPanelLayout.createSequentialGroup()
                         .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(player1Name, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -162,8 +171,7 @@ public class ReversiGUI extends javax.swing.JFrame implements ActionListener, Mo
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(player1Count)
-                            .addComponent(player2Count)))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(player2Count))))
                 .addContainerGap())
         );
         mainPanelLayout.setVerticalGroup(
@@ -185,8 +193,8 @@ public class ReversiGUI extends javax.swing.JFrame implements ActionListener, Mo
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(player2Count)))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         fileMenu.setMnemonic('f');
@@ -263,9 +271,6 @@ public class ReversiGUI extends javax.swing.JFrame implements ActionListener, Mo
     }
 
     public void mouseClicked(java.awt.event.MouseEvent evt) {
-        if (evt.getSource() == board) {
-            ReversiGUI.this.boardMouseClicked(evt);
-        }
     }
 
     public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -288,12 +293,11 @@ public class ReversiGUI extends javax.swing.JFrame implements ActionListener, Mo
     }//GEN-LAST:event_exitMenuItemActionPerformed
 
     private void boardMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boardMouseReleased
-        this.controller.placeToken(this.board.rowAtPoint(evt.getPoint()), this.board.columnAtPoint(evt.getPoint()));
+        int row = this.board.rowAtPoint(evt.getPoint());
+        int col = this.board.columnAtPoint(evt.getPoint());
+        boolean enabled = (Integer)this.board.getValueAt(row, col) == Integer.MAX_VALUE || (Integer)this.board.getValueAt(row, col) == Integer.MIN_VALUE;
+        if (enabled) this.controller.placeToken(row, col);
     }//GEN-LAST:event_boardMouseReleased
-
-    private void boardMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boardMouseClicked
-        this.controller.placeToken(this.board.rowAtPoint(evt.getPoint()), this.board.columnAtPoint(evt.getPoint()));
-    }//GEN-LAST:event_boardMouseClicked
 
     private void newGameMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newGameMenuItemActionPerformed
         this.controller.newGame();
@@ -383,14 +387,41 @@ public class ReversiGUI extends javax.swing.JFrame implements ActionListener, Mo
         return player2Name;
     }
     
+    public void enableBoard() {
+        this.board.setEnabled(true);
+    }
+    
+    public void paintDisabledBoard() {
+        for (int row = 0; row < 8; row++) {
+            for (int col = 0; col < 8; col++) {
+                this.board.setValueAt(0, row, col);
+            }
+        }
+    }
+    
     public void update(ReversiState model) {
+        for (Pair<Integer,Integer> oldAvailableMove:currentAvailableMoves) {
+            this.board.setValueAt(0, oldAvailableMove.getFirstElem(), oldAvailableMove.getSecondElem());
+        }
         for (int row = 0; row < 8; row++) {
             for (int col = 0; col < 8; col++) {
                 this.board.setValueAt(model.getColorAt(row, col), row, col);
             }
         }
-        this.player1Count.setText(Integer.toString(getPlayer1Color().getText().compareToIgnoreCase("white") == 0?model.whiteCount:model.blackCount));
-        this.player2Count.setText(Integer.toString(getPlayer1Color().getText().compareToIgnoreCase("white") == 0?model.whiteCount:model.blackCount));
+        List<Pair<Integer,Integer>> availableMoves = null;
+        int enabledCellColor = model.isMax()?Integer.MAX_VALUE:Integer.MIN_VALUE;
+        if (model.isMax()) {
+            currentAvailableMoves = model.whiteAvailableMoves;
+        } else {
+            currentAvailableMoves = model.blackAvailableMoves;
+        }
+        if (currentAvailableMoves != null) {
+            for (Pair<Integer,Integer> availableMove:currentAvailableMoves) {
+                this.board.setValueAt(enabledCellColor, availableMove.getFirstElem(), availableMove.getSecondElem());
+            }
+        }
+        this.player1Count.setText(Integer.toString(getPlayer1Color().getText().compareToIgnoreCase("white") == 0?model.getWhiteCount():model.getBlackCount()));
+        this.player2Count.setText(Integer.toString(getPlayer2Color().getText().compareToIgnoreCase("white") == 0?model.getWhiteCount():model.getBlackCount()));
     }
 
 }

@@ -18,7 +18,7 @@ public class ReversiController {
     }
     
     public void placeToken(int row, int col) {
-        
+        this.logic.playerMoves(row, col);
     }
     
     public void exitGame() {
@@ -26,7 +26,7 @@ public class ReversiController {
     }
     
     public void newGame() {
-        
+        this.logic.newGame();
     }
     
     public void about(JFrame father) {
@@ -41,6 +41,8 @@ public class ReversiController {
         
     }
     
-    
+    public void endGame() {
+        this.logic.stopPlaying();
+    }
     
 }

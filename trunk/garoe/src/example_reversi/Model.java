@@ -20,16 +20,19 @@ public class Model {
         this.gui = gui;
         this.playersNames = new String[] {"player1", "player2"};
         this.playersColors = new int[] {ReversiToken.WHITE, ReversiToken.BLACK};
-        this.playersBrains = new boolean[] {false, true};
+        this.playersBrains = new boolean[] {false, false};
     }
     
     public ReversiState getState() {
         return this.state;
     }
+
+    public void setState(ReversiState state) {
+        this.state = state;
+    }
     
     public void startGUI() {
-        this.gui.setVisible(true);
-        this.gui.setEnabled(true);
+        this.gui.enableBoard();
         this.gui.getPlayer1Name().setText(playersNames[0] + (playersBrains[0]?"(AI)":"(Human)"));
         this.gui.getPlayer2Name().setText(playersNames[1] + (playersBrains[1]?"(AI)":"(Human)"));
         this.gui.getPlayer1Color().setText(playersColors[0]==ReversiToken.WHITE?"WHITE":"BLACK");
@@ -39,6 +42,22 @@ public class Model {
     
     public void update() {
         this.gui.update(state);
+    }
+
+    public ReversiGUI getGui() {
+        return gui;
+    }
+
+    public boolean[] getPlayersBrains() {
+        return playersBrains;
+    }
+
+    public int[] getPlayersColors() {
+        return playersColors;
+    }
+
+    public String[] getPlayersNames() {
+        return playersNames;
     }
     
 }

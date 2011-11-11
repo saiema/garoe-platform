@@ -38,6 +38,7 @@ public class ReversiGUI extends javax.swing.JFrame implements ActionListener, Mo
         this.setEnabled(true);
         this.board.setEnabled(false);
         this.paintDisabledBoard();
+        this.setLocation(640,320);
     }
 
     /** This method is called from within the constructor to

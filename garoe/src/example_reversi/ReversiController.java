@@ -22,7 +22,7 @@ public class ReversiController {
     }
     
     public void exitGame() {
-        
+        System.exit(0);
     }
     
     public void newGame() {

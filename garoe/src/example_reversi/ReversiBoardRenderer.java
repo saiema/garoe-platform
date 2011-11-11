@@ -33,6 +33,12 @@ public class ReversiBoardRenderer implements TableCellRenderer {
             //newLabel.setBackground(Color.BLACK);
         } else if (((Integer)value) == 0) {
             newLabel.setEnabled(false);
+        } else if (((Integer)value) == Integer.MAX_VALUE) {
+            newLabel.setOpaque(true);
+            newLabel.setBackground(Color.WHITE);
+        } else if (((Integer)value) == Integer.MIN_VALUE) {
+            newLabel.setOpaque(true);
+            newLabel.setBackground(Color.BLACK);
         }
         return newLabel;
     }

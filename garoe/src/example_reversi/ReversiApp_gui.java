@@ -29,6 +29,6 @@ public class ReversiApp_gui {
         ReversiController controller = new ReversiController(logic);
         gui.setController(controller);
         gui.init();
-        logic.startGame();
+        //logic.startGame();
     }
 }

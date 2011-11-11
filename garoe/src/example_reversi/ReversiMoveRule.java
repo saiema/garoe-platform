@@ -25,8 +25,8 @@ public class ReversiMoveRule implements IRule<ReversiState> {
 	@Override
 	public List<ReversiState> apply(ReversiState state) {
 		List<ReversiState> newStates = new LinkedList<ReversiState>();
-		int color = state.iamMax? ReversiToken.WHITE:ReversiToken.BLACK;
-		List<Pair<Integer,Integer>> moves = state.iamMax?state.whiteAvailableMoves:state.blackAvailableMoves;
+		int color = state.isMax()? ReversiToken.WHITE:ReversiToken.BLACK;
+		List<Pair<Integer,Integer>> moves = state.isMax()?state.whiteAvailableMoves:state.blackAvailableMoves;
 		for (Pair<Integer,Integer> availableMove : moves) {
 			ReversiState newState = state.clone();
 			newState.set(availableMove.getSecondElem(), availableMove.getFirstElem(), color,true);

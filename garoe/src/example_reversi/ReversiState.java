@@ -20,10 +20,10 @@ public class ReversiState implements IStateAdversary {
 	protected ReversiToken[][] board = new ReversiToken[8][8];
 	protected List<Pair<Integer,Integer>> blackAvailableMoves;
 	protected List<Pair<Integer,Integer>> whiteAvailableMoves;
-	boolean iamMax; //white
-	boolean iamMin; //black
-	int blackCount;
-	int whiteCount;
+	private boolean iamMax; //white
+	private boolean iamMin; //black
+	private int blackCount;
+	private int whiteCount;
 
 	public ReversiState() {
 		for (ReversiToken[] row : board) {
@@ -212,7 +212,7 @@ public class ReversiState implements IStateAdversary {
 						isAvailableBlack = !isAvailableBlack? goVerticalDown(c,r,new ReversiToken(ReversiToken.BLACK), false):isAvailableBlack;
 						isAvailableWhite = !isAvailableWhite? goVerticalDown(c,r,new ReversiToken(ReversiToken.WHITE), false):isAvailableWhite;
 						isAvailableBlack = !isAvailableBlack? goDiagonalToLowerRight(c,r,new ReversiToken(ReversiToken.BLACK), false):isAvailableBlack;
-						isAvailableWhite = !isAvailableWhite? goDiagonalToLowerRight(c,r,new ReversiToken(ReversiToken.WHITE), false):isAvailableBlack;
+						isAvailableWhite = !isAvailableWhite? goDiagonalToLowerRight(c,r,new ReversiToken(ReversiToken.WHITE), false):isAvailableWhite;
 					} else if (c == 0 && r == 7) { //esquina inferior izquierda
 						isAvailableBlack = !isAvailableBlack? goHorizontalToRight(c,r,new ReversiToken(ReversiToken.BLACK), false):isAvailableBlack;
 						isAvailableWhite = !isAvailableWhite? goHorizontalToRight(c,r,new ReversiToken(ReversiToken.WHITE), false):isAvailableWhite;
@@ -753,6 +753,14 @@ public class ReversiState implements IStateAdversary {
     
     public int getColorAt(int row, int col) {
         return this.board[row][col]!=null? this.board[row][col].getColor():0;
+    }
+    
+    public int getBlackCount() {
+        return this.blackCount;
+    }
+    
+    public int getWhiteCount() {
+        return this.whiteCount;
     }
 	
 	

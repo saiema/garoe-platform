@@ -27,12 +27,13 @@ public class ReversiLogic {
     public void startGame() {
         this.playing = true;
         this.model.startGUI();
+        this.model.disableSettings();
         nextMove();
     }
     
     public void newGame() {
         this.model.setState(new ReversiState());
-        showBoard(this.model.getState());;
+        showBoard(this.model.getState());
         startGame();
     }
     
@@ -41,7 +42,7 @@ public class ReversiLogic {
         showBoard(this.model.getState());
         this.model.update();     
         turn = 1 - turn;
-        nextMove();
+        if (!this.model.gameIsOver()) nextMove();
     }
     
     public void nextMove() {
@@ -54,8 +55,12 @@ public class ReversiLogic {
                 this.model.update();
             }
         } else {
-            turn = 1 - turn;
-            this.model.update();
+            if (!this.model.gameIsOver()) {
+                turn = 1 - turn;
+                this.model.getState().changeLevel();
+                this.model.update();
+                nextMove();
+            }
         }
     }
     
@@ -65,6 +70,7 @@ public class ReversiLogic {
     
     public void stopPlaying() {
         this.playing = false;
+        this.model.enableSettings();
     }
     
     
@@ -76,4 +82,23 @@ public class ReversiLogic {
 		}
 	}
     
+    public void changePlayersName(int player, String newName) {
+        this.model.getPlayersNames()[player] = newName;
+    }
+    
+    public void changePlayersBrain(int player, boolean ai) {
+        this.model.getPlayersBrains()[player] = ai;
+    }
+    
+    public void changePlayersColor(int player, int newColor) {
+        this.model.getPlayersColors()[player] = newColor;
+    }
+    
+    public Model getModel() {
+        return this.model;
+    }
+    
+    public AdversarySearchEngine<ReversiState> getAI() {
+        return this.ai;
+    }    
 }

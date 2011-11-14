@@ -37,6 +37,11 @@ public class Model {
         this.gui.getPlayer2Name().setText(playersNames[1] + (playersBrains[1]?"(AI)":"(Human)"));
         this.gui.getPlayer1Color().setText(playersColors[0]==ReversiToken.WHITE?"WHITE":"BLACK");
         this.gui.getPlayer2Color().setText(playersColors[1]==ReversiToken.WHITE?"WHITE":"BLACK");
+        if (this.playersColors[0] == ReversiToken.WHITE) {
+            this.state.setMax();
+        } else {
+            this.state.setMin();
+        }
         update();
     }
     
@@ -58,6 +63,22 @@ public class Model {
 
     public String[] getPlayersNames() {
         return playersNames;
+    }
+    
+    public void disableSettings() {
+        this.gui.setSettingsEnabled(false);
+    }
+    
+    public void enableSettings() {
+        this.gui.setSettingsEnabled(true);
+    }
+    
+    public boolean gameIsOver() {
+        boolean gameOver = this.state.blackAvailableMoves.isEmpty() && this.state.whiteAvailableMoves.isEmpty();
+        if (gameOver) {
+            System.out.println("GAMEOVER");
+        }
+        return gameOver;
     }
     
 }

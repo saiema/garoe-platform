@@ -68,6 +68,7 @@ public class AboutFloodit extends javax.swing.JDialog implements  WindowListener
         flooditLabel = new javax.swing.JLabel();
         flooditVersion = new javax.swing.JLabel();
 
+        setResizable(false);
         addWindowListener(this);
 
         aboutTextArea.setColumns(20);
@@ -75,10 +76,10 @@ public class AboutFloodit extends javax.swing.JDialog implements  WindowListener
         aboutTextArea.setText("Version: 0.2\nVersion IA: 0.1\n\nAutores:\n\nCarla N. Fiori\nSimón E. Gutiérrez Brida\n\n\tAgradecimientos:\n\n    Y no se viteh!\n    ya tendremos que rellenar\n    esta parte");
         jScrollPane1.setViewportView(aboutTextArea);
 
-        flooditLabel.setFont(new java.awt.Font("Segoe Print", 3, 36)); // NOI18N
+        flooditLabel.setFont(new java.awt.Font("Segoe Print", 3, 36));
         flooditLabel.setText("Floodit");
 
-        flooditVersion.setFont(new java.awt.Font("Courier New", 3, 14)); // NOI18N
+        flooditVersion.setFont(new java.awt.Font("Courier New", 3, 14));
         flooditVersion.setText("beta");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

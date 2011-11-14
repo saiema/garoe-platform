@@ -10,10 +10,12 @@
  */
 package example_reversi;
 
+import java.awt.GraphicsEnvironment;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
 import java.util.LinkedList;
 import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import utils.Pair;
 
@@ -38,7 +40,7 @@ public class ReversiGUI extends javax.swing.JFrame implements ActionListener, Mo
         this.setEnabled(true);
         this.board.setEnabled(false);
         this.paintDisabledBoard();
-        this.setLocation(640,320);
+        this.setLocation(GraphicsEnvironment.getLocalGraphicsEnvironment().getCenterPoint());
     }
 
     /** This method is called from within the constructor to
@@ -62,6 +64,7 @@ public class ReversiGUI extends javax.swing.JFrame implements ActionListener, Mo
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         newGameMenuItem = new javax.swing.JMenuItem();
+        stopGameMenuItem = new javax.swing.JMenuItem();
         exitMenuItem = new javax.swing.JMenuItem();
         settingsMenu = new javax.swing.JMenu();
         settingsMenuItem = new javax.swing.JMenuItem();
@@ -198,13 +201,22 @@ public class ReversiGUI extends javax.swing.JFrame implements ActionListener, Mo
                 .addContainerGap(19, Short.MAX_VALUE))
         );
 
-        fileMenu.setMnemonic('f');
-        fileMenu.setText("File");
+        fileMenu.setMnemonic('R');
+        fileMenu.setText("Reversi");
 
+        newGameMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.SHIFT_MASK));
+        newGameMenuItem.setMnemonic('n');
         newGameMenuItem.setText("New");
         newGameMenuItem.addActionListener(this);
         fileMenu.add(newGameMenuItem);
 
+        stopGameMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.SHIFT_MASK));
+        stopGameMenuItem.setMnemonic('s');
+        stopGameMenuItem.setText("Stop game");
+        stopGameMenuItem.addActionListener(this);
+        fileMenu.add(stopGameMenuItem);
+
+        exitMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_X, java.awt.event.InputEvent.SHIFT_MASK));
         exitMenuItem.setMnemonic('x');
         exitMenuItem.setText("Exit");
         exitMenuItem.addActionListener(this);
@@ -212,22 +224,27 @@ public class ReversiGUI extends javax.swing.JFrame implements ActionListener, Mo
 
         menuBar.add(fileMenu);
 
-        settingsMenu.setMnemonic('e');
+        settingsMenu.setMnemonic('S');
         settingsMenu.setText("Settings");
 
-        settingsMenuItem.setText("settings");
+        settingsMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.SHIFT_MASK));
+        settingsMenuItem.setMnemonic('e');
+        settingsMenuItem.setText("Settings");
         settingsMenuItem.addActionListener(this);
         settingsMenu.add(settingsMenuItem);
 
+        aiMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_I, java.awt.event.InputEvent.SHIFT_MASK));
+        aiMenuItem.setMnemonic('i');
         aiMenuItem.setText("IA");
         aiMenuItem.addActionListener(this);
         settingsMenu.add(aiMenuItem);
 
         menuBar.add(settingsMenu);
 
-        helpMenu.setMnemonic('h');
+        helpMenu.setMnemonic('H');
         helpMenu.setText("Help");
 
+        aboutMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.SHIFT_MASK));
         aboutMenuItem.setMnemonic('a');
         aboutMenuItem.setText("About");
         aboutMenuItem.addActionListener(this);
@@ -269,6 +286,9 @@ public class ReversiGUI extends javax.swing.JFrame implements ActionListener, Mo
         else if (evt.getSource() == aboutMenuItem) {
             ReversiGUI.this.aboutMenuItemActionPerformed(evt);
         }
+        else if (evt.getSource() == stopGameMenuItem) {
+            ReversiGUI.this.stopGameMenuItemActionPerformed(evt);
+        }
     }
 
     public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -305,16 +325,22 @@ public class ReversiGUI extends javax.swing.JFrame implements ActionListener, Mo
     }//GEN-LAST:event_newGameMenuItemActionPerformed
 
     private void settingsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_settingsMenuItemActionPerformed
-        this.controller.settings(this);
+        this.controller.settings();
     }//GEN-LAST:event_settingsMenuItemActionPerformed
 
     private void aiMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aiMenuItemActionPerformed
-        this.controller.iaSettings(this);
+        this.controller.iaSettings();
     }//GEN-LAST:event_aiMenuItemActionPerformed
 
     private void aboutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutMenuItemActionPerformed
-        this.controller.about(this);
+        this.controller.about();
     }//GEN-LAST:event_aboutMenuItemActionPerformed
+
+    private void stopGameMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stopGameMenuItemActionPerformed
+        this.board.setEnabled(false);
+        this.board.setVisible(false);
+        this.controller.endGame();
+    }//GEN-LAST:event_stopGameMenuItemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -370,6 +396,7 @@ public class ReversiGUI extends javax.swing.JFrame implements ActionListener, Mo
     private javax.swing.JLabel player2Name;
     private javax.swing.JMenu settingsMenu;
     private javax.swing.JMenuItem settingsMenuItem;
+    private javax.swing.JMenuItem stopGameMenuItem;
     // End of variables declaration//GEN-END:variables
 
     public JLabel getPlayer1Color() {
@@ -390,6 +417,7 @@ public class ReversiGUI extends javax.swing.JFrame implements ActionListener, Mo
     
     public void enableBoard() {
         this.board.setEnabled(true);
+        this.board.setVisible(true);
     }
     
     public void paintDisabledBoard() {
@@ -423,6 +451,10 @@ public class ReversiGUI extends javax.swing.JFrame implements ActionListener, Mo
         }
         this.player1Count.setText(Integer.toString(getPlayer1Color().getText().compareToIgnoreCase("white") == 0?model.getWhiteCount():model.getBlackCount()));
         this.player2Count.setText(Integer.toString(getPlayer2Color().getText().compareToIgnoreCase("white") == 0?model.getWhiteCount():model.getBlackCount()));
+    }
+    
+    public void setSettingsEnabled(boolean enable) {
+        this.settingsMenuItem.setEnabled(enable);
     }
 
 }

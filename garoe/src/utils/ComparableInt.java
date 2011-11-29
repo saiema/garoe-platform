@@ -1,5 +1,11 @@
 package utils;
 
+/**
+ * Implementacion de {@code IComparable} para {@code Integer}
+ * @author Carla Noelia Fiori, Simón Emmanuel Gutiérrez Brida
+ * @version 0.1
+ * @see IComparable
+ */
 public class ComparableInt implements IComparable {
 	protected Integer value;
 	

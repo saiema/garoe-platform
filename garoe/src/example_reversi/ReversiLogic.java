@@ -40,7 +40,7 @@ public class ReversiLogic {
     public void playerMoves(int row, int col) {
         model.getState().set(col, row, model.getPlayersColors()[turn], true);
         showBoard(this.model.getState());
-        this.model.update();     
+        this.model.update();
         turn = 1 - turn;
         if (!this.model.gameIsOver()) nextMove();
     }

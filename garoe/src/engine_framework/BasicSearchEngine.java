@@ -5,6 +5,7 @@ package engine_framework;
  * Define la estructura basica de un motor de busqueda y sus operaciones
  * @author Carla Noelia Fiori, Simon Emmanuel Gutierrez Brida
  * @version 0.2
+ * @see IBasicState
  */
 abstract public class BasicSearchEngine<State extends IBasicState> {
 	
@@ -17,23 +18,18 @@ abstract public class BasicSearchEngine<State extends IBasicState> {
 	 * Indica el estado actual : {@code IState}
 	 */
 	protected State current;  //el estado actualmente analizado (la mejor opcion hasta el momento)
-	//posible atributo : padre actual, el padre del cual se obtuvieron los succesores actualmente siendo analizados
 	
-	
-	public BasicSearchEngine () {};
-	
+    /**
+     * Constructor de la clase
+     * @param searchProblem : el problema sobre el cual opera el motor : {SearchProblem<State>}
+     */
 	public BasicSearchEngine (SearchProblem<State> searchProblem) {
 		this.searchProblem = searchProblem;
 	}
 	
-	/*
-	 * Executa la busqueda
-	 * @return existe s tal que {@code searchProblem.initialState =(0 o mas reglas)=> s && s.success()} : {@code boolean}
-	 *
-	abstract public boolean performSearch();*/
-	
 	/**
-	 * @return s tal que {@code s.success()} o s es el mejor candidato hasta el momento : {@code State}
+     * Retorna la solución que encontró el algoritmo de búsqueda
+	 * @return {@code s} tal que {@code s.success()} o {@code s} es el mejor candidato hasta el momento : {@code State}
 	 * <hr>
 	 * <p><b>s puede ser {@code null} si no existe solucion o si aun no se ejecuto {@code performSearch()}</b></p>
 	 */

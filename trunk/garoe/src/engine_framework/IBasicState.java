@@ -10,7 +10,7 @@ public interface IBasicState {
 	
 	
 	/**
-	 * Indica que este estado no puede tener ningun estado sucesor
+	 * Indica que este estado no puede tener ningun estado sucesor, es decir que es una hoja
 	 * @return true sii este estado es hoja : {@code boolean}
 	 */
 	public boolean isFinal();
@@ -21,6 +21,10 @@ public interface IBasicState {
 	 */
 	public boolean success();
 	
+    /**
+     * Comprueba que la representación del objeto es válida
+     * @return true sii este objeto cumple con el invariante de lo que representa : {@code boolean}
+     */
 	public boolean repOk();
 	
 }

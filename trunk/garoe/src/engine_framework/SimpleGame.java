@@ -12,6 +12,7 @@ package engine_framework;
  * @see SearchProblem
  * @see IRule
  * @see IStateAdversary
+ * @deprecated
  */
 public class SimpleGame<AdversaryState extends IStateAdversary, Engine extends AdversarySearchEngine<AdversaryState>> {
 	/**

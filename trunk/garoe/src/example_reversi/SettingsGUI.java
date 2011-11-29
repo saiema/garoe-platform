@@ -128,7 +128,7 @@ public class SettingsGUI extends javax.swing.JFrame implements  ActionListener {
                                 .addComponent(player1ColorLabel))
                             .addGap(18, 18, 18)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(player1Color, javax.swing.GroupLayout.DEFAULT_SIZE, 71, Short.MAX_VALUE)
+                                .addComponent(player1Color, javax.swing.GroupLayout.PREFERRED_SIZE, 71, Short.MAX_VALUE)
                                 .addComponent(player1BrainsSelect, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addComponent(saveButton))
                 .addGap(40, 40, 40)
@@ -137,7 +137,7 @@ public class SettingsGUI extends javax.swing.JFrame implements  ActionListener {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(player2NameLabel)
                         .addGap(18, 18, 18)
-                        .addComponent(player2NameValue, javax.swing.GroupLayout.DEFAULT_SIZE, 64, Short.MAX_VALUE))
+                        .addComponent(player2NameValue, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE))
                     .addComponent(player2Label)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -145,8 +145,8 @@ public class SettingsGUI extends javax.swing.JFrame implements  ActionListener {
                             .addComponent(player2ColorLabel))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(player2Color, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(player2BrainsSelect, 0, 65, Short.MAX_VALUE))))
+                            .addComponent(player2Color, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
+                            .addComponent(player2BrainsSelect, 0, 110, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -206,17 +206,17 @@ public class SettingsGUI extends javax.swing.JFrame implements  ActionListener {
     // Code for dispatching events from components to event handlers.
 
     public void actionPerformed(java.awt.event.ActionEvent evt) {
-        if (evt.getSource() == cancelButton) {
-            SettingsGUI.this.cancelButtonActionPerformed(evt);
-        }
-        else if (evt.getSource() == saveButton) {
-            SettingsGUI.this.saveButtonActionPerformed(evt);
-        }
-        else if (evt.getSource() == player1Color) {
+        if (evt.getSource() == player1Color) {
             SettingsGUI.this.player1ColorActionPerformed(evt);
         }
         else if (evt.getSource() == player2Color) {
             SettingsGUI.this.player2ColorActionPerformed(evt);
+        }
+        else if (evt.getSource() == saveButton) {
+            SettingsGUI.this.saveButtonActionPerformed(evt);
+        }
+        else if (evt.getSource() == cancelButton) {
+            SettingsGUI.this.cancelButtonActionPerformed(evt);
         }
     }// </editor-fold>//GEN-END:initComponents
 

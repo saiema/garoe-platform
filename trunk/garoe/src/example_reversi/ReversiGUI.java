@@ -198,7 +198,7 @@ public class ReversiGUI extends javax.swing.JFrame implements ActionListener, Mo
                         .addComponent(player2Count)))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         fileMenu.setMnemonic('R');
@@ -274,6 +274,9 @@ public class ReversiGUI extends javax.swing.JFrame implements ActionListener, Mo
         if (evt.getSource() == newGameMenuItem) {
             ReversiGUI.this.newGameMenuItemActionPerformed(evt);
         }
+        else if (evt.getSource() == stopGameMenuItem) {
+            ReversiGUI.this.stopGameMenuItemActionPerformed(evt);
+        }
         else if (evt.getSource() == exitMenuItem) {
             ReversiGUI.this.exitMenuItemActionPerformed(evt);
         }
@@ -285,9 +288,6 @@ public class ReversiGUI extends javax.swing.JFrame implements ActionListener, Mo
         }
         else if (evt.getSource() == aboutMenuItem) {
             ReversiGUI.this.aboutMenuItemActionPerformed(evt);
-        }
-        else if (evt.getSource() == stopGameMenuItem) {
-            ReversiGUI.this.stopGameMenuItemActionPerformed(evt);
         }
     }
 
@@ -451,6 +451,7 @@ public class ReversiGUI extends javax.swing.JFrame implements ActionListener, Mo
         }
         this.player1Count.setText(Integer.toString(getPlayer1Color().getText().compareToIgnoreCase("white") == 0?model.getWhiteCount():model.getBlackCount()));
         this.player2Count.setText(Integer.toString(getPlayer2Color().getText().compareToIgnoreCase("white") == 0?model.getWhiteCount():model.getBlackCount()));
+        this.board.updateUI();
     }
     
     public void setSettingsEnabled(boolean enable) {

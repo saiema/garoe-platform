@@ -5,7 +5,7 @@ package engine_framework;
  * 
  * @author Carla Noelia Fiori, Simon Emmanuel Gutierrez Brida
  * @version 0.1
- * @see IBasicState
+ * @see IinformedState
  *
  */
 public interface IStateAdversary extends IinformedState {
@@ -21,12 +21,12 @@ public interface IStateAdversary extends IinformedState {
 	public boolean maxWins();
 	
 	/**
-	 * @return el estado en max : {@code boolean}
+	 * @return true sii el estado es max : {@code boolean}
 	 */
 	public boolean isMax();
 	
 	/**
-	 * @return el estado en min : {@code boolean}
+	 * @return true sii el estado es min : {@code boolean}
 	 */
 	public boolean isMin();
 	

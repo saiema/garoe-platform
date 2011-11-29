@@ -35,7 +35,7 @@ public class ReversiBoardRenderer implements TableCellRenderer {
             newLabel.setEnabled(false);
         } else if (((Integer)value) == Integer.MAX_VALUE) {
             newLabel.setOpaque(true);
-            newLabel.setBackground(Color.WHITE);
+            newLabel.setBackground(Color.LIGHT_GRAY);
         } else if (((Integer)value) == Integer.MIN_VALUE) {
             newLabel.setOpaque(true);
             newLabel.setBackground(Color.BLACK);

@@ -6,7 +6,7 @@ package utils;
 /**
  * Un par homogeneo, util para trabajar con dos elementos sin recurrir a arreglos, listas, etc
  * 
- * @author Simon Emmanuel Gutierrez Brida
+ * @author Carla Noelia Fiori, Simon Emmanuel Gutierrez Brida
  * @version 1.1
  *
  */

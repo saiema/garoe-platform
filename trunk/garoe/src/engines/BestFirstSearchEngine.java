@@ -14,17 +14,22 @@ import engine_framework.SearchProblem;
 /**
  * Motor de busqueda sin adversario usando best first search
  * @author Carla Noelia Fiori, Simon Emmanuel Gutierrez Brida
- * @version 0.1
+ * @version 0.2
+ * @see IinformedState
  * @see SearchEngine
- *
  */
 public class BestFirstSearchEngine<EvalState extends IinformedState> extends SearchEngine<EvalState> {
 	private List<String> log;
 	private Queue<EvalState> queue;
+    private Integer queueMaxCapacity = 0;
 	
 	
+    /**
+     * Constructor de la clase
+     * @param problem : el problema sobre el cual opera el motor : {@code SearchProblem<EvalState>}
+     */
 	public BestFirstSearchEngine(SearchProblem<EvalState> problem) {
-		this.searchProblem = problem;
+        super(problem);
 		this.path = new LinkedList<EvalState>();
 		this.log = new LinkedList<String>();
 		this.queue = new LinkedList<EvalState>();
@@ -35,16 +40,25 @@ public class BestFirstSearchEngine<EvalState extends IinformedState> extends Sea
 		queue.clear();
 		return performSearch(this.searchProblem.getInitialState());
 	}
+    
+    public void setQueueCapacity(int queueMaxCapacity) {
+        this.queueMaxCapacity = queueMaxCapacity;
+    }
 	
+    /**
+     * Realiza el algoritmo de búsqueda "Best First Search"
+     * Se utiliza una cola de prioridades para ordenar los estados sucesores y el algoritmo de búsqueda
+     * siempre recorre los estados comenzando por el primero (el mejor)
+     * @param state : el estado sobre el cual se realiza la búsqueda : {@code EvalState}
+     * @return true sii se encuentra un estado exitoso : {@code boolean}
+     */
 	private boolean performSearch(EvalState state) {
-		System.out.println("Queue longitud: " + queue.size());
 		if (state.success()) {
 			path.add(state);
 			return true;
 		} else {
 			for (EvalState child : this.searchProblem.getSuccessors(state)) {
 				insert(queue, child);
-				//queue.offer(child);
 			}
 			boolean found = false;
 			while (!found && !queue.isEmpty()) {
@@ -58,10 +72,19 @@ public class BestFirstSearchEngine<EvalState extends IinformedState> extends Sea
 		}
 	}
 
+    /**
+     * Inserta un elemento a una cola tratando a la misma como cola de prioridad.
+     * @param queue : la cola sobre la cual insertar : {@code Queue<EvalState>}
+     * @param state : el estado a insertar : {@code EvalState}
+     */
 	private void insert(Queue<EvalState> queue, EvalState state) {
+        /*
+         * El elemento primero se inserta al final y se va corriendo hacia adelante
+         * mientras se encuentren elementos peores por delante.
+         */
 		List<EvalState> priorityQueue = (LinkedList<EvalState>) queue;
 		boolean inserted = priorityQueue.isEmpty();
-		int index = priorityQueue.size();//Math.max(priorityQueue.size() - 1,0);
+		int index = priorityQueue.size();
 		while (!inserted && index > 0) {
 			if (state.evaluate().compareTo(priorityQueue.get(index-1).evaluate()) > 0) { //state es mas grande que el ultimo de la cola
 				index--;
@@ -70,7 +93,7 @@ public class BestFirstSearchEngine<EvalState extends IinformedState> extends Sea
 			}
 		}
 		priorityQueue.add(index, state);
-		if (priorityQueue.size() > 500) {
+		if (queueMaxCapacity > 0 && (priorityQueue.size() > queueMaxCapacity)) {
 			priorityQueue.remove(priorityQueue.size() - 1);
 		}
 	}

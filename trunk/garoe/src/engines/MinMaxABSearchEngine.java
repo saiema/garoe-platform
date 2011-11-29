@@ -7,7 +7,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 import utils.IComparable;
-//import utils.Pair;
 
 import engine_framework.AdversarySearchEngine;
 import engine_framework.IStateAdversary;
@@ -17,8 +16,8 @@ import engine_framework.SearchProblem;
  * Motor de busqueda con adversario usando minMax con poda alfa-beta
  * @author Carla Noelia Fiori, Simon Emmanuel Gutierrez Brida
  * @version 0.1
+ * @see IStateAdversary
  * @see AdversarySearchEngine
- *
  */
 public class MinMaxABSearchEngine<AdversaryState extends IStateAdversary> extends AdversarySearchEngine<AdversaryState> {
 	final private int DEFAULT_MAX_TREE_LEVEL = 5; //altura maxima del arbol por defecto
@@ -33,7 +32,7 @@ public class MinMaxABSearchEngine<AdversaryState extends IStateAdversary> extend
 	
 	
 	/**
-	 * Constructor basico
+	 * Constructor de la clase
 	 * @param p : el problema de busqueda : {@code SearchProblem<AdversaryState>}
 	 */
 	public MinMaxABSearchEngine(SearchProblem<AdversaryState> p) {
@@ -83,7 +82,7 @@ public class MinMaxABSearchEngine<AdversaryState extends IStateAdversary> extend
 			List<AdversaryState> succesors = this.searchProblem.getSuccessors(state);
 			stateCount+=succesors.size();
 			int currentSuccesor = 0;
-			if (depth == this.maxTreeLevel) this.current = (succesors.size()==0)?null:succesors.get(0);
+			if (depth == this.maxTreeLevel) this.current = (succesors.isEmpty())?null:succesors.get(0);
 			if (depth == this.maxTreeLevel) {
 				for (AdversaryState s : succesors) {
 					System.out.println(s.toString());
@@ -128,6 +127,7 @@ public class MinMaxABSearchEngine<AdversaryState extends IStateAdversary> extend
 		return maxTreeLevel;
 	}
 
+    @Override
 	public AdversaryState nextMove(AdversaryState state) {
 		this.searchProblem.setInitialState(state);
 		stateCount = 0;

@@ -9,6 +9,8 @@ import java.util.Random;
 import utils.ComparableFloat;
 import utils.IComparable;
 import engine_framework.IinformedState;
+import java.util.Set;
+import java.util.TreeSet;
 
 /**
  * El estado del flood it
@@ -28,6 +30,11 @@ public class FlooditState implements IinformedState {
 	private FlooditToken[][] board;
 	private FlooditToken firstToken;
 	private int stepsMade = 0;
+    
+    //generacion
+    static public final int ALL_RANDOM_MODE = 0;
+    static public final int REDUCED_BY_CONTEXT_MODE = 1;
+    private int genMode = ALL_RANDOM_MODE;
 	
 	
 	public FlooditState() {
@@ -35,16 +42,56 @@ public class FlooditState implements IinformedState {
 	}
 
 	public void populateBoard() {
-		Random colorGenerator = new Random();
+		//Random colorGenerator = new Random();
 		for (int row = 0; row < board.length; row++) {
 			for (int col = 0; col < board.length; col++) {
-				FlooditToken newToken = new FlooditToken(colorGenerator.nextInt(DEFAULT_COLORS));
-				board[row][col] = newToken;
+				//FlooditToken newToken = new FlooditToken(colorGenerator.nextInt(DEFAULT_COLORS));
+				FlooditToken newToken = new FlooditToken(genColor(this.genMode,row,col));
+                board[row][col] = newToken;
 			}
 		}
 		linkTokens();
 		firstToken = board[0][0];
 	}
+    
+    public void setGeneratorMode(int mode) {
+        this.genMode = mode;
+    }
+    
+    private int genColor(int mode, int row, int col) {
+        Random colorGenerator = new Random();
+        Set<Integer> filteredColors = new TreeSet<Integer>();
+        int color = 0;
+        if (mode == this.ALL_RANDOM_MODE) {
+            color = colorGenerator.nextInt(DEFAULT_COLORS);
+        } else if (mode == this.REDUCED_BY_CONTEXT_MODE) {
+            if (row == 0 && col == 0) {
+                return genColor(this.ALL_RANDOM_MODE,row,col);
+            } else if (row == 0) {
+                filteredColors.add(board[row][col-1].getColor());
+            } else if (row > 0) {
+                if (col > 0) {
+                    filteredColors.add(board[row-1][col-1].getColor());
+                    filteredColors.add(board[row][col-1].getColor());
+                }
+                filteredColors.add(board[row-1][col].getColor());
+            }
+            int remainingColors = 4 - filteredColors.size();
+            for (int i = remainingColors; i > 0;i--) {
+                boolean newColorFound = false;
+                int newColor = 0;
+                while (!newColorFound) {
+                    newColor = colorGenerator.nextInt(DEFAULT_COLORS);
+                    if (!filteredColors.contains(newColor)) {
+                        newColorFound = true;
+                    }
+                }
+                filteredColors.add(newColor);
+            }
+            color = (Integer)filteredColors.toArray()[colorGenerator.nextInt(4)];
+        }
+        return color;
+    }
 	
 	private void linkTokens() {
 		for (int row = 0; row < board.length; row++) {

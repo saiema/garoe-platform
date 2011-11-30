@@ -51,6 +51,7 @@ public class FlooditController implements ActionListener{
 			System.exit(0);
 		} else if (this.gui.getNewGameMenuItem() == source) {
 			this.model = new FlooditState();
+            this.model.setGeneratorMode(FlooditState.REDUCED_BY_CONTEXT_MODE);
 			this.model.populateBoard();
 			this.gui.enableButtons(true);
 			update = true;

@@ -1,6 +1,6 @@
 package example_floodit;
 
-public class Test {
+public class FlodditApp_gui {
 
 	/**
 	 * @param args
@@ -11,6 +11,7 @@ public class Test {
 		System.out.println(test.toString());*/
 		FlooditMainGui mainWindow = new FlooditMainGui();
 		FlooditState gameState = new FlooditState();
+        gameState.setGeneratorMode(FlooditState.REDUCED_BY_CONTEXT_MODE);
 		gameState.populateBoard();
 		FlooditController controller = new FlooditController(mainWindow, gameState);
 		controller.show();

@@ -70,24 +70,24 @@ public class ReversiController {
         } else {
             if (singlePlayer) {
                 if (maxWon && this.logic.getModel().getPlayersColors()[0] == ReversiToken.WHITE) {
-                    endGameDialog = new EndGameDialog(new ImageIcon("win_reversi.jpg"),"^^ GANASTE!!!");
+                    endGameDialog = new EndGameDialog(new ImageIcon("ganaste120x120.jpg"),"^^ GANASTE!!!");
                 } else if (minWon && this.logic.getModel().getPlayersColors()[0] == ReversiToken.BLACK) {
-                    endGameDialog = new EndGameDialog(new ImageIcon("win_reversi.jpg"),"^^ GANASTE!!!");
+                    endGameDialog = new EndGameDialog(new ImageIcon("ganaste120x120.jpg"),"^^ GANASTE!!!");
                 } else {
-                    endGameDialog = new EndGameDialog(new ImageIcon("lost_reversi.jpg"),":( PERDISTE!!!");
+                    endGameDialog = new EndGameDialog(new ImageIcon("perdiste120x120.jpg"),":( PERDISTE!!!");
                 }
             } else {
                 if (maxWon) {
                     if (this.logic.getModel().getPlayersColors()[0]==ReversiToken.WHITE) {
-                        endGameDialog = new EndGameDialog(new ImageIcon("win_reversi.jpg"),this.logic.getModel().getPlayersNames()[0]+" GANO!!");
+                        endGameDialog = new EndGameDialog(new ImageIcon("ganaste120x120.jpg"),this.logic.getModel().getPlayersNames()[0]/*+" GANO!!"*/);
                     } else {
-                        endGameDialog = new EndGameDialog(new ImageIcon("win_reversi.jpg"),this.logic.getModel().getPlayersNames()[1]+" GANO!!");
+                        endGameDialog = new EndGameDialog(new ImageIcon("ganaste120x120.jpg"),this.logic.getModel().getPlayersNames()[1]/*+" GANO!!"*/);
                     }
                 } else {
                     if (this.logic.getModel().getPlayersColors()[0]==ReversiToken.BLACK) {
-                        endGameDialog = new EndGameDialog(new ImageIcon("win_reversi.jpg"),this.logic.getModel().getPlayersNames()[0]+" GANO!!");
+                        endGameDialog = new EndGameDialog(new ImageIcon("ganaste120x120.jpg"),this.logic.getModel().getPlayersNames()[0]/*+" GANO!!"*/);
                     } else {
-                        endGameDialog = new EndGameDialog(new ImageIcon("win_reversi.jpg"),this.logic.getModel().getPlayersNames()[1]+" GANO!!");
+                        endGameDialog = new EndGameDialog(new ImageIcon("ganaste120x120.jpg"),this.logic.getModel().getPlayersNames()[1]/*+" GANO!!"*/);
                     }
                 }
             }   

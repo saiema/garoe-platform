@@ -44,49 +44,50 @@ public class EndGameDialog extends javax.swing.JFrame implements ActionListener 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
-        okButton = new javax.swing.JButton();
         image = new javax.swing.JLabel();
         message = new javax.swing.JTextField();
+        okButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBounds(new java.awt.Rectangle(0, 22, 300, 300));
+        setMaximumSize(null);
+        setPreferredSize(new java.awt.Dimension(300, 300));
         setResizable(false);
+        getContentPane().setLayout(new java.awt.GridBagLayout());
 
-        okButton.setText("ok");
-        okButton.addActionListener(this);
-
+        image.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         image.setText("IMAGE");
+        image.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        image.setMaximumSize(new java.awt.Dimension(126, 120));
+        image.setMinimumSize(new java.awt.Dimension(126, 120));
+        image.setPreferredSize(new java.awt.Dimension(126, 120));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 1;
+        gridBagConstraints.insets = new java.awt.Insets(1, 1, 0, 1);
+        getContentPane().add(image, gridBagConstraints);
 
         message.setFont(new java.awt.Font("Segoe Print", 3, 24)); // NOI18N
+        message.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         message.setText("MESSAGE");
         message.setEnabled(false);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.PAGE_START;
+        getContentPane().add(message, gridBagConstraints);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(173, 173, 173)
-                .addComponent(okButton)
-                .addContainerGap(184, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(91, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(image)
-                    .addComponent(message, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(88, 88, 88))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(image)
-                .addGap(18, 18, 18)
-                .addComponent(message, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(okButton)
-                .addContainerGap(241, Short.MAX_VALUE))
-        );
+        okButton.setText("ok");
+        okButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        okButton.addActionListener(this);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 5;
+        getContentPane().add(okButton, gridBagConstraints);
 
         pack();
     }
@@ -136,7 +137,7 @@ public class EndGameDialog extends javax.swing.JFrame implements ActionListener 
         java.awt.EventQueue.invokeLater(new Runnable() {
 
             public void run() {
-                new EndGameDialog(new ImageIcon("draw_reversi.jpg"),"TEST").setVisible(true);
+                new EndGameDialog(new ImageIcon("ganaste120x120.jpg"),"LAVATE EL CULO").setVisible(true);
             }
         });
     }

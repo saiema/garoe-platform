@@ -27,7 +27,11 @@ public class FlooditMoveRule implements IRule<FlooditState> {
 			FlooditState newState = state.clone();
 			if (color != newState.getColorOfToken(0, 0)) {
 				newState.changeColor(color);
-				succesors.add(newState);
+                int stateSameColor = state.getSameColor();
+                int newStateSameColor = newState.getSameColor();
+                if (stateSameColor != newStateSameColor) {
+                    succesors.add(newState);
+                }
 			}
 		}
 		return succesors;

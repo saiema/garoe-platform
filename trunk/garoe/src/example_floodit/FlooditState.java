@@ -232,6 +232,18 @@ public class FlooditState implements IinformedState {
 	public int getSize() {
 		return this.board.length;
 	}
+    
+    public int getSameColor() {
+        return this.firstToken.checkSameColors(new HashSet<FlooditToken>());
+    }
+    
+    /*@Override
+    public boolean equals(Object o) {
+        FlooditState other = (FlooditState)o;
+        int thisSameColor = this.firstToken.checkSameColors(new HashSet<FlooditToken>());
+        int otherSameColor = other.firstToken.checkSameColors(new HashSet<FlooditToken>());
+        return (thisSameColor == otherSameColor);
+    }*/
 
 
 }

@@ -94,6 +94,7 @@ public class IAGui extends javax.swing.JDialog {
 		moveList.setPreferredSize(new java.awt.Dimension(400, 258));
 		moveList.setMinimumSize(new java.awt.Dimension(350, 256));
 		moveList.setMaximumSize(new java.awt.Dimension(380, 256));
+        moveList.setAutoscrolls(true);
 	}
 		} catch (Exception e) {
 			e.printStackTrace();

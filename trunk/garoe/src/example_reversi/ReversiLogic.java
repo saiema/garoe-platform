@@ -70,6 +70,7 @@ public class ReversiLogic {
     
     public void stopPlaying() {
         this.playing = false;
+        this.turn = 0;
         this.model.enableSettings();
     }
     

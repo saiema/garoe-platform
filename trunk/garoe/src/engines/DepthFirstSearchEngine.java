@@ -34,6 +34,7 @@ public class DepthFirstSearchEngine<State extends IBasicState> extends SearchEng
     @Override
     public boolean performSearch() {
         visited = new LinkedList<State>();
+        path = new LinkedList<State>();
         State initial = this.searchProblem.getInitialState();
         return performSearch(initial);
     }
@@ -54,10 +55,12 @@ public class DepthFirstSearchEngine<State extends IBasicState> extends SearchEng
             List<State>succesors = this.searchProblem.getSuccessors(state);
             for (int i = 0 ;i < succesors.size()&& !found;i++) {
                 State current = succesors.get(i);
-                visited.add(current);
-                if (performSearch(current)){
-                    found = true;
-                    path.add(current);
+                if (!visited.contains(current)) {
+                    visited.add(state);
+                    if (performSearch(current)){
+                        found = true;
+                        path.add(current);
+                    }
                 }
             }
             return found;

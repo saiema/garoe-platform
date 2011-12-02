@@ -137,7 +137,7 @@ public class EndGameDialog extends javax.swing.JFrame implements ActionListener 
         java.awt.EventQueue.invokeLater(new Runnable() {
 
             public void run() {
-                new EndGameDialog(new ImageIcon("ganaste120x120.jpg"),"LAVATE EL CULO").setVisible(true);
+                new EndGameDialog(new ImageIcon(System.class.getResource("/images/ganaste120x120.jpg")),"LAVATE EL CULO").setVisible(true);
             }
         });
     }

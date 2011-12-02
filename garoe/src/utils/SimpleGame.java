@@ -1,6 +1,15 @@
-package engine_framework;
+package utils;
+
+import engine_framework.AdversarySearchEngine;
+import engine_framework.IStateAdversary;
+import engine_framework.SearchProblem;
 
 /**
+ * <p>Esta clase es solo un ejemplo de como se podría utilizar la plataforma en la implementación de un juego,
+ * muestra como debería ser la comunicación con el motor de búsqueda utilizado.</p>
+ * <p>En la práctica es mucho mas eficiente y comodo crearse uno mismo las clases necesarias para manejar a la aplicación que utilice
+ * a esta plataforma, por dar un ejemplo, en el caso de los juegos utilizar el patrón mvc resulta mucho mas simple, eficiente y rapido
+ * de implementar</p>
  * <p>Define una estructura basica para crear un nuevo juego
  * La responsabilidad de cualquier clase que herede de esta, es la de hacer de intermediario entre
  * el motor de busqueda y cualquier interfaz por la que se hacen las jugadas.</p>
@@ -12,7 +21,6 @@ package engine_framework;
  * @see SearchProblem
  * @see IRule
  * @see IStateAdversary
- * @deprecated
  */
 public class SimpleGame<AdversaryState extends IStateAdversary, Engine extends AdversarySearchEngine<AdversaryState>> {
 	/**

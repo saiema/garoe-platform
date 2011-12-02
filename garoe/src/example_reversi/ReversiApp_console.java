@@ -14,7 +14,7 @@ import utils.Pair;
 
 import engine_framework.IRule;
 import engine_framework.SearchProblem;
-import engine_framework.SimpleGame;
+import utils.SimpleGame;
 import engines.MinMaxABSearchEngine;
 
 /**

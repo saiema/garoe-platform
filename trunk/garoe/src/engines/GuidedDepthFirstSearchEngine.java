@@ -61,10 +61,10 @@ public class GuidedDepthFirstSearchEngine<EvalState extends IinformedState> exte
             for (int i = 0 ;i < orderedSuccesors.size()&& !found;i++) {
                 EvalState current = orderedSuccesors.get(i);
                 if (!visited.contains(current)) {
-                    visited.add(state);
+                    visited.add(current);
                     if (performSearch(current)){
                         found = true;
-                        path.add(current);
+                        path.add(state);
                     }
                 }
             }

@@ -148,7 +148,7 @@ public class FlooditState implements IinformedState {
 
 	@Override
 	public boolean isFinal() {
-		return this.stepsMade >= this.max_steps || success();
+		return this.stepsMade == this.max_steps || success();
 	}
 
 	@Override

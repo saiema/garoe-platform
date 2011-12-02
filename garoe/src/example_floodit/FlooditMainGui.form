@@ -17,7 +17,6 @@
                 </Property>
                 <Property name="mnemonic" type="int" value="78"/>
                 <Property name="text" type="java.lang.String" value="New"/>
-                <Property name="displayedMnemonicIndex" type="int" value="0"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="exitMenuItem">

@@ -1,5 +1,6 @@
 package example_floodit;
 
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -31,6 +32,7 @@ public class FlooditController implements ActionListener{
 		boolean update = false;
 		if (source instanceof JButton) {
 			String color = ((JButton) source).getText();
+            ((JButton)source).setBackground(null);
 			if (color.compareTo("verde") == 0) {
 				model.changeColor(FlooditState.verde);
 			} else if (color.compareTo("azul") == 0) {
@@ -59,16 +61,32 @@ public class FlooditController implements ActionListener{
 			AboutFloodit about = new AboutFloodit(this.gui, true);
 			about.setVisible(true);
 		} else if (this.gui.getPistaMenuItem() == source) {
-			IAController iaController = new IAController(this.gui, new IAGui(), this, this.model);
+			/*IAController iaController = new IAController(this.gui, new IAGui(), this, this.model);
 			if (iaController.runSearchEngine()) {
 				iaController.markNextMove();
 			} else {
 				System.out.println("NO SE PUEDE GANAR EN MENOS DE 25 MOVIMIENTOS");
+			}*/
+            IAGui iaGui = new IAGui();
+            IAController iaController = new IAController(this.gui, iaGui, this, this.model);
+            iaGui.setController(iaController);
+			if (iaController.search()) {
+				iaController.hint();
+			} else {
+				System.out.println("NO SE PUEDE GANAR EN MENOS DE 25 MOVIMIENTOS");
 			}
 		} else if (this.gui.getJugarMenuItem() == source) {
-			IAController iaController = new IAController(this.gui, new IAGui(), this, this.model);
+			/*IAController iaController = new IAController(this.gui, new IAGui(), this, this.model);
 			if (iaController.runSearchEngine()) {
 				iaController.show();
+			} else {
+				System.out.println("NO SE PUEDE GANAR EN MENOS DE 25 MOVIMIENTOS");
+			}*/
+            IAGui iaGui = new IAGui();
+            IAController iaController = new IAController(this.gui, iaGui, this, this.model);
+            iaGui.setController(iaController);
+			if (iaController.search()) {
+				iaController.showGui();
 			} else {
 				System.out.println("NO SE PUEDE GANAR EN MENOS DE 25 MOVIMIENTOS");
 			}

@@ -4,6 +4,7 @@
  */
 package example_reversi;
 
+import examples.GaroePlaygroundController;
 import javax.swing.ImageIcon;
 
 /**
@@ -12,9 +13,22 @@ import javax.swing.ImageIcon;
  */
 public class ReversiController {
     private ReversiLogic logic;
+    private boolean gameExited = false;
+    private boolean standAlone = true;
+    private GaroePlaygroundController mainController = null;
     
     public ReversiController (ReversiLogic logic) {
         this.logic = logic;
+    }
+    
+    public void setMainController(GaroePlaygroundController mainController) {
+        if (mainController != null) {
+            this.standAlone = false;
+            this.mainController = mainController;
+        } else {
+            this.standAlone = true;
+            this.mainController = null;
+        }
     }
     
     public void placeToken(int row, int col) {
@@ -33,7 +47,14 @@ public class ReversiController {
     }
     
     public void exitGame() {
-        System.exit(0);
+        if (this.standAlone) {
+            System.exit(0);
+        } else {
+            this.logic.getModel().getGui().setEnabled(false);
+            this.logic.getModel().getGui().setVisible(false);
+            this.logic.getModel().getGui().dispose();
+            this.mainController.startMainGUI();
+        }
     }
     
     public void newGame() {
@@ -66,28 +87,28 @@ public class ReversiController {
         boolean singlePlayer = logic.getModel().getPlayersBrains()[0] ^ logic.getModel().getPlayersBrains()[1];
         EndGameDialog endGameDialog;
         if (maxWon && minWon) {
-            endGameDialog = new EndGameDialog(new ImageIcon("draw_reversi.jpg"),"o.O' EMPATARON!!!");
+            endGameDialog = new EndGameDialog(new ImageIcon(System.class.getResource("/images/draw_reversi.jpg")),"o.O' EMPATARON!!!");
         } else {
             if (singlePlayer) {
                 if (maxWon && this.logic.getModel().getPlayersColors()[0] == ReversiToken.WHITE) {
-                    endGameDialog = new EndGameDialog(new ImageIcon("ganaste120x120.jpg"),"^^ GANASTE!!!");
+                    endGameDialog = new EndGameDialog(new ImageIcon(System.class.getResource("/images/ganaste120x120.jpg")),"^^ GANASTE!!!");
                 } else if (minWon && this.logic.getModel().getPlayersColors()[0] == ReversiToken.BLACK) {
-                    endGameDialog = new EndGameDialog(new ImageIcon("ganaste120x120.jpg"),"^^ GANASTE!!!");
+                    endGameDialog = new EndGameDialog(new ImageIcon(System.class.getResource("/images/ganaste120x120.jpg")),"^^ GANASTE!!!");
                 } else {
-                    endGameDialog = new EndGameDialog(new ImageIcon("perdiste120x120.jpg"),":( PERDISTE!!!");
+                    endGameDialog = new EndGameDialog(new ImageIcon(System.class.getResource("/images/perdiste120x120.jpg")),":( PERDISTE!!!");
                 }
             } else {
                 if (maxWon) {
                     if (this.logic.getModel().getPlayersColors()[0]==ReversiToken.WHITE) {
-                        endGameDialog = new EndGameDialog(new ImageIcon("ganaste120x120.jpg"),this.logic.getModel().getPlayersNames()[0]/*+" GANO!!"*/);
+                        endGameDialog = new EndGameDialog(new ImageIcon(System.class.getResource("/images/ganaste120x120.jpg")),this.logic.getModel().getPlayersNames()[0]/*+" GANO!!"*/);
                     } else {
-                        endGameDialog = new EndGameDialog(new ImageIcon("ganaste120x120.jpg"),this.logic.getModel().getPlayersNames()[1]/*+" GANO!!"*/);
+                        endGameDialog = new EndGameDialog(new ImageIcon(System.class.getResource("/images/ganaste120x120.jpg")),this.logic.getModel().getPlayersNames()[1]/*+" GANO!!"*/);
                     }
                 } else {
                     if (this.logic.getModel().getPlayersColors()[0]==ReversiToken.BLACK) {
-                        endGameDialog = new EndGameDialog(new ImageIcon("ganaste120x120.jpg"),this.logic.getModel().getPlayersNames()[0]/*+" GANO!!"*/);
+                        endGameDialog = new EndGameDialog(new ImageIcon(System.class.getResource("/images/ganaste120x120.jpg")),this.logic.getModel().getPlayersNames()[0]/*+" GANO!!"*/);
                     } else {
-                        endGameDialog = new EndGameDialog(new ImageIcon("ganaste120x120.jpg"),this.logic.getModel().getPlayersNames()[1]/*+" GANO!!"*/);
+                        endGameDialog = new EndGameDialog(new ImageIcon(System.class.getResource("/images/ganaste120x120.jpg")),this.logic.getModel().getPlayersNames()[1]/*+" GANO!!"*/);
                     }
                 }
             }   

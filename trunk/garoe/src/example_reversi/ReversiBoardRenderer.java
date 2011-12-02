@@ -26,10 +26,10 @@ public class ReversiBoardRenderer implements TableCellRenderer {
         newLabel.setEnabled(true);
         newLabel.setOpaque(false);
         if (((Integer)value) == ReversiToken.WHITE) {
-            newLabel.setIcon(new ImageIcon("token_white.png"));
+            newLabel.setIcon(new ImageIcon(System.class.getResource("/images/token_white.png")));
             //newLabel.setBackground(Color.WHITE);
         } else if (((Integer)value) == ReversiToken.BLACK) {
-            newLabel.setIcon(new ImageIcon("token_black.png"));
+            newLabel.setIcon(new ImageIcon(System.class.getResource("/images/token_black.png")));
             //newLabel.setBackground(Color.BLACK);
         } else if (((Integer)value) == 0) {
             newLabel.setEnabled(false);

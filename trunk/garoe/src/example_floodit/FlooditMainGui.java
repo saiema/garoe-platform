@@ -357,7 +357,7 @@ public class FlooditMainGui extends javax.swing.JFrame {
 		//System.out.println("PASO HECHOS : " + model.getSteps());
 		this.numberStepsMadeLabel.setText(Integer.toString(model.getSteps()));
 		if (model.success()) {
-            NewWinLoseWindow winWindow = new NewWinLoseWindow(true,model.getSteps());
+            WinLoseWindow winWindow = new WinLoseWindow(true,model.getSteps());
 			/*WinLoseWindow winWindow = new WinLoseWindow(this);
 			winWindow.getWinLoseMsg().setText("  WOW!...\nGANASTE!");
 			winWindow.getSteps().setText(Integer.toString(model.getSteps()));
@@ -367,7 +367,7 @@ public class FlooditMainGui extends javax.swing.JFrame {
             winWindow.showGui();
 			enableButtons(false);
 		} else if (model.isFinal()) {
-            NewWinLoseWindow loseWindow = new NewWinLoseWindow(false,model.getSteps());
+            WinLoseWindow loseWindow = new WinLoseWindow(false,model.getSteps());
 			/*WinLoseWindow loseWindow = new WinLoseWindow(this);
 			loseWindow.getWinLoseMsg().setText("  UPS...\nPERDISTE!");
 			loseWindow.getSteps().setText(Integer.toString(model.getSteps()));

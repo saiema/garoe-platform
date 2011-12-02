@@ -1,6 +1,6 @@
 package example_floodit;
 
-import java.awt.Color;
+import examples.GaroePlaygroundController;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -9,11 +9,24 @@ import javax.swing.JButton;
 public class FlooditController implements ActionListener{
 	private FlooditMainGui gui;
 	private FlooditState model;
+    private boolean gameExited = false;
+    private boolean standAlone = true;
+    private GaroePlaygroundController mainController = null;
 	
 	public FlooditController(FlooditMainGui gui, FlooditState model) {
 		this.gui = gui;
 		this.model = model;
 	}
+    
+    public void setMainController(GaroePlaygroundController mainController) {
+        if (mainController != null) {
+            this.standAlone = false;
+            this.mainController = mainController;
+        } else {
+            this.standAlone = true;
+            this.mainController = null;
+        }
+    }
 	
 	public void changeModel(FlooditState newModel) {
 		this.model = newModel;
@@ -50,7 +63,7 @@ public class FlooditController implements ActionListener{
 		} else if (this.gui.getExitMenuItem() == source) {
 			this.gui.setVisible(false);
 			this.gui.dispose();
-			System.exit(0);
+			exit();
 		} else if (this.gui.getNewGameMenuItem() == source) {
 			this.model = new FlooditState();
             this.model.setGeneratorMode(FlooditState.REDUCED_BY_CONTEXT_MODE);
@@ -95,5 +108,17 @@ public class FlooditController implements ActionListener{
 			this.gui.update(model);
 		}
 	}
+
+    private void exit() {
+        if (this.standAlone) {
+            System.exit(0);
+        } else {
+            this.gui.setEnabled(false);
+            this.gui.setVisible(false);
+            this.gui.dispose();
+            this.mainController.startMainGUI();
+        }
+    }
+    
 
 }

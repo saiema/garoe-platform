@@ -11,18 +11,25 @@
 package examples;
 
 import java.awt.event.ActionListener;
+import java.awt.event.MouseListener;
+import javax.swing.ImageIcon;
 
 /**
  *
  * @author BigEma
  */
-public class GaroePlaygroundGUI extends javax.swing.JFrame {
-
+public class GaroePlaygroundGUI extends javax.swing.JFrame implements MouseListener, ActionListener {
+    private GaroePlaygroundController controller;
+    
     /** Creates new form GaroePlaygroundGUI */
     public GaroePlaygroundGUI() {
         initComponents();
     }
 
+    public void setController(GaroePlaygroundController controller) {
+        this.controller = controller;
+    }
+    
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -44,14 +51,20 @@ public class GaroePlaygroundGUI extends javax.swing.JFrame {
         menuBar = new javax.swing.JMenuBar();
         helpMenu = new javax.swing.JMenu();
         aboutMenuItem = new javax.swing.JMenuItem();
+        exitButton = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         gamesPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("games"));
 
         reversi.setText("Reversi");
+        reversi.addMouseListener(this);
+        reversi.addActionListener(this);
 
         floodit.setText("Floodit");
+        floodit.addMouseListener(this);
+        floodit.addActionListener(this);
 
         javax.swing.GroupLayout gamesPanelLayout = new javax.swing.GroupLayout(gamesPanel);
         gamesPanel.setLayout(gamesPanelLayout);
@@ -71,64 +84,89 @@ public class GaroePlaygroundGUI extends javax.swing.JFrame {
                 .addComponent(reversi)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(floodit)
-                .addContainerGap(200, Short.MAX_VALUE))
+                .addContainerGap(342, Short.MAX_VALUE))
         );
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("game information"));
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("images"));
+        jPanel2.setMaximumSize(new java.awt.Dimension(200, 200));
+        jPanel2.setMinimumSize(new java.awt.Dimension(200, 200));
+        jPanel2.setPreferredSize(new java.awt.Dimension(200, 200));
 
-        gameImage.setText("jLabel1");
+        gameImage.setMaximumSize(new java.awt.Dimension(200, 200));
+        gameImage.setMinimumSize(new java.awt.Dimension(200, 200));
+        gameImage.setPreferredSize(new java.awt.Dimension(200, 200));
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(gameImage, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
+            .addComponent(gameImage, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(gameImage, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(gameImage, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("info"));
 
-        gameInfo.setColumns(20);
+        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+        jScrollPane1.setColumnHeader(null);
+        jScrollPane1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+
+        gameInfo.setColumns(35);
+        gameInfo.setEditable(false);
+        gameInfo.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         gameInfo.setRows(5);
+        gameInfo.setAutoscrolls(false);
+        gameInfo.setMaximumSize(new java.awt.Dimension(164, 94));
+        gameInfo.setMinimumSize(new java.awt.Dimension(164, 94));
         jScrollPane1.setViewportView(gameInfo);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 212, Short.MAX_VALUE)
             .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         helpMenu.setMnemonic('h');
         helpMenu.setText("GaroePlayground");
 
+        aboutMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
         aboutMenuItem.setMnemonic('a');
         aboutMenuItem.setText("About");
+        aboutMenuItem.addActionListener(this);
         helpMenu.add(aboutMenuItem);
+
+        exitButton.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_X, java.awt.event.InputEvent.CTRL_MASK));
+        exitButton.setMnemonic('x');
+        exitButton.setText("Exit");
+        exitButton.addActionListener(this);
+        helpMenu.add(exitButton);
 
         menuBar.add(helpMenu);
 
@@ -142,21 +180,87 @@ public class GaroePlaygroundGUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(gamesPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(gamesPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(gamesPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
         pack();
+    }
+
+    // Code for dispatching events from components to event handlers.
+
+    public void actionPerformed(java.awt.event.ActionEvent evt) {
+        if (evt.getSource() == reversi) {
+            GaroePlaygroundGUI.this.reversiActionPerformed(evt);
+        }
+        else if (evt.getSource() == floodit) {
+            GaroePlaygroundGUI.this.flooditActionPerformed(evt);
+        }
+        else if (evt.getSource() == exitButton) {
+            GaroePlaygroundGUI.this.exitButtonActionPerformed(evt);
+        }
+        else if (evt.getSource() == aboutMenuItem) {
+            GaroePlaygroundGUI.this.aboutMenuItemActionPerformed(evt);
+        }
+    }
+
+    public void mouseClicked(java.awt.event.MouseEvent evt) {
+    }
+
+    public void mouseEntered(java.awt.event.MouseEvent evt) {
+        if (evt.getSource() == reversi) {
+            GaroePlaygroundGUI.this.reversiMouseEntered(evt);
+        }
+        else if (evt.getSource() == floodit) {
+            GaroePlaygroundGUI.this.flooditMouseEntered(evt);
+        }
+    }
+
+    public void mouseExited(java.awt.event.MouseEvent evt) {
+    }
+
+    public void mousePressed(java.awt.event.MouseEvent evt) {
+    }
+
+    public void mouseReleased(java.awt.event.MouseEvent evt) {
     }// </editor-fold>//GEN-END:initComponents
+
+    private void reversiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reversiMouseEntered
+        this.gameImage.setIcon(new ImageIcon(System.class.getResource("/images/reversi.jpg")));
+        this.gameInfo.setText("        Reversi\n\nReglas:\nLas fichas del oponente se capturan\ncuando se tienen dos fichas\npropias encerrando a las mismas\nel que captura mas fichas gana.");
+    }//GEN-LAST:event_reversiMouseEntered
+
+    private void flooditMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_flooditMouseEntered
+        this.gameImage.setIcon(new ImageIcon(System.class.getResource("/images/floodit.jpg")));
+        this.gameInfo.setText("        Floodit\n\nse debe completar el tablero\ncon un mismo color partiendo\nde la zona superior izquierda.");
+    }//GEN-LAST:event_flooditMouseEntered
+
+    private void reversiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reversiActionPerformed
+        this.controller.startReversi();
+    }//GEN-LAST:event_reversiActionPerformed
+
+    private void flooditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_flooditActionPerformed
+        this.controller.startFloodit();
+    }//GEN-LAST:event_flooditActionPerformed
+
+    private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_exitButtonActionPerformed
+
+    private void aboutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutMenuItemActionPerformed
+        GaroePlaygroundAbout about = new GaroePlaygroundAbout(this,true);
+        about.setVisible(true);
+        about.setEnabled(true);
+    }//GEN-LAST:event_aboutMenuItemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -195,6 +299,7 @@ public class GaroePlaygroundGUI extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem aboutMenuItem;
+    private javax.swing.JMenuItem exitButton;
     private javax.swing.JButton floodit;
     private javax.swing.JLabel gameImage;
     private javax.swing.JTextArea gameInfo;

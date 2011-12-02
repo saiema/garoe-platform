@@ -32,6 +32,7 @@ public class ReversiLogic {
     }
     
     public void newGame() {
+        this.turn = 0;
         this.model.setState(new ReversiState());
         showBoard(this.model.getState());
         startGame();

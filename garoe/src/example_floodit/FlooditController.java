@@ -1,6 +1,7 @@
 package example_floodit;
 
 import examples.GaroePlaygroundController;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -45,7 +46,7 @@ public class FlooditController implements ActionListener{
 		boolean update = false;
 		if (source instanceof JButton) {
 			String color = ((JButton) source).getText();
-            ((JButton)source).setBackground(null);
+            cleanButtons();
 			if (color.compareTo("verde") == 0) {
 				model.changeColor(FlooditState.verde);
 			} else if (color.compareTo("azul") == 0) {
@@ -108,6 +109,15 @@ public class FlooditController implements ActionListener{
 			this.gui.update(model);
 		}
 	}
+    
+    private void cleanButtons() {
+        this.gui.getBotonAmarillo().setBackground(null);
+        this.gui.getBotonAzul().setBackground(null);
+        this.gui.getBotonCeleste().setBackground(null);
+        this.gui.getBotonRojo().setBackground(null);
+        this.gui.getBotonRosa().setBackground(null);
+        this.gui.getBotonVerde().setBackground(null);
+    }
 
     private void exit() {
         if (this.standAlone) {

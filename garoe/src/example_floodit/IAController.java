@@ -68,8 +68,8 @@ public class IAController {
         boolean boardCanBeSolved = this.searchEngine.performSearch();
 		if (boardCanBeSolved) {
 			this.moves = this.searchEngine.getPath();
-			System.out.println("El siguiente movimiento es: " + colorIntToString(this.moves.get(this.moves.size()-1).getColorOfToken(0, 0)));
             this.moves.remove(this.moves.size()-1); //TODO: PARCHE TEMPORAL
+            System.out.println("El siguiente movimiento es: " + colorIntToString(this.moves.get(this.moves.size()-1).getColorOfToken(0, 0)));
         }
         this.iaGui.setButtonsState(boardCanBeSolved);
 		return boardCanBeSolved;

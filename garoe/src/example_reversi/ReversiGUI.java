@@ -10,6 +10,7 @@
  */
 package example_reversi;
 
+import java.awt.Color;
 import java.awt.GraphicsEnvironment;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
@@ -451,6 +452,24 @@ public class ReversiGUI extends javax.swing.JFrame implements ActionListener, Mo
         }
         this.player1Count.setText(Integer.toString(getPlayer1Color().getText().compareToIgnoreCase("white") == 0?model.getWhiteCount():model.getBlackCount()));
         this.player2Count.setText(Integer.toString(getPlayer2Color().getText().compareToIgnoreCase("white") == 0?model.getWhiteCount():model.getBlackCount()));
+        if (model.isMax()) {
+            if (getPlayer1Color().getText().compareToIgnoreCase("white")==0) {
+                //le toca al jugador 1
+                getPlayer1Color().setBackground(Color.GREEN);
+            } else {
+                //le toca al jugador 2
+                getPlayer2Color().setBackground(Color.GREEN);
+            }
+            
+        } else {
+            if (getPlayer1Color().getText().compareToIgnoreCase("black")==0) {
+                //le toca al jugador 1
+                getPlayer1Color().setBackground(Color.GREEN);
+            } else {
+                //le toca al jugador 2
+                getPlayer2Color().setBackground(Color.GREEN);
+            }
+        }
         this.board.updateUI();
     }
     

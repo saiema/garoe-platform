@@ -4,9 +4,9 @@
  */
 package engines;
 
-import engine_framework.IinformedState;
-import engine_framework.SearchEngine;
-import engine_framework.SearchProblem;
+import framework.IinformedState;
+import framework.SearchEngine;
+import framework.SearchProblem;
 import java.util.LinkedList;
 import java.util.List;
 

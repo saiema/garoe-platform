@@ -4,9 +4,9 @@
  */
 package example_reversi;
 
-import engine_framework.AdversarySearchEngine;
-import engine_framework.IRule;
-import engine_framework.SearchProblem;
+import framework.AdversarySearchEngine;
+import framework.IRule;
+import framework.SearchProblem;
 import engines.MinMaxABSearchEngine;
 import java.util.LinkedList;
 import java.util.List;

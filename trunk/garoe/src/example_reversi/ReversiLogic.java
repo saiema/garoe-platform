@@ -4,7 +4,7 @@
  */
 package example_reversi;
 
-import engine_framework.AdversarySearchEngine;
+import framework.AdversarySearchEngine;
 import utils.Pair;
 
 /**

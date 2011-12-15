@@ -8,7 +8,7 @@ import java.util.Random;
 
 import utils.ComparableFloat;
 import utils.IComparable;
-import engine_framework.IinformedState;
+import framework.IinformedState;
 import java.util.Set;
 import java.util.TreeSet;
 

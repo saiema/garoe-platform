@@ -9,7 +9,7 @@ import java.util.List;
 import utils.ComparableInt;
 import utils.IComparable;
 import utils.Pair;
-import engine_framework.IStateAdversary;
+import framework.IStateAdversary;
 
 /**
  * El estado del reversi

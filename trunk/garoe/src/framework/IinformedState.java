@@ -1,7 +1,7 @@
 /**
  * 
  */
-package engine_framework;
+package framework;
 
 import utils.IComparable;
 

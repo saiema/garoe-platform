@@ -1,4 +1,4 @@
-package engine_framework;
+package framework;
 
 /**
  * Extension de {@code IinformedState} para problemas de busqueda con adversarios

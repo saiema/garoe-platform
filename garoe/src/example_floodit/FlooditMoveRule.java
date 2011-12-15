@@ -6,7 +6,7 @@ package example_floodit;
 import java.util.LinkedList;
 import java.util.List;
 
-import engine_framework.IRule;
+import framework.IRule;
 
 /**
  * La regla de cambio de estado del flood it

@@ -12,8 +12,8 @@ import java.util.List;
 
 import utils.Pair;
 
-import engine_framework.IRule;
-import engine_framework.SearchProblem;
+import framework.IRule;
+import framework.SearchProblem;
 import utils.SimpleGame;
 import engines.MinMaxABSearchEngine;
 

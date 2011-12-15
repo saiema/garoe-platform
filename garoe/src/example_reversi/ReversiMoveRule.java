@@ -8,7 +8,7 @@ import java.util.List;
 
 import utils.Pair;
 
-import engine_framework.IRule;
+import framework.IRule;
 
 /**
  * La unica regla del reversi, colocar una ficha en una casilla habilitada

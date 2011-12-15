@@ -4,8 +4,8 @@
  */
 package example_floodit;
 
-import engine_framework.IRule;
-import engine_framework.SearchProblem;
+import framework.IRule;
+import framework.SearchProblem;
 import engines.GuidedDepthFirstSearchEngine;
 import java.awt.Color;
 import java.util.LinkedList;

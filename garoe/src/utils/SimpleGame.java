@@ -1,8 +1,8 @@
 package utils;
 
-import engine_framework.AdversarySearchEngine;
-import engine_framework.IStateAdversary;
-import engine_framework.SearchProblem;
+import framework.AdversarySearchEngine;
+import framework.IStateAdversary;
+import framework.SearchProblem;
 
 /**
  * <p>Esta clase es solo un ejemplo de como se podría utilizar la plataforma en la implementación de un juego,

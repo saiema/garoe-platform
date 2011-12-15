@@ -7,9 +7,9 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-import engine_framework.IinformedState;
-import engine_framework.SearchEngine;
-import engine_framework.SearchProblem;
+import framework.IinformedState;
+import framework.SearchEngine;
+import framework.SearchProblem;
 
 /**
  * Motor de busqueda sin adversario usando best first search

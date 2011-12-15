@@ -8,9 +8,9 @@ import java.util.List;
 
 import utils.IComparable;
 
-import engine_framework.AdversarySearchEngine;
-import engine_framework.IStateAdversary;
-import engine_framework.SearchProblem;
+import framework.AdversarySearchEngine;
+import framework.IStateAdversary;
+import framework.SearchProblem;
 
 /**
  * Motor de busqueda con adversario usando minMax con poda alfa-beta

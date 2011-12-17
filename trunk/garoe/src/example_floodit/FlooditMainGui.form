@@ -7,7 +7,7 @@
         <Menu class="javax.swing.JMenu" name="fileMenu">
           <Properties>
             <Property name="mnemonic" type="int" value="102"/>
-            <Property name="text" type="java.lang.String" value="File"/>
+            <Property name="text" type="java.lang.String" value="Floodit"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="newGameMenuItem">
@@ -16,7 +16,7 @@
                   <KeyStroke key="Ctrl+N"/>
                 </Property>
                 <Property name="mnemonic" type="int" value="78"/>
-                <Property name="text" type="java.lang.String" value="New"/>
+                <Property name="text" type="java.lang.String" value="Nuevo"/>
               </Properties>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="exitMenuItem">
@@ -25,7 +25,7 @@
                   <KeyStroke key="Ctrl+X"/>
                 </Property>
                 <Property name="mnemonic" type="int" value="120"/>
-                <Property name="text" type="java.lang.String" value="Exit"/>
+                <Property name="text" type="java.lang.String" value="Salir"/>
               </Properties>
             </MenuItem>
           </SubComponents>
@@ -33,7 +33,7 @@
         <Menu class="javax.swing.JMenu" name="helpMenu">
           <Properties>
             <Property name="mnemonic" type="int" value="104"/>
-            <Property name="text" type="java.lang.String" value="Help"/>
+            <Property name="text" type="java.lang.String" value="Ayuda"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="aboutMenuItem">
@@ -42,7 +42,7 @@
                   <KeyStroke key="Ctrl+A"/>
                 </Property>
                 <Property name="mnemonic" type="int" value="97"/>
-                <Property name="text" type="java.lang.String" value="About"/>
+                <Property name="text" type="java.lang.String" value="Acerca de"/>
               </Properties>
             </MenuItem>
           </SubComponents>
@@ -119,11 +119,9 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="botonAzul" alignment="0" max="32767" attributes="1"/>
-                                  <Component id="botonVerde" alignment="0" max="32767" attributes="1"/>
-                                  <Component id="botonAmarillo" alignment="0" max="32767" attributes="1"/>
-                              </Group>
+                              <Component id="botonAzul" alignment="0" pref="95" max="32767" attributes="1"/>
+                              <Component id="botonVerde" alignment="0" pref="95" max="32767" attributes="1"/>
+                              <Component id="botonAmarillo" alignment="0" pref="95" max="32767" attributes="1"/>
                               <Component id="botonRojo" alignment="0" pref="95" max="32767" attributes="0"/>
                               <Component id="botonCeleste" alignment="0" pref="95" max="32767" attributes="0"/>
                               <Component id="botonRosa" pref="95" max="32767" attributes="0"/>

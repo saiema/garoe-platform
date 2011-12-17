@@ -16,7 +16,7 @@
                   <KeyStroke key="Shift+N"/>
                 </Property>
                 <Property name="mnemonic" type="int" value="110"/>
-                <Property name="text" type="java.lang.String" value="New"/>
+                <Property name="text" type="java.lang.String" value="Nuevo"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newGameMenuItemActionPerformed"/>
@@ -28,7 +28,7 @@
                   <KeyStroke key="Shift+S"/>
                 </Property>
                 <Property name="mnemonic" type="int" value="115"/>
-                <Property name="text" type="java.lang.String" value="Stop game"/>
+                <Property name="text" type="java.lang.String" value="Deterner"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="stopGameMenuItemActionPerformed"/>
@@ -40,7 +40,7 @@
                   <KeyStroke key="Shift+X"/>
                 </Property>
                 <Property name="mnemonic" type="int" value="120"/>
-                <Property name="text" type="java.lang.String" value="Exit"/>
+                <Property name="text" type="java.lang.String" value="Salir"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="exitMenuItemActionPerformed"/>
@@ -51,16 +51,16 @@
         <Menu class="javax.swing.JMenu" name="settingsMenu">
           <Properties>
             <Property name="mnemonic" type="int" value="83"/>
-            <Property name="text" type="java.lang.String" value="Settings"/>
+            <Property name="text" type="java.lang.String" value="Preferencias"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="settingsMenuItem">
               <Properties>
                 <Property name="accelerator" type="javax.swing.KeyStroke" editor="org.netbeans.modules.form.editors.KeyStrokeEditor">
-                  <KeyStroke key="Shift+O"/>
+                  <KeyStroke key="Shift+P"/>
                 </Property>
                 <Property name="mnemonic" type="int" value="101"/>
-                <Property name="text" type="java.lang.String" value="Settings"/>
+                <Property name="text" type="java.lang.String" value="Preferencias"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="settingsMenuItemActionPerformed"/>
@@ -83,7 +83,7 @@
         <Menu class="javax.swing.JMenu" name="helpMenu">
           <Properties>
             <Property name="mnemonic" type="int" value="72"/>
-            <Property name="text" type="java.lang.String" value="Help"/>
+            <Property name="text" type="java.lang.String" value="Ayuda"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="aboutMenuItem">
@@ -92,7 +92,7 @@
                   <KeyStroke key="Shift+A"/>
                 </Property>
                 <Property name="mnemonic" type="int" value="97"/>
-                <Property name="text" type="java.lang.String" value="About"/>
+                <Property name="text" type="java.lang.String" value="Acerca de"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="aboutMenuItemActionPerformed"/>
@@ -199,7 +199,7 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="player1Name">
           <Properties>
-            <Property name="text" type="java.lang.String" value="player1"/>
+            <Property name="text" type="java.lang.String" value="jugador1"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="player1Color">
@@ -214,7 +214,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="player2Name">
           <Properties>
-            <Property name="text" type="java.lang.String" value="player2"/>
+            <Property name="text" type="java.lang.String" value="jugador2"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="player2Color">
@@ -236,7 +236,7 @@
           <SubComponents>
             <Component class="javax.swing.JTable" name="board">
               <Properties>
-                <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor" postCode="board.setDefaultRenderer(Integer.class, new ReversiBoardRenderer());">
+                <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor" postCode="board.setDefaultRenderer(Integer.class, this.render);">
                   <Table columnCount="8" rowCount="8">
                     <Column editable="false" title="" type="java.lang.Integer"/>
                     <Column editable="false" title="" type="java.lang.Integer"/>

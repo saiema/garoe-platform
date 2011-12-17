@@ -48,8 +48,8 @@ public class GaroePlaygroundAbout extends javax.swing.JDialog implements ActionL
                 doClose(RET_CANCEL);
             }
         });
-        this.imageGaroe.setIcon(new ImageIcon(System.class.getResource("/images/garoe1.jpg")));
-        this.textGaroe.setText("Prueba conceptual de la plataforma Garoé\nPara llenar con algo mas quiero decir:\nAHHHH DA DA DA BLUAA\nBLE BLE BLE\nRUMPACUCHUCLETA!");
+        this.imageGaroe.setIcon(new ImageIcon(System.class.getResource("/images/garoe.gif")));
+        this.textGaroe.setText("Prueba conceptual de la plataforma Garoé\n\nUna interfaz en común para\npoder probar las distintas pruebas de concepto\n\nVersión: 0.3\nAutores: Carla Noelia Fiori\nSimón Emmanuel Gutiérrez Brida");
     }
 
     /** @return the return status of this dialog - one of RET_OK or RET_CANCEL */
@@ -111,8 +111,8 @@ public class GaroePlaygroundAbout extends javax.swing.JDialog implements ActionL
                 .addContainerGap()
                 .addComponent(imageGaroe, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(okButton)
                 .addContainerGap())
         );

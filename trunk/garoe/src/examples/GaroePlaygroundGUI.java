@@ -47,7 +47,7 @@ public class GaroePlaygroundGUI extends javax.swing.JFrame implements MouseListe
         gameImage = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        gameInfo = new javax.swing.JTextArea();
+        gameInfo = new javax.swing.JTextPane();
         menuBar = new javax.swing.JMenuBar();
         helpMenu = new javax.swing.JMenu();
         aboutMenuItem = new javax.swing.JMenuItem();
@@ -56,7 +56,7 @@ public class GaroePlaygroundGUI extends javax.swing.JFrame implements MouseListe
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        gamesPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("games"));
+        gamesPanel.setBorder(javax.swing.BorderFactory.createTitledBorder("juegos"));
 
         reversi.setText("Reversi");
         reversi.addMouseListener(this);
@@ -84,12 +84,12 @@ public class GaroePlaygroundGUI extends javax.swing.JFrame implements MouseListe
                 .addComponent(reversi)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(floodit)
-                .addContainerGap(342, Short.MAX_VALUE))
+                .addContainerGap(361, Short.MAX_VALUE))
         );
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("game information"));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("información del juego"));
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("images"));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("imagenes"));
         jPanel2.setMaximumSize(new java.awt.Dimension(200, 200));
         jPanel2.setMinimumSize(new java.awt.Dimension(200, 200));
         jPanel2.setPreferredSize(new java.awt.Dimension(200, 200));
@@ -113,29 +113,20 @@ public class GaroePlaygroundGUI extends javax.swing.JFrame implements MouseListe
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("info"));
 
-        jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
-        jScrollPane1.setColumnHeader(null);
-        jScrollPane1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-
-        gameInfo.setColumns(35);
         gameInfo.setEditable(false);
-        gameInfo.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
-        gameInfo.setRows(5);
         gameInfo.setAutoscrolls(false);
-        gameInfo.setMaximumSize(new java.awt.Dimension(164, 94));
-        gameInfo.setMinimumSize(new java.awt.Dimension(164, 94));
+        gameInfo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jScrollPane1.setViewportView(gameInfo);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 148, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -158,13 +149,13 @@ public class GaroePlaygroundGUI extends javax.swing.JFrame implements MouseListe
 
         aboutMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
         aboutMenuItem.setMnemonic('a');
-        aboutMenuItem.setText("About");
+        aboutMenuItem.setText("Acerca de");
         aboutMenuItem.addActionListener(this);
         helpMenu.add(aboutMenuItem);
 
         exitButton.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_X, java.awt.event.InputEvent.CTRL_MASK));
         exitButton.setMnemonic('x');
-        exitButton.setText("Exit");
+        exitButton.setText("Salir");
         exitButton.addActionListener(this);
         helpMenu.add(exitButton);
 
@@ -205,11 +196,11 @@ public class GaroePlaygroundGUI extends javax.swing.JFrame implements MouseListe
         else if (evt.getSource() == floodit) {
             GaroePlaygroundGUI.this.flooditActionPerformed(evt);
         }
-        else if (evt.getSource() == exitButton) {
-            GaroePlaygroundGUI.this.exitButtonActionPerformed(evt);
-        }
         else if (evt.getSource() == aboutMenuItem) {
             GaroePlaygroundGUI.this.aboutMenuItemActionPerformed(evt);
+        }
+        else if (evt.getSource() == exitButton) {
+            GaroePlaygroundGUI.this.exitButtonActionPerformed(evt);
         }
     }
 
@@ -236,12 +227,12 @@ public class GaroePlaygroundGUI extends javax.swing.JFrame implements MouseListe
 
     private void reversiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reversiMouseEntered
         this.gameImage.setIcon(new ImageIcon(System.class.getResource("/images/reversi.jpg")));
-        this.gameInfo.setText("        Reversi\n\nReglas:\nLas fichas del oponente se capturan\ncuando se tienen dos fichas\npropias encerrando a las mismas\nel que captura mas fichas gana.");
+        this.gameInfo.setText("        Reversi\n\nReglas:\nA un jugador se le asigna un color y se dice que lleva las fichas de ese color, lo mismo para el adversario con el otro color.\n\nLos jugadores deben hacer un movimiento por turno, a menos que no se pueda hacer ninguno, pasando en ese caso el turno del jugador contrario.\n\nEl movimiento consiste en colocar una ficha de forma que flanquee una o varias fichas del color contrario y voltear esas fichas para que pasen a mostrar el propio color. Para que las fichas estén flanqueadas, deben formar una línea continua recta (diagonal u ortogonal) de fichas del mismo color entre dos fichas del color contrario (una de ellas la recién colocada y la otra ya presente. ");
     }//GEN-LAST:event_reversiMouseEntered
 
     private void flooditMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_flooditMouseEntered
         this.gameImage.setIcon(new ImageIcon(System.class.getResource("/images/floodit.jpg")));
-        this.gameInfo.setText("        Floodit\n\nse debe completar el tablero\ncon un mismo color partiendo\nde la zona superior izquierda.");
+        this.gameInfo.setText("        Flood-it!\n\nReglas:\nPrimero se empieza seleccionado uno de los colores del menú.\n\nEl color de la zona cambiara y se extenderá a los espacios adyacentes que tenga el mismo color seleccionado, por lo que podrás cubrir zonas del tablero.\n\nEl objetivo del juego es cubrir todo el tablero de un mismo color en a lo sumo 25 pasos.");
     }//GEN-LAST:event_flooditMouseEntered
 
     private void reversiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reversiActionPerformed
@@ -302,7 +293,7 @@ public class GaroePlaygroundGUI extends javax.swing.JFrame implements MouseListe
     private javax.swing.JMenuItem exitButton;
     private javax.swing.JButton floodit;
     private javax.swing.JLabel gameImage;
-    private javax.swing.JTextArea gameInfo;
+    private javax.swing.JTextPane gameInfo;
     private javax.swing.JPanel gamesPanel;
     private javax.swing.JMenu helpMenu;
     private javax.swing.JPanel jPanel1;

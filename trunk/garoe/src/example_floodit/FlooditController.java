@@ -14,7 +14,6 @@ import javax.swing.JButton;
 public class FlooditController implements ActionListener{
 	private FlooditMainGui gui;
 	private FlooditState model;
-    private boolean gameExited = false;
     private boolean standAlone = true;
     private GaroePlaygroundController mainController = null;
 	
@@ -102,6 +101,7 @@ public class FlooditController implements ActionListener{
 			}
 		}
 		if (update) {
+            cleanButtons();
 			this.gui.update(model);
 		}
 	}

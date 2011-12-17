@@ -64,7 +64,7 @@
             <Property name="columns" type="int" value="20"/>
             <Property name="editable" type="boolean" value="false"/>
             <Property name="rows" type="int" value="5"/>
-            <Property name="text" type="java.lang.String" value="Version: 0.43&#xa;Version IA: 0.42&#xa;&#xa;Autores:&#xa;&#xa;Carla N. Fiori&#xa;Sim&#xf3;n E. Guti&#xe9;rrez Brida&#xa;&#xa;&#x9;Reglas&#xa;&#xa;Primero se empieza seleccionado&#xa;uno de los colores del men&#xfa;.&#xa; &#xa;El color de la zona cambiara&#xa;y se extender&#xe1; a los espacios&#xa;adyacentes que tengan el mismo&#xa;color seleccionado, por lo que&#xa;podr&#xe1;s cubrir zonas&#xa;del tablero. &#xa;&#xa;El objetivo del juego es cubrir&#xa;todo el tablero de un mismo&#xa;color en a lo sumo 25 pasos. &#xa;"/>
+            <Property name="text" type="java.lang.String" value="Version: 0.44&#xa;Version IA: 0.42&#xa;&#xa;Autores:&#xa;&#xa;Carla N. Fiori&#xa;Sim&#xf3;n E. Guti&#xe9;rrez Brida&#xa;&#xa;&#x9;Reglas&#xa;&#xa;Primero se empieza seleccionado&#xa;uno de los colores del men&#xfa;.&#xa; &#xa;El color de la zona cambiara&#xa;y se extender&#xe1; a los espacios&#xa;adyacentes que tengan el mismo&#xa;color seleccionado, por lo que&#xa;podr&#xe1;s cubrir zonas&#xa;del tablero. &#xa;&#xa;El objetivo del juego es cubrir&#xa;todo el tablero de un mismo&#xa;color en a lo sumo 25 pasos. &#xa;"/>
           </Properties>
         </Component>
       </SubComponents>

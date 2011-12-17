@@ -355,22 +355,11 @@ public class FlooditMainGui extends javax.swing.JFrame {
 		this.numberStepsMadeLabel.setText(Integer.toString(model.getSteps()));
 		if (model.success()) {
             WinLoseWindow winWindow = new WinLoseWindow(true,model.getSteps());
-			/*WinLoseWindow winWindow = new WinLoseWindow(this);
-			winWindow.getWinLoseMsg().setText("  WOW!...\nGANASTE!");
-			winWindow.getSteps().setText(Integer.toString(model.getSteps()));
-			winWindow.getIcon().setIcon(new ImageIcon("win120x120.jpg"));
-			winWindow.setVisible(true);*/
-            winWindow.setFather(this);
+			winWindow.setFather(this);
             winWindow.showGui();
 			enableButtons(false);
 		} else if (model.isFinal()) {
             WinLoseWindow loseWindow = new WinLoseWindow(false,model.getSteps());
-			/*WinLoseWindow loseWindow = new WinLoseWindow(this);
-			loseWindow.getWinLoseMsg().setText("  UPS...\nPERDISTE!");
-			loseWindow.getSteps().setText(Integer.toString(model.getSteps()));
-			loseWindow.getIcon().setText("");
-			loseWindow.getIcon().setIcon(new ImageIcon("lose120x120.png"));
-			loseWindow.setVisible(true);*/
             loseWindow.setFather(this);
             loseWindow.showGui();
 			enableButtons(false);

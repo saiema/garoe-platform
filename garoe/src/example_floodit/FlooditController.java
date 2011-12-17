@@ -1,12 +1,16 @@
 package example_floodit;
 
 import examples.GaroePlaygroundController;
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
+/**
+ * Controlador para la interfaz principal del Floodit
+ * @author Carla Noelia Fiori, Simón Emmanuel Gutiérrez Brida
+ * @version 0.1
+ */
 public class FlooditController implements ActionListener{
 	private FlooditMainGui gui;
 	private FlooditState model;
@@ -14,7 +18,12 @@ public class FlooditController implements ActionListener{
     private boolean standAlone = true;
     private GaroePlaygroundController mainController = null;
 	
-	public FlooditController(FlooditMainGui gui, FlooditState model) {
+    /**
+     * Constructor de la clase
+     * @param gui : la interfaz gráfica con la cual trabaja el controlador : {@code FlooditMainGui}
+     * @param model : el modelo que utiliza el controlador para manejar el estado del juego : {@code FlooditState}
+     */
+    public FlooditController(FlooditMainGui gui, FlooditState model) {
 		this.gui = gui;
 		this.model = model;
 	}
@@ -41,7 +50,6 @@ public class FlooditController implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
-		// TODO Auto-generated method stub
 		Object source = arg0.getSource();
 		boolean update = false;
 		if (source instanceof JButton) {
@@ -75,12 +83,6 @@ public class FlooditController implements ActionListener{
 			AboutFloodit about = new AboutFloodit(this.gui, true);
 			about.setVisible(true);
 		} else if (this.gui.getPistaMenuItem() == source) {
-			/*IAController iaController = new IAController(this.gui, new IAGui(), this, this.model);
-			if (iaController.runSearchEngine()) {
-				iaController.markNextMove();
-			} else {
-				System.out.println("NO SE PUEDE GANAR EN MENOS DE 25 MOVIMIENTOS");
-			}*/
             IAGui iaGui = new IAGui();
             IAController iaController = new IAController(this.gui, iaGui, this, this.model);
             iaGui.setController(iaController);
@@ -90,12 +92,6 @@ public class FlooditController implements ActionListener{
 				System.out.println("NO SE PUEDE GANAR EN MENOS DE 25 MOVIMIENTOS");
 			}
 		} else if (this.gui.getJugarMenuItem() == source) {
-			/*IAController iaController = new IAController(this.gui, new IAGui(), this, this.model);
-			if (iaController.runSearchEngine()) {
-				iaController.show();
-			} else {
-				System.out.println("NO SE PUEDE GANAR EN MENOS DE 25 MOVIMIENTOS");
-			}*/
             IAGui iaGui = new IAGui();
             IAController iaController = new IAController(this.gui, iaGui, this, this.model);
             iaGui.setController(iaController);

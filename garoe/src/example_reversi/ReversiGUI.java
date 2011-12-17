@@ -16,7 +16,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
 import java.util.LinkedList;
 import java.util.List;
-import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import utils.Pair;
 

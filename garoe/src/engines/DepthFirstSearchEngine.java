@@ -12,6 +12,7 @@ import java.util.List;
 
 /**
  * Motor de busqueda sin adversario usando depth first search
+ * @param <State> : El estado sobre el cual va a operar el motor de búsqueda : {@code IBasicState}
  * @author Carla Noelia Fiori, Simon Emmanuel Gutierrez Brida
  * @version 0.1
  * @see IBasicState

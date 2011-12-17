@@ -210,19 +210,19 @@ public class ReversiGUI extends javax.swing.JFrame implements ActionListener, Mo
         fileMenu.setMnemonic('R');
         fileMenu.setText("Reversi");
 
-        newGameMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.SHIFT_MASK));
+        newGameMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_MASK));
         newGameMenuItem.setMnemonic('n');
         newGameMenuItem.setText("Nuevo");
         newGameMenuItem.addActionListener(this);
         fileMenu.add(newGameMenuItem);
 
-        stopGameMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.SHIFT_MASK));
+        stopGameMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
         stopGameMenuItem.setMnemonic('s');
         stopGameMenuItem.setText("Deterner");
         stopGameMenuItem.addActionListener(this);
         fileMenu.add(stopGameMenuItem);
 
-        exitMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_X, java.awt.event.InputEvent.SHIFT_MASK));
+        exitMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_X, java.awt.event.InputEvent.CTRL_MASK));
         exitMenuItem.setMnemonic('x');
         exitMenuItem.setText("Salir");
         exitMenuItem.addActionListener(this);
@@ -233,13 +233,13 @@ public class ReversiGUI extends javax.swing.JFrame implements ActionListener, Mo
         settingsMenu.setMnemonic('S');
         settingsMenu.setText("Preferencias");
 
-        settingsMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.SHIFT_MASK));
+        settingsMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
         settingsMenuItem.setMnemonic('e');
         settingsMenuItem.setText("Preferencias");
         settingsMenuItem.addActionListener(this);
         settingsMenu.add(settingsMenuItem);
 
-        aiMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_I, java.awt.event.InputEvent.SHIFT_MASK));
+        aiMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_I, java.awt.event.InputEvent.CTRL_MASK));
         aiMenuItem.setMnemonic('i');
         aiMenuItem.setText("IA");
         aiMenuItem.addActionListener(this);
@@ -432,6 +432,10 @@ public class ReversiGUI extends javax.swing.JFrame implements ActionListener, Mo
                 this.board.setValueAt(0, row, col);
             }
         }
+    }
+    
+    public void repaintBoard() {
+        this.board.repaint();
     }
     
     public void update(ReversiState model) {

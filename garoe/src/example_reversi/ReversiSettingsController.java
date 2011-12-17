@@ -59,6 +59,7 @@ public class ReversiSettingsController {
         this.logic.getModel().getGui().getRender().enableHint(hintEnable);
         this.logic.getModel().getGui().getRender().setWhiteHintColor(whiteColor);
         this.logic.getModel().getGui().getRender().setBlackHintColor(blackColor);
+        this.logic.getModel().getGui().repaintBoard();
         close();
     }
     

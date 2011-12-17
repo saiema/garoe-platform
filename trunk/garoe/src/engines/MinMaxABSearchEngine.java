@@ -14,6 +14,7 @@ import framework.SearchProblem;
 
 /**
  * Motor de busqueda con adversario usando minMax con poda alfa-beta
+ * @param <AdversaryState> : El estado sobre el cual va a operar el motor de búsqueda : {@code IStateAdversary}
  * @author Carla Noelia Fiori, Simon Emmanuel Gutierrez Brida
  * @version 0.1
  * @see IStateAdversary

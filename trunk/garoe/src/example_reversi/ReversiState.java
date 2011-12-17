@@ -55,6 +55,7 @@ public class ReversiState implements IStateAdversary {
 		whiteAvailableMoves.add(new Pair<Integer,Integer>(3,5));
 	}
 	
+    @Override
 	public ReversiState clone() {
 		ReversiState revClone = new ReversiState();
 		revClone.board = new ReversiToken[8][8];
@@ -712,6 +713,7 @@ public class ReversiState implements IStateAdversary {
 		return board;
 	}
 	
+    @Override
 	public void changeLevel() {
 		if (this.isMax()) {
 			this.setMin();

@@ -11,7 +11,6 @@
 package example_floodit;
 
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowListener;
 import javax.swing.AbstractAction;
@@ -31,7 +30,10 @@ public class AboutFloodit extends javax.swing.JDialog implements  WindowListener
     /** A return status code - returned if OK button has been pressed */
     public static final int RET_OK = 1;
 
-    /** Creates new form AboutFloodit */
+    /** Creates new form AboutFloodit
+     * @param parent : la interfaz padre : {@code Frame}
+     * @param modal : define la forma en que se mostrará la interfaz gráfica : {@code boolean}
+     */
     public AboutFloodit(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();

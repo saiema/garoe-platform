@@ -13,6 +13,7 @@ import framework.SearchProblem;
 
 /**
  * Motor de busqueda sin adversario usando best first search
+ * @param <EvalState> : El estado sobre el cual va a operar el motor de búsqueda : {@Code IinformedState}
  * @author Carla Noelia Fiori, Simon Emmanuel Gutierrez Brida
  * @version 0.2
  * @see IinformedState
@@ -41,6 +42,10 @@ public class BestFirstSearchEngine<EvalState extends IinformedState> extends Sea
 		return performSearch(this.searchProblem.getInitialState());
 	}
     
+    /**
+     * Define la capacidad máxima de la cola de prioridades utilizada en el algoritmo de búsqueda
+     * @param queueMaxCapacity : capacidad máxima de la cola de prioridades : {@code int}
+     */
     public void setQueueCapacity(int queueMaxCapacity) {
         this.queueMaxCapacity = queueMaxCapacity;
     }

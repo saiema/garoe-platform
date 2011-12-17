@@ -5,8 +5,8 @@
         <data xmlns="http://www.netbeans.org/ns/j2se-project/3">
             <name>garoe</name>
             <source-roots>
-                <root id="src.images.dir"/>
                 <root id="src.dir"/>
+                <root id="src.images.dir"/>
             </source-roots>
             <test-roots>
                 <root id="test.src.dir"/>

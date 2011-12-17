@@ -13,6 +13,7 @@ import java.util.List;
 /**
  * Motor de busqueda sin adversario usando depth first search guiado, es decir
  * utiliza estados informados y la evaluación de los mismos para ordenar a los sucesores
+ * @param <EvalState> : El estado sobre el cual va a operar el motor de búsqueda : {@code IinformedState}
  * @author Carla Noelia Fiori, Simon Emmanuel Gutierrez Brida
  * @version 0.1
  * @see IinformedState

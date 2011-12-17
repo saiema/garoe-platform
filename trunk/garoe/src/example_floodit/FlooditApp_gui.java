@@ -1,6 +1,11 @@
 package example_floodit;
 
-public class FlodditApp_gui {
+/**
+ * Aplicación principal para el ejemplo del Floodit
+ * @author Carla Noelia Fiori, Simón Emmanuel Gutiérrez Brida
+ * @version 0.1
+ */
+public class FlooditApp_gui {
 
 	/**
 	 * @param args
@@ -14,24 +19,20 @@ public class FlodditApp_gui {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FlodditApp_gui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FlooditApp_gui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FlodditApp_gui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FlooditApp_gui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FlodditApp_gui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FlooditApp_gui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FlodditApp_gui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FlooditApp_gui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-		/*FlooditState test = new FlooditState();
-		test.populateBoard();
-		System.out.println(test.toString());*/
 		FlooditMainGui mainWindow = new FlooditMainGui();
 		FlooditState gameState = new FlooditState();
         gameState.setGeneratorMode(FlooditState.REDUCED_BY_CONTEXT_MODE);
 		gameState.populateBoard();
 		FlooditController controller = new FlooditController(mainWindow, gameState);
 		controller.show();
-		//mainWindow.setVisible(true);
 	}
 
 }

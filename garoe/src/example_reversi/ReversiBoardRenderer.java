@@ -17,6 +17,9 @@ import javax.swing.table.TableCellRenderer;
  */
 @SuppressWarnings("serial")
 public class ReversiBoardRenderer implements TableCellRenderer {
+    private boolean hintEnable = true;
+    private Color hintWhite = Color.LIGHT_GRAY;
+    private Color hintBlack = Color.BLACK;
     
     public ReversiBoardRenderer() {}
     
@@ -33,14 +36,38 @@ public class ReversiBoardRenderer implements TableCellRenderer {
             //newLabel.setBackground(Color.BLACK);
         } else if (((Integer)value) == 0) {
             newLabel.setEnabled(false);
-        } else if (((Integer)value) == Integer.MAX_VALUE) {
+        } else if ((((Integer)value) == Integer.MAX_VALUE) && hintEnable) {
             newLabel.setOpaque(true);
-            newLabel.setBackground(Color.LIGHT_GRAY);
-        } else if (((Integer)value) == Integer.MIN_VALUE) {
+            newLabel.setBackground(hintWhite);
+        } else if ((((Integer)value) == Integer.MIN_VALUE) && hintEnable) {
             newLabel.setOpaque(true);
-            newLabel.setBackground(Color.BLACK);
+            newLabel.setBackground(hintBlack);
         }
         return newLabel;
+    }
+    
+    public void enableHint(boolean enable) {
+        this.hintEnable = enable;
+    }
+    
+    public void setWhiteHintColor(Color whiteColor) {
+        this.hintWhite = whiteColor;
+    }
+    
+    public void setBlackHintColor(Color blackColor) {
+        this.hintBlack = blackColor;
+    }
+    
+    public boolean getHint() {
+        return this.hintEnable;
+    }
+    
+    public Color getWhiteColor() {
+        return this.hintWhite;
+    }
+    
+    public Color getBlackColor() {
+        return this.hintBlack;
     }
     
 }

@@ -5,7 +5,7 @@
 package example_reversi;
 
 import framework.AdversarySearchEngine;
-import utils.Pair;
+//import utils.Pair;
 
 /**
  *
@@ -27,20 +27,20 @@ public class ReversiLogic {
     public void startGame() {
         this.playing = true;
         this.model.startGUI();
-        this.model.disableSettings();
+        //this.model.disableSettings();
         nextMove();
     }
     
     public void newGame() {
         this.turn = 0;
         this.model.setState(new ReversiState());
-        showBoard(this.model.getState());
+        //showBoard(this.model.getState());
         startGame();
     }
     
     public void playerMoves(int row, int col) {
         model.getState().set(col, row, model.getPlayersColors()[turn], true);
-        showBoard(this.model.getState());
+        //showBoard(this.model.getState());
         this.model.update();
         turn = 1 - turn;
         if (!this.model.gameIsOver()) nextMove();
@@ -76,13 +76,13 @@ public class ReversiLogic {
     }
     
     
-    private void showBoard(ReversiState gameState) {
+    /*private void showBoard(ReversiState gameState) {
 		System.out.println(gameState.toString());
 		System.out.println();
 		for (Pair<Integer,Integer> move : (gameState.isMax()?gameState.whiteAvailableMoves:gameState.blackAvailableMoves)) {
 			System.out.println(move.toString());
 		}
-	}
+	}*/
     
     public void changePlayersName(int player, String newName) {
         this.model.getPlayersNames()[player] = newName;

@@ -8,8 +8,9 @@
  *
  * Created on 08-nov-2011, 19:44:41
  */
-package example_floodit;
+package example_reversi;
 
+import example_floodit.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowListener;
@@ -24,7 +25,7 @@ import javax.swing.KeyStroke;
  *
  * @author BigEma
  */
-public class AboutFloodit extends javax.swing.JDialog implements  WindowListener {
+public class AboutReversi extends javax.swing.JDialog implements  WindowListener {
 
     /** A return status code - returned if Cancel button has been pressed */
     public static final int RET_CANCEL = 0;
@@ -35,10 +36,10 @@ public class AboutFloodit extends javax.swing.JDialog implements  WindowListener
      * @param parent : la interfaz padre : {@code Frame}
      * @param modal : define la forma en que se mostrará la interfaz gráfica : {@code boolean}
      */
-    public AboutFloodit(java.awt.Frame parent, boolean modal) {
+    public AboutReversi(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        this.flooditLabel.setIcon(new ImageIcon(System.class.getResource("/images/floodit.jpg")));
+        this.flooditLabel.setIcon(new ImageIcon(System.class.getResource("/images/reversi.jpg")));
         // Close the dialog when Esc is pressed
         String cancelName = "cancel";
         InputMap inputMap = getRootPane().getInputMap(JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
@@ -77,7 +78,7 @@ public class AboutFloodit extends javax.swing.JDialog implements  WindowListener
         aboutTextArea.setColumns(20);
         aboutTextArea.setEditable(false);
         aboutTextArea.setRows(5);
-        aboutTextArea.setText("Version: 0.43\nVersion IA: 0.42\n\nAutores:\n\nCarla N. Fiori\nSimón E. Gutiérrez Brida\n\n\tReglas\n\nPrimero se empieza seleccionado\nuno de los colores del menú.\n \nEl color de la zona cambiara\ny se extenderá a los espacios\nadyacentes que tengan el mismo\ncolor seleccionado, por lo que\npodrás cubrir zonas\ndel tablero. \n\nEl objetivo del juego es cubrir\ntodo el tablero de un mismo\ncolor en a lo sumo 25 pasos. \n");
+        aboutTextArea.setText("Version: 0.43\nVersion IA: 0.42\n\nAutores:\n\nCarla N. Fiori\nSimón E. Gutiérrez Brida\n\n\tReglas\n\nA un jugador se le asigna un\ncolor y se dice que lleva las\nfichas de ese color, lo mismo\npara el adversario con el otro\ncolor.\n\nLos jugadores deben hacer un\nmovimiento por turno, a menos\nque no se pueda hacer ninguno,\npasando en ese caso el turno\ndel jugador contrario.\n\nEl movimiento consiste en\ncolocar una ficha de forma que\nflanquee una o varias fichas\ndel color contrario y voltear\nesas fichas para que pasen a\nmostrar el propio color.\nPara que las fichas estén\nflanqueadas, deben formar una\nlínea continua recta (diagonal\nu ortogonal) de fichas del\nmismo color entre dos fichas\ndel color contrario (una de\nellas la recién colocada y la\notra ya presente). ");
         jScrollPane1.setViewportView(aboutTextArea);
 
         flooditLabel.setFont(new java.awt.Font("Segoe Print", 3, 36));
@@ -121,8 +122,8 @@ public class AboutFloodit extends javax.swing.JDialog implements  WindowListener
     }
 
     public void windowClosing(java.awt.event.WindowEvent evt) {
-        if (evt.getSource() == AboutFloodit.this) {
-            AboutFloodit.this.closeDialog(evt);
+        if (evt.getSource() == AboutReversi.this) {
+            AboutReversi.this.closeDialog(evt);
         }
     }
 
@@ -166,13 +167,13 @@ public class AboutFloodit extends javax.swing.JDialog implements  WindowListener
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AboutFloodit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AboutReversi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AboutFloodit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AboutReversi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AboutFloodit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AboutReversi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AboutFloodit.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AboutReversi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -180,7 +181,7 @@ public class AboutFloodit extends javax.swing.JDialog implements  WindowListener
         java.awt.EventQueue.invokeLater(new Runnable() {
 
             public void run() {
-                AboutFloodit dialog = new AboutFloodit(new javax.swing.JFrame(), true);
+                AboutReversi dialog = new AboutReversi(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
 
                     @Override

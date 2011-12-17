@@ -10,6 +10,7 @@
  */
 package example_reversi;
 
+import java.awt.Color;
 import java.awt.GraphicsEnvironment;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
@@ -26,6 +27,11 @@ public class SettingsGUI extends javax.swing.JFrame implements  ActionListener {
     /** Creates new form SettingsGUI */
     public SettingsGUI() {
         initComponents();
+        initHintColorSelector(this.hintWhiteColorSelector);
+        initHintColorSelector(this.hintBlackColorSelector);
+        this.guideActivated.setEnabled(true);
+        this.hintWhiteColorSelector.setSelectedIndex(6);
+        this.hintBlackColorSelector.setSelectedIndex(0);
         this.setLocation(GraphicsEnvironment.getLocalGraphicsEnvironment().getCenterPoint());
     }
     
@@ -42,8 +48,6 @@ public class SettingsGUI extends javax.swing.JFrame implements  ActionListener {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        cancelButton = new javax.swing.JButton();
-        saveButton = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         player1NameLabel = new javax.swing.JLabel();
@@ -61,12 +65,12 @@ public class SettingsGUI extends javax.swing.JFrame implements  ActionListener {
         player2Color = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         guideActivated = new javax.swing.JCheckBox();
-
-        cancelButton.setText("cancel");
-        cancelButton.addActionListener(this);
-
-        saveButton.setText("save");
-        saveButton.addActionListener(this);
+        colorGuia1Label = new javax.swing.JLabel();
+        hintWhiteColorSelector = new javax.swing.JComboBox();
+        colorGuia2Label = new javax.swing.JLabel();
+        hintBlackColorSelector = new javax.swing.JComboBox();
+        saveButton = new javax.swing.JButton();
+        cancelButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -125,11 +129,11 @@ public class SettingsGUI extends javax.swing.JFrame implements  ActionListener {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(player1ColorLabel)
                     .addComponent(player1Color))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("preferencias jugador 2"));
-        jPanel3.setPreferredSize(new java.awt.Dimension(244, 166));
+        jPanel3.setPreferredSize(new java.awt.Dimension(222, 166));
 
         player2NameLabel.setText("nombre");
 
@@ -158,7 +162,7 @@ public class SettingsGUI extends javax.swing.JFrame implements  ActionListener {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(player2NameLabel)
                         .addGap(18, 18, 18)
-                        .addComponent(player2NameValue, javax.swing.GroupLayout.DEFAULT_SIZE, 146, Short.MAX_VALUE))
+                        .addComponent(player2NameValue, javax.swing.GroupLayout.DEFAULT_SIZE, 126, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(player2BrainsLabel)
                         .addGap(18, 18, 18)
@@ -184,47 +188,95 @@ public class SettingsGUI extends javax.swing.JFrame implements  ActionListener {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(player2ColorLabel)
                     .addComponent(player2Color))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("preferencias guia jugadas"));
 
         guideActivated.setText("activar guía");
 
+        colorGuia1Label.setText("Color guía color blanco");
+
+        hintWhiteColorSelector.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        hintWhiteColorSelector.addActionListener(this);
+
+        colorGuia2Label.setText("Color guía color negro");
+
+        hintBlackColorSelector.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        hintBlackColorSelector.setLightWeightPopupEnabled(false);
+        hintBlackColorSelector.setMaximumSize(new java.awt.Dimension(56, 20));
+        hintBlackColorSelector.addActionListener(this);
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addComponent(guideActivated)
-                .addContainerGap(371, Short.MAX_VALUE))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(guideActivated)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(colorGuia2Label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(colorGuia1Label, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(hintWhiteColorSelector, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                .addGap(15, 15, 15)
+                                .addComponent(hintBlackColorSelector, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(221, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addComponent(guideActivated)
-                .addContainerGap(77, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(colorGuia1Label)
+                    .addComponent(hintWhiteColorSelector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(colorGuia2Label)
+                    .addComponent(hintBlackColorSelector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
+
+        saveButton.setText("save");
+        saveButton.addActionListener(this);
+
+        cancelButton.setText("cancel");
+        cancelButton.addActionListener(this);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(303, Short.MAX_VALUE)
+                .addComponent(cancelButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(saveButton)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(80, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(saveButton)
+                    .addComponent(cancelButton))
+                .addGap(40, 40, 40))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -244,17 +296,23 @@ public class SettingsGUI extends javax.swing.JFrame implements  ActionListener {
     // Code for dispatching events from components to event handlers.
 
     public void actionPerformed(java.awt.event.ActionEvent evt) {
-        if (evt.getSource() == player2Color) {
-            SettingsGUI.this.player2ColorActionPerformed(evt);
+        if (evt.getSource() == player1Color) {
+            SettingsGUI.this.player1ColorActionPerformed(evt);
         }
-        else if (evt.getSource() == saveButton) {
-            SettingsGUI.this.saveButtonActionPerformed(evt);
+        else if (evt.getSource() == player2Color) {
+            SettingsGUI.this.player2ColorActionPerformed(evt);
         }
         else if (evt.getSource() == cancelButton) {
             SettingsGUI.this.cancelButtonActionPerformed(evt);
         }
-        else if (evt.getSource() == player1Color) {
-            SettingsGUI.this.player1ColorActionPerformed(evt);
+        else if (evt.getSource() == saveButton) {
+            SettingsGUI.this.saveButtonActionPerformed(evt);
+        }
+        else if (evt.getSource() == hintWhiteColorSelector) {
+            SettingsGUI.this.hintWhiteColorSelectorActionPerformed(evt);
+        }
+        else if (evt.getSource() == hintBlackColorSelector) {
+            SettingsGUI.this.hintBlackColorSelectorActionPerformed(evt);
         }
     }// </editor-fold>//GEN-END:initComponents
 
@@ -269,9 +327,87 @@ public class SettingsGUI extends javax.swing.JFrame implements  ActionListener {
         boolean aiPlayer2 = this.getPlayer2BrainsSelect().getSelectedIndex() == 0?true:false;
         String player1Name = this.getPlayer1NameValue().getText();
         String player2Name = this.getPlayer2NameValue().getText();
-        this.controller.save(player1Name, player2Name, colorPlayer1, colorPlayer2, aiPlayer1, aiPlayer2);
+        Color hintWhite = getSelectedHintColor(1);
+        Color hintBlack = getSelectedHintColor(2);
+        this.controller.save(player1Name, player2Name, colorPlayer1, colorPlayer2, aiPlayer1, aiPlayer2, this.guideActivated.isSelected(),hintWhite,hintBlack);
+        
     }//GEN-LAST:event_saveButtonActionPerformed
 
+    private Color getSelectedHintColor(int color) {
+        if (color == 1) {
+            return textToColor((String)this.hintWhiteColorSelector.getSelectedItem());
+        } else {
+            return textToColor((String)this.hintBlackColorSelector.getSelectedItem());
+        }
+    }
+    
+    private Color textToColor(String c) {
+        if (c.compareTo("BLACK")==0) {
+            return Color.BLACK;
+        } else if (c.compareTo("BLUE")==0) {
+            return Color.BLUE;
+        } else if (c.compareTo("CYAN")==0) {
+            return Color.CYAN;
+        } else if (c.compareTo("DARK_GRAY")==0) {
+            return Color.DARK_GRAY;
+        } else if (c.compareTo("GRAY")==0) {
+            return Color.GRAY;
+        } else if (c.compareTo("GREEN")==0) {
+            return Color.GREEN;
+        } else if (c.compareTo("LIGHT_GRAY")==0) {
+            return Color.LIGHT_GRAY;
+        } else if (c.compareTo("MAGENTA")==0) {
+            return Color.MAGENTA;
+        } else if (c.compareTo("ORANGE")==0) {
+            return Color.ORANGE;
+        } else if (c.compareTo("PINK")==0) {
+            return Color.PINK;
+        } else if (c.compareTo("RED")==0) {
+            return Color.RED;
+        } else if (c.compareTo("WHITE")==0) {
+            return Color.WHITE;
+        } else if (c.compareTo("YELLOW")==0) {
+            return Color.YELLOW;
+        } else {
+            return null;
+        }
+    }
+    
+    
+    
+    private int colorIndex(Color c){
+        if (c.equals(Color.BLACK)) {
+            return 0;
+        } else if (c.equals(Color.BLUE)) {
+            return 1;
+        } else if (c.equals(Color.CYAN)) {
+            return 2;
+        } else if (c.equals(Color.DARK_GRAY)) {
+            return 3;
+        } else if (c.equals(Color.GRAY)) {
+            return 4;
+        } else if (c.equals(Color.GREEN)) {
+            return 5;
+        } else if (c.equals(Color.LIGHT_GRAY)) {
+            return 6;
+        } else if (c.equals(Color.MAGENTA)) {
+            return 7;
+        } else if (c.equals(Color.ORANGE)) {
+            return 8;
+        } else if (c.equals(Color.PINK)) {
+            return 9;
+        } else if (c.equals(Color.RED)) {
+            return 10;
+        } else if (c.equals(Color.WHITE)) {
+            return 11;
+        } else if (c.equals(Color.YELLOW)) {
+            return 12;
+        } else {
+            return -1;
+        }
+    }
+    
+    
     private void player2ColorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_player2ColorActionPerformed
         String color2 = this.getPlayer2Color().getText();
         if (color2.compareToIgnoreCase("white") == 0) {
@@ -286,6 +422,26 @@ public class SettingsGUI extends javax.swing.JFrame implements  ActionListener {
 
         String color1 = this.getPlayer1Color().getText();         if (color1.compareToIgnoreCase("white") == 0) {             this.getPlayer1Color().setText("BLACK");         } else {             this.getPlayer1Color().setText("WHITE");         }         this.changeColorValue(this.getPlayer2Color());     }//GEN-LAST:event_player1ColorActionPerformed
 
+    private void hintWhiteColorSelectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hintWhiteColorSelectorActionPerformed
+        this.saveButton.setEnabled(this.hintWhiteColorSelector.getSelectedIndex() != this.hintBlackColorSelector.getSelectedIndex());
+        if (!this.saveButton.isEnabled()) {
+            this.saveButton.setToolTipText("Los colores guía deben ser distintos!");
+        } else {
+            this.saveButton.setToolTipText(null);
+        }
+    }//GEN-LAST:event_hintWhiteColorSelectorActionPerformed
+
+    private void hintBlackColorSelectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hintBlackColorSelectorActionPerformed
+        this.saveButton.setEnabled(this.hintWhiteColorSelector.getSelectedIndex() != this.hintBlackColorSelector.getSelectedIndex());
+        if (!this.saveButton.isEnabled()) {
+            this.saveButton.setToolTipText("Los colores guía deben ser distintos!");
+        } else {
+            this.saveButton.setToolTipText(null);
+        }
+    }//GEN-LAST:event_hintBlackColorSelectorActionPerformed
+
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -323,7 +479,11 @@ public class SettingsGUI extends javax.swing.JFrame implements  ActionListener {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancelButton;
+    private javax.swing.JLabel colorGuia1Label;
+    private javax.swing.JLabel colorGuia2Label;
     private javax.swing.JCheckBox guideActivated;
+    private javax.swing.JComboBox hintBlackColorSelector;
+    private javax.swing.JComboBox hintWhiteColorSelector;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -378,6 +538,35 @@ public class SettingsGUI extends javax.swing.JFrame implements  ActionListener {
         } else {
             button.setText("WHITE");
         }
+    }
+    
+    
+    private void initHintColorSelector(JComboBox comboBox) {
+        comboBox.setModel(
+                new javax.swing.DefaultComboBoxModel(
+                        new String[] {                
+                            "BLACK",
+                            "BLUE",
+                            "CYAN",
+                            "DARK_GRAY",
+                            "GRAY",
+                            "GREEN",
+                            "LIGHT_GRAY",
+                            "MAGENTA",
+                            "ORANGE",
+                            "PINK",
+                            "RED",
+                            "WHITE",
+                            "YELLOW",     
+                            }
+                        )
+                );
+    }
+    
+    public void setHintValue(boolean hintEnable, Color whiteHint, Color blackHint) {
+        this.guideActivated.setSelected(hintEnable);
+        this.hintWhiteColorSelector.setSelectedIndex(colorIndex(whiteHint));
+        this.hintBlackColorSelector.setSelectedIndex(colorIndex(blackHint));
     }
     
     

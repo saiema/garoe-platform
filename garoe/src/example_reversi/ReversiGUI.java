@@ -26,6 +26,7 @@ import utils.Pair;
 public class ReversiGUI extends javax.swing.JFrame implements ActionListener, MouseListener {
     private ReversiController controller;
     private List<Pair<Integer,Integer>> currentAvailableMoves = new LinkedList<Pair<Integer,Integer>>();
+    private ReversiBoardRenderer render;
 
     /** Creates new form ReversiGUI */
     public ReversiGUI() {}
@@ -34,7 +35,12 @@ public class ReversiGUI extends javax.swing.JFrame implements ActionListener, Mo
         this.controller = controller;
     }
     
+    public ReversiBoardRenderer getRender() {
+        return this.render;
+    }
+    
     public void init() {
+        render = new ReversiBoardRenderer();
         initComponents();
         this.setVisible(true);
         this.setEnabled(true);
@@ -75,13 +81,13 @@ public class ReversiGUI extends javax.swing.JFrame implements ActionListener, Mo
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
-        player1Name.setText("player1");
+        player1Name.setText("jugador1");
 
         player1Color.setText("color");
 
         player1Count.setText("XXX");
 
-        player2Name.setText("player2");
+        player2Name.setText("jugador2");
 
         player2Color.setText("color");
 
@@ -117,7 +123,7 @@ public class ReversiGUI extends javax.swing.JFrame implements ActionListener, Mo
                 return canEdit [columnIndex];
             }
         });
-        board.setDefaultRenderer(Integer.class, new ReversiBoardRenderer());
+        board.setDefaultRenderer(Integer.class, this.render);
         board.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
         board.setAutoscrolls(false);
         board.setColumnSelectionAllowed(true);
@@ -206,30 +212,30 @@ public class ReversiGUI extends javax.swing.JFrame implements ActionListener, Mo
 
         newGameMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.SHIFT_MASK));
         newGameMenuItem.setMnemonic('n');
-        newGameMenuItem.setText("New");
+        newGameMenuItem.setText("Nuevo");
         newGameMenuItem.addActionListener(this);
         fileMenu.add(newGameMenuItem);
 
         stopGameMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.SHIFT_MASK));
         stopGameMenuItem.setMnemonic('s');
-        stopGameMenuItem.setText("Stop game");
+        stopGameMenuItem.setText("Deterner");
         stopGameMenuItem.addActionListener(this);
         fileMenu.add(stopGameMenuItem);
 
         exitMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_X, java.awt.event.InputEvent.SHIFT_MASK));
         exitMenuItem.setMnemonic('x');
-        exitMenuItem.setText("Exit");
+        exitMenuItem.setText("Salir");
         exitMenuItem.addActionListener(this);
         fileMenu.add(exitMenuItem);
 
         menuBar.add(fileMenu);
 
         settingsMenu.setMnemonic('S');
-        settingsMenu.setText("Settings");
+        settingsMenu.setText("Preferencias");
 
-        settingsMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.SHIFT_MASK));
+        settingsMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.SHIFT_MASK));
         settingsMenuItem.setMnemonic('e');
-        settingsMenuItem.setText("Settings");
+        settingsMenuItem.setText("Preferencias");
         settingsMenuItem.addActionListener(this);
         settingsMenu.add(settingsMenuItem);
 
@@ -242,11 +248,11 @@ public class ReversiGUI extends javax.swing.JFrame implements ActionListener, Mo
         menuBar.add(settingsMenu);
 
         helpMenu.setMnemonic('H');
-        helpMenu.setText("Help");
+        helpMenu.setText("Ayuda");
 
         aboutMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.SHIFT_MASK));
         aboutMenuItem.setMnemonic('a');
-        aboutMenuItem.setText("About");
+        aboutMenuItem.setText("Acerca de");
         aboutMenuItem.addActionListener(this);
         helpMenu.add(aboutMenuItem);
 
@@ -437,7 +443,6 @@ public class ReversiGUI extends javax.swing.JFrame implements ActionListener, Mo
                 this.board.setValueAt(model.getColorAt(row, col), row, col);
             }
         }
-        List<Pair<Integer,Integer>> availableMoves = null;
         int enabledCellColor = model.isMax()?Integer.MAX_VALUE:Integer.MIN_VALUE;
         if (model.isMax()) {
             currentAvailableMoves = model.whiteAvailableMoves;
@@ -451,22 +456,24 @@ public class ReversiGUI extends javax.swing.JFrame implements ActionListener, Mo
         }
         this.player1Count.setText(Integer.toString(getPlayer1Color().getText().compareToIgnoreCase("white") == 0?model.getWhiteCount():model.getBlackCount()));
         this.player2Count.setText(Integer.toString(getPlayer2Color().getText().compareToIgnoreCase("white") == 0?model.getWhiteCount():model.getBlackCount()));
+        getPlayer1Color().setForeground(null);
+        getPlayer2Color().setForeground(null);
         if (model.isMax()) {
             if (getPlayer1Color().getText().compareToIgnoreCase("white")==0) {
                 //le toca al jugador 1
-                getPlayer1Color().setBackground(Color.GREEN);
+                getPlayer1Color().setForeground(Color.blue);
             } else {
                 //le toca al jugador 2
-                getPlayer2Color().setBackground(Color.GREEN);
+                getPlayer2Color().setForeground(Color.blue);
             }
             
         } else {
             if (getPlayer1Color().getText().compareToIgnoreCase("black")==0) {
                 //le toca al jugador 1
-                getPlayer1Color().setBackground(Color.GREEN);
+                getPlayer1Color().setForeground(Color.blue);
             } else {
                 //le toca al jugador 2
-                getPlayer2Color().setBackground(Color.GREEN);
+                getPlayer2Color().setForeground(Color.blue);
             }
         }
         this.board.updateUI();

@@ -62,7 +62,8 @@ public class ReversiController {
     }
     
     public void about() {
-        
+        AboutReversi about = new AboutReversi(this.logic.getModel().getGui(), true);
+        about.setVisible(true);
     }
     
     public void settings() {
@@ -87,15 +88,15 @@ public class ReversiController {
         boolean singlePlayer = logic.getModel().getPlayersBrains()[0] ^ logic.getModel().getPlayersBrains()[1];
         EndGameDialog endGameDialog;
         if (maxWon && minWon) {
-            endGameDialog = new EndGameDialog(new ImageIcon(System.class.getResource("/images/draw_reversi.jpg")),"o.O' EMPATARON!!!");
+            endGameDialog = new EndGameDialog(new ImageIcon(System.class.getResource("/images/empataste120x120.jpg")),"EMPATARON!!!");
         } else {
             if (singlePlayer) {
                 if (maxWon && this.logic.getModel().getPlayersColors()[0] == ReversiToken.WHITE) {
-                    endGameDialog = new EndGameDialog(new ImageIcon(System.class.getResource("/images/ganaste120x120.jpg")),"^^ GANASTE!!!");
+                    endGameDialog = new EndGameDialog(new ImageIcon(System.class.getResource("/images/ganaste120x120.jpg")),"GANASTE!!!");
                 } else if (minWon && this.logic.getModel().getPlayersColors()[0] == ReversiToken.BLACK) {
-                    endGameDialog = new EndGameDialog(new ImageIcon(System.class.getResource("/images/ganaste120x120.jpg")),"^^ GANASTE!!!");
+                    endGameDialog = new EndGameDialog(new ImageIcon(System.class.getResource("/images/ganaste120x120.jpg")),"GANASTE!!!");
                 } else {
-                    endGameDialog = new EndGameDialog(new ImageIcon(System.class.getResource("/images/perdiste120x120.jpg")),":( PERDISTE!!!");
+                    endGameDialog = new EndGameDialog(new ImageIcon(System.class.getResource("/images/perdiste120x120.jpg")),"PERDISTE!!!");
                 }
             } else {
                 if (maxWon) {

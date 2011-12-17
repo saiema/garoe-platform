@@ -1,0 +1,58 @@
+El archivo Jar incluido contiene una clase ejecutable por defecto (GaroePlayground) que permite probar
+los distintos casos de prueba hechos para la plataforma.
+
+Para ejecutar esta clase hay dos métodos, el primero es hacer abrir con archivo jar mediante doble click,
+la segunda forma es ejecutarlo mediante terminal mediante el comando "java -jar garoe.jar"
+
+Si se desea ejecutar una clase particular de la plataforma (siempre que se trate de una que sea ejecutable)
+el comando es "java -cp garoe.jar paquete.clase" donde paquete se refiere a en cual paquete esta la clase
+a ejecutar y clase se refiere a aquella que se desea ejecutar.
+
+Una vez ejecutada la clase GaroePlayground (ya sea directamente del jar o ejecutando especificamente a dicha
+clase) todo se maneja mediante interfaz de usuario. Cabe destacar que es importante utilizar la opción de
+salir desde el menú de cada aplicación, en una próxima versión se corregirá el funcionamiento de los botones
+de cerrar ventana.
+
+Pasos para jugar
+
+1) elegir el juego que se desea en la interfaz principal
+2) ambos juegos tienen un boton de "Nuevo", en el caso del Flood-It el juego empieza por defecto mientras que
+en el reversi es necesario seleccionar "Nuevo" desde el menú
+3) para terminar se debe pulsar Salir en el menú del juego
+
+Es posible utilizar accesos de teclado para cada opción de menú
+
+General:
+
+ctrl+x : sale
+ctrl+a : acerca de
+ctrl+n : nueva partida
+ctrl+o | shift+p : preferencias
+
+Reversi:
+
+ctrl+i : preferencias de la IA
+ctrl+s : detener partida
+
+Flood-It:
+
+ctrl+p : pista
+ctrl+j : interfaz de IA
+
+Notas especiales Reversi
+
+Algunas preferencias solo pueden ser modificadas cuando el juego está detenido, si se desea modificarlas primero
+se debe detener el juego (ya sea mediante el menu o con "ctrl+s")
+
+Cuando se habilita la IA, el movimiento hecho por un jugador humano no llega a visualizarse, se intentó implementar
+algún tipo de delay para poder ver que movida hace cada jugador pero no fue posible, en una futura versión se contará
+con esta funcionalidad.
+
+Notas especiales Floodit
+
+Si la IA no encuentra solución en menos de 25 movimientos no se mostrará ningún aviso pero se puede notar por que no
+habrá ningún boton de color marcado ni se abrirá la interfaz gráfica de IA.
+
+Al igual que en el reversi, si uno utiliza la función "auto" en la interfaz gráfica de IA, se completará el tablero y
+no será posible ir visualizando cada movida por separado, nuevamente, se intentó implementar algún tipo de delay
+pero no fue posible, esto se corregirá en la próxima versión.

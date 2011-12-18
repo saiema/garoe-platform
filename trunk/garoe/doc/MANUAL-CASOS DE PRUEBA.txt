@@ -1,3 +1,11 @@
+Manual de utilización de casos de prueba para plataforma Garoé
+---------------------------------------------------------------
+
+
+----------------------------------
+Como ejecutar los casos de prueba
+----------------------------------
+
 El archivo Jar incluido contiene una clase ejecutable por defecto (GaroePlayground) que permite probar
 los distintos casos de prueba hechos para la plataforma.
 
@@ -13,12 +21,18 @@ clase) todo se maneja mediante interfaz de usuario. Cabe destacar que es importa
 salir desde el menú de cada aplicación, en una próxima versión se corregirá el funcionamiento de los botones
 de cerrar ventana.
 
+-----------------
 Pasos para jugar
+-----------------
 
 1) elegir el juego que se desea en la interfaz principal
 2) ambos juegos tienen un boton de "Nuevo", en el caso del Flood-It el juego empieza por defecto mientras que
 en el reversi es necesario seleccionar "Nuevo" desde el menú
 3) para terminar se debe pulsar Salir en el menú del juego
+
+-------------------
+Accesos de teclado
+-------------------
 
 Es posible utilizar accesos de teclado para cada opción de menú
 
@@ -39,7 +53,13 @@ Flood-It:
 ctrl+p : pista
 ctrl+j : interfaz de IA
 
+-----------------
+Notas especiales
+-----------------
+
+------------------------
 Notas especiales Reversi
+------------------------
 
 Algunas preferencias solo pueden ser modificadas cuando el juego está detenido, si se desea modificarlas primero
 se debe detener el juego (ya sea mediante el menu o con "ctrl+s")
@@ -48,7 +68,9 @@ Cuando se habilita la IA, el movimiento hecho por un jugador humano no llega a v
 algún tipo de delay para poder ver que movida hace cada jugador pero no fue posible, en una futura versión se contará
 con esta funcionalidad.
 
+-------------------------
 Notas especiales Floodit
+-------------------------
 
 Si la IA no encuentra solución en menos de 25 movimientos no se mostrará ningún aviso pero se puede notar por que no
 habrá ningún boton de color marcado ni se abrirá la interfaz gráfica de IA.
@@ -56,3 +78,14 @@ habrá ningún boton de color marcado ni se abrirá la interfaz gráfica de IA.
 Al igual que en el reversi, si uno utiliza la función "auto" en la interfaz gráfica de IA, se completará el tablero y
 no será posible ir visualizando cada movida por separado, nuevamente, se intentó implementar algún tipo de delay
 pero no fue posible, esto se corregirá en la próxima versión.
+
+-----------------------
+Pieles (Look and Feel)
+-----------------------
+
+Ya sea por mera cuestión visual o por necesidad, se agregó la opción de cambiar la piel de la interfaz desde la GUI
+principal mediante el menu Pieles.
+
+Se vieron casos donde ejecutar la interfaz gráfica en ciertas plataformas causaba errores de visualización, como
+redimensión de tablas e incluso las pistas en el Floodit no se veían. Para estos casos es de especial importancia
+poder cambiar a una piel que no cause problemas.

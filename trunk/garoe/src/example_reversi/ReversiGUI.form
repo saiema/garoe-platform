@@ -28,7 +28,7 @@
                   <KeyStroke key="Ctrl+S"/>
                 </Property>
                 <Property name="mnemonic" type="int" value="115"/>
-                <Property name="text" type="java.lang.String" value="Deterner"/>
+                <Property name="text" type="java.lang.String" value="Detener"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="stopGameMenuItemActionPerformed"/>

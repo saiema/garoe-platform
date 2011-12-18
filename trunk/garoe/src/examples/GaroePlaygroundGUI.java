@@ -52,6 +52,12 @@ public class GaroePlaygroundGUI extends javax.swing.JFrame implements MouseListe
         helpMenu = new javax.swing.JMenu();
         aboutMenuItem = new javax.swing.JMenuItem();
         exitButton = new javax.swing.JMenuItem();
+        lookNfeel = new javax.swing.JMenu();
+        metalMenuItem = new javax.swing.JMenuItem();
+        nimbusMenuItem = new javax.swing.JMenuItem();
+        cdemotifMenuItem = new javax.swing.JMenuItem();
+        windowsMenuItem = new javax.swing.JMenuItem();
+        winclassicMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -161,6 +167,30 @@ public class GaroePlaygroundGUI extends javax.swing.JFrame implements MouseListe
 
         menuBar.add(helpMenu);
 
+        lookNfeel.setText("Pieles");
+
+        metalMenuItem.setText("Metal");
+        metalMenuItem.addActionListener(this);
+        lookNfeel.add(metalMenuItem);
+
+        nimbusMenuItem.setText("Nimbus");
+        nimbusMenuItem.addActionListener(this);
+        lookNfeel.add(nimbusMenuItem);
+
+        cdemotifMenuItem.setText("CDE/Motif");
+        cdemotifMenuItem.addActionListener(this);
+        lookNfeel.add(cdemotifMenuItem);
+
+        windowsMenuItem.setText("Windows");
+        windowsMenuItem.addActionListener(this);
+        lookNfeel.add(windowsMenuItem);
+
+        winclassicMenuItem.setText("Windows Classic");
+        winclassicMenuItem.addActionListener(this);
+        lookNfeel.add(winclassicMenuItem);
+
+        menuBar.add(lookNfeel);
+
         setJMenuBar(menuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -201,6 +231,21 @@ public class GaroePlaygroundGUI extends javax.swing.JFrame implements MouseListe
         }
         else if (evt.getSource() == exitButton) {
             GaroePlaygroundGUI.this.exitButtonActionPerformed(evt);
+        }
+        else if (evt.getSource() == metalMenuItem) {
+            GaroePlaygroundGUI.this.metalMenuItemActionPerformed(evt);
+        }
+        else if (evt.getSource() == nimbusMenuItem) {
+            GaroePlaygroundGUI.this.nimbusMenuItemActionPerformed(evt);
+        }
+        else if (evt.getSource() == cdemotifMenuItem) {
+            GaroePlaygroundGUI.this.cdemotifMenuItemActionPerformed(evt);
+        }
+        else if (evt.getSource() == windowsMenuItem) {
+            GaroePlaygroundGUI.this.windowsMenuItemActionPerformed(evt);
+        }
+        else if (evt.getSource() == winclassicMenuItem) {
+            GaroePlaygroundGUI.this.winclassicMenuItemActionPerformed(evt);
         }
     }
 
@@ -253,6 +298,106 @@ public class GaroePlaygroundGUI extends javax.swing.JFrame implements MouseListe
         about.setEnabled(true);
     }//GEN-LAST:event_aboutMenuItemActionPerformed
 
+    private void metalMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_metalMenuItemActionPerformed
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Metal".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(FlooditGame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(FlooditGame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(FlooditGame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(FlooditGame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        this.repaint();
+    }//GEN-LAST:event_metalMenuItemActionPerformed
+
+    private void nimbusMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nimbusMenuItemActionPerformed
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(FlooditGame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(FlooditGame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(FlooditGame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(FlooditGame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        this.repaint();
+    }//GEN-LAST:event_nimbusMenuItemActionPerformed
+
+    private void cdemotifMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cdemotifMenuItemActionPerformed
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("CDE/Motif".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(FlooditGame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(FlooditGame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(FlooditGame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(FlooditGame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        this.repaint();
+    }//GEN-LAST:event_cdemotifMenuItemActionPerformed
+
+    private void windowsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_windowsMenuItemActionPerformed
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Windows".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(FlooditGame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(FlooditGame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(FlooditGame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(FlooditGame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        this.repaint();
+    }//GEN-LAST:event_windowsMenuItemActionPerformed
+
+    private void winclassicMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_winclassicMenuItemActionPerformed
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Windows Classic".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(FlooditGame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(FlooditGame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(FlooditGame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(FlooditGame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        this.repaint();
+    }//GEN-LAST:event_winclassicMenuItemActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -290,6 +435,7 @@ public class GaroePlaygroundGUI extends javax.swing.JFrame implements MouseListe
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem aboutMenuItem;
+    private javax.swing.JMenuItem cdemotifMenuItem;
     private javax.swing.JMenuItem exitButton;
     private javax.swing.JButton floodit;
     private javax.swing.JLabel gameImage;
@@ -300,7 +446,12 @@ public class GaroePlaygroundGUI extends javax.swing.JFrame implements MouseListe
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JMenu lookNfeel;
     private javax.swing.JMenuBar menuBar;
+    private javax.swing.JMenuItem metalMenuItem;
+    private javax.swing.JMenuItem nimbusMenuItem;
     private javax.swing.JButton reversi;
+    private javax.swing.JMenuItem winclassicMenuItem;
+    private javax.swing.JMenuItem windowsMenuItem;
     // End of variables declaration//GEN-END:variables
 }

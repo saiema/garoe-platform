@@ -218,7 +218,7 @@ public class ReversiGUI extends javax.swing.JFrame implements ActionListener, Mo
 
         stopGameMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
         stopGameMenuItem.setMnemonic('s');
-        stopGameMenuItem.setText("Deterner");
+        stopGameMenuItem.setText("Detener");
         stopGameMenuItem.addActionListener(this);
         fileMenu.add(stopGameMenuItem);
 

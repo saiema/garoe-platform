@@ -16,6 +16,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseListener;
 import java.util.LinkedList;
 import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import utils.Pair;
 
@@ -481,6 +482,54 @@ public class ReversiGUI extends javax.swing.JFrame implements ActionListener, Mo
             }
         }
         this.board.updateUI();
+        if (this.controller.getLogic().getModel().gameIsOver()) {
+            if (model.maxWins()) {
+                this.gameResults(true, false);
+            } else if (model.minWins()) {
+                this.gameResults(false,true);
+            } else {
+                this.gameResults(true, true);
+            }
+                this.controller.endGame();
+        }
+    }
+    
+    private void gameResults(boolean maxWon, boolean minWon) {
+        ReversiLogic logic = this.controller.getLogic();
+        boolean singlePlayer = logic.getModel().getPlayersBrains()[0] ^ logic.getModel().getPlayersBrains()[1];
+        int player = singlePlayer?!logic.getModel().getPlayersBrains()[0]?0:1:-1;
+        EndGameDialog endGameDialog;
+        if (maxWon && minWon) {
+            endGameDialog = new EndGameDialog(new ImageIcon(System.class.getResource("/images/empataste120x120.jpg")),"EMPATARON!!!");
+        } else {
+            if (singlePlayer) {
+                if (maxWon && logic.getModel().getPlayersColors()[player] == ReversiToken.WHITE) {
+                    endGameDialog = new EndGameDialog(new ImageIcon(System.class.getResource("/images/ganaste120x120.jpg")),"GANASTE!!!");
+                } else if (minWon && logic.getModel().getPlayersColors()[player] == ReversiToken.BLACK) {
+                    endGameDialog = new EndGameDialog(new ImageIcon(System.class.getResource("/images/ganaste120x120.jpg")),"GANASTE!!!");
+                } else {
+                    endGameDialog = new EndGameDialog(new ImageIcon(System.class.getResource("/images/perdiste120x120.jpg")),"PERDISTE!!!");
+                }
+            } else {
+                if (maxWon) {
+                    if (logic.getModel().getPlayersColors()[0]==ReversiToken.WHITE) {
+                        endGameDialog = new EndGameDialog(new ImageIcon(System.class.getResource("/images/ganaste120x120.jpg")),logic.getModel().getPlayersNames()[0]/*+" GANO!!"*/);
+                    } else {
+                        endGameDialog = new EndGameDialog(new ImageIcon(System.class.getResource("/images/ganaste120x120.jpg")),logic.getModel().getPlayersNames()[1]/*+" GANO!!"*/);
+                    }
+                } else {
+                    if (logic.getModel().getPlayersColors()[0]==ReversiToken.BLACK) {
+                        endGameDialog = new EndGameDialog(new ImageIcon(System.class.getResource("/images/ganaste120x120.jpg")),logic.getModel().getPlayersNames()[0]/*+" GANO!!"*/);
+                    } else {
+                        endGameDialog = new EndGameDialog(new ImageIcon(System.class.getResource("/images/ganaste120x120.jpg")),logic.getModel().getPlayersNames()[1]/*+" GANO!!"*/);
+                    }
+                }
+            }   
+        }
+        logic.getModel().getGui().setEnabled(false);
+        logic.getModel().getGui().setFocusable(false);
+        endGameDialog.setFather(logic.getModel().getGui());
+        endGameDialog.setVisible(true);
     }
     
     public void setSettingsEnabled(boolean enable) {

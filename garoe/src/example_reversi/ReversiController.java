@@ -33,17 +33,17 @@ public class ReversiController {
     
     public void placeToken(int row, int col) {
         this.logic.playerMoves(row, col);
-        if (this.logic.getModel().gameIsOver()) {
-            ReversiState model = this.logic.getModel().getState();
-            if (model.maxWins()) {
-                this.gameResults(true, false);
-            } else if (model.minWins()) {
-                this.gameResults(false,true);
-            } else {
-                this.gameResults(true, true);
-            }
-                this.endGame();
-            }
+//        if (this.logic.getModel().gameIsOver()) {
+//            ReversiState model = this.logic.getModel().getState();
+//            if (model.maxWins()) {
+//                this.gameResults(true, false);
+//            } else if (model.minWins()) {
+//                this.gameResults(false,true);
+//            } else {
+//                this.gameResults(true, true);
+//            }
+//                this.endGame();
+//        }
     }
     
     public void exitGame() {
@@ -84,40 +84,45 @@ public class ReversiController {
         this.logic.stopPlaying();
     }
     
-    private void gameResults(boolean maxWon, boolean minWon) {
-        boolean singlePlayer = logic.getModel().getPlayersBrains()[0] ^ logic.getModel().getPlayersBrains()[1];
-        EndGameDialog endGameDialog;
-        if (maxWon && minWon) {
-            endGameDialog = new EndGameDialog(new ImageIcon(System.class.getResource("/images/empataste120x120.jpg")),"EMPATARON!!!");
-        } else {
-            if (singlePlayer) {
-                if (maxWon && this.logic.getModel().getPlayersColors()[0] == ReversiToken.WHITE) {
-                    endGameDialog = new EndGameDialog(new ImageIcon(System.class.getResource("/images/ganaste120x120.jpg")),"GANASTE!!!");
-                } else if (minWon && this.logic.getModel().getPlayersColors()[0] == ReversiToken.BLACK) {
-                    endGameDialog = new EndGameDialog(new ImageIcon(System.class.getResource("/images/ganaste120x120.jpg")),"GANASTE!!!");
-                } else {
-                    endGameDialog = new EndGameDialog(new ImageIcon(System.class.getResource("/images/perdiste120x120.jpg")),"PERDISTE!!!");
-                }
-            } else {
-                if (maxWon) {
-                    if (this.logic.getModel().getPlayersColors()[0]==ReversiToken.WHITE) {
-                        endGameDialog = new EndGameDialog(new ImageIcon(System.class.getResource("/images/ganaste120x120.jpg")),this.logic.getModel().getPlayersNames()[0]/*+" GANO!!"*/);
-                    } else {
-                        endGameDialog = new EndGameDialog(new ImageIcon(System.class.getResource("/images/ganaste120x120.jpg")),this.logic.getModel().getPlayersNames()[1]/*+" GANO!!"*/);
-                    }
-                } else {
-                    if (this.logic.getModel().getPlayersColors()[0]==ReversiToken.BLACK) {
-                        endGameDialog = new EndGameDialog(new ImageIcon(System.class.getResource("/images/ganaste120x120.jpg")),this.logic.getModel().getPlayersNames()[0]/*+" GANO!!"*/);
-                    } else {
-                        endGameDialog = new EndGameDialog(new ImageIcon(System.class.getResource("/images/ganaste120x120.jpg")),this.logic.getModel().getPlayersNames()[1]/*+" GANO!!"*/);
-                    }
-                }
-            }   
-        }
-        this.logic.getModel().getGui().setEnabled(false);
-        this.logic.getModel().getGui().setFocusable(false);
-        endGameDialog.setFather(this.logic.getModel().getGui());
-        endGameDialog.setVisible(true);
+    public ReversiLogic getLogic() {
+        return this.logic;
     }
+    
+//    private void gameResults(boolean maxWon, boolean minWon) {
+//        boolean singlePlayer = logic.getModel().getPlayersBrains()[0] ^ logic.getModel().getPlayersBrains()[1];
+//        int player = singlePlayer?!logic.getModel().getPlayersBrains()[0]?0:1:-1;
+//        EndGameDialog endGameDialog;
+//        if (maxWon && minWon) {
+//            endGameDialog = new EndGameDialog(new ImageIcon(System.class.getResource("/images/empataste120x120.jpg")),"EMPATARON!!!");
+//        } else {
+//            if (singlePlayer) {
+//                if (maxWon && this.logic.getModel().getPlayersColors()[player] == ReversiToken.WHITE) {
+//                    endGameDialog = new EndGameDialog(new ImageIcon(System.class.getResource("/images/ganaste120x120.jpg")),"GANASTE!!!");
+//                } else if (minWon && this.logic.getModel().getPlayersColors()[player] == ReversiToken.BLACK) {
+//                    endGameDialog = new EndGameDialog(new ImageIcon(System.class.getResource("/images/ganaste120x120.jpg")),"GANASTE!!!");
+//                } else {
+//                    endGameDialog = new EndGameDialog(new ImageIcon(System.class.getResource("/images/perdiste120x120.jpg")),"PERDISTE!!!");
+//                }
+//            } else {
+//                if (maxWon) {
+//                    if (this.logic.getModel().getPlayersColors()[0]==ReversiToken.WHITE) {
+//                        endGameDialog = new EndGameDialog(new ImageIcon(System.class.getResource("/images/ganaste120x120.jpg")),this.logic.getModel().getPlayersNames()[0]/*+" GANO!!"*/);
+//                    } else {
+//                        endGameDialog = new EndGameDialog(new ImageIcon(System.class.getResource("/images/ganaste120x120.jpg")),this.logic.getModel().getPlayersNames()[1]/*+" GANO!!"*/);
+//                    }
+//                } else {
+//                    if (this.logic.getModel().getPlayersColors()[0]==ReversiToken.BLACK) {
+//                        endGameDialog = new EndGameDialog(new ImageIcon(System.class.getResource("/images/ganaste120x120.jpg")),this.logic.getModel().getPlayersNames()[0]/*+" GANO!!"*/);
+//                    } else {
+//                        endGameDialog = new EndGameDialog(new ImageIcon(System.class.getResource("/images/ganaste120x120.jpg")),this.logic.getModel().getPlayersNames()[1]/*+" GANO!!"*/);
+//                    }
+//                }
+//            }   
+//        }
+//        this.logic.getModel().getGui().setEnabled(false);
+//        this.logic.getModel().getGui().setFocusable(false);
+//        endGameDialog.setFather(this.logic.getModel().getGui());
+//        endGameDialog.setVisible(true);
+//    }
     
 }

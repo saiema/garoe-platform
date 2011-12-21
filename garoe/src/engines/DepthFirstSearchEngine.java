@@ -47,7 +47,7 @@ public class DepthFirstSearchEngine<State extends IBasicState> extends SearchEng
      * @return true sii se encuentra un estado exitoso : {@code boolean} 
      */
     private boolean performSearch (State state){
-        visited.add(state);
+        if (!visited.contains(state)) visited.add(state);
         if (state.success()){
             path.add(state);
             return true;
@@ -57,10 +57,10 @@ public class DepthFirstSearchEngine<State extends IBasicState> extends SearchEng
             for (int i = 0 ;i < succesors.size()&& !found;i++) {
                 State current = succesors.get(i);
                 if (!visited.contains(current)) {
-                    visited.add(state);
+                    visited.add(current);
                     if (performSearch(current)){
                         found = true;
-                        path.add(current);
+                        path.add(state);
                     }
                 }
             }

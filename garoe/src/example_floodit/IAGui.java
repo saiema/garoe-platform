@@ -48,7 +48,7 @@ public class IAGui extends javax.swing.JFrame implements ActionListener {
         nextButton = new javax.swing.JButton();
         cancelButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setDefaultCloseOperation(this.winClose());
         setResizable(false);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("moves"));
@@ -67,7 +67,7 @@ public class IAGui extends javax.swing.JFrame implements ActionListener {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -150,6 +150,11 @@ public class IAGui extends javax.swing.JFrame implements ActionListener {
         this.controller.exit();
     }//GEN-LAST:event_cancelButtonActionPerformed
 
+    private int winClose(){
+        this.controller.exit();
+        return 0;
+    }
+    
     /**
      * @param args the command line arguments
      */

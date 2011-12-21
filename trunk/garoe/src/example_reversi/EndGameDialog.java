@@ -50,10 +50,8 @@ public class EndGameDialog extends javax.swing.JFrame implements ActionListener 
         message = new javax.swing.JTextField();
         okButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(this.winClose());
         setBounds(new java.awt.Rectangle(0, 22, 300, 300));
-        setMaximumSize(null);
-        setPreferredSize(new java.awt.Dimension(300, 300));
         setResizable(false);
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
@@ -71,7 +69,7 @@ public class EndGameDialog extends javax.swing.JFrame implements ActionListener 
         gridBagConstraints.insets = new java.awt.Insets(1, 1, 0, 1);
         getContentPane().add(image, gridBagConstraints);
 
-        message.setFont(new java.awt.Font("Segoe Print", 3, 24)); // NOI18N
+        message.setFont(new java.awt.Font("Segoe Print", 3, 24));
         message.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         message.setText("MESSAGE");
         message.setEnabled(false);
@@ -106,6 +104,11 @@ public class EndGameDialog extends javax.swing.JFrame implements ActionListener 
         this.dispose();
     }//GEN-LAST:event_okButtonActionPerformed
 
+    private int winClose() {
+        this.okButtonActionPerformed(null);
+        return 0;
+    }
+    
     /**
      * @param args the command line arguments
      */

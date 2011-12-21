@@ -197,6 +197,7 @@ public class FlooditState implements IinformedState {
 		return this.DEFAULT_COLORS;
 	}
 	
+    @Override
 	public FlooditState clone() {
 		//int boardSize, int colors, int maxSteps
 		FlooditState newClone = new FlooditState();
@@ -211,6 +212,7 @@ public class FlooditState implements IinformedState {
 		return newClone;
 	}
 	
+    @Override
 	public String toString() {
 		String status = "moves made : " + this.stepsMade + "\n";
 		String boardRep = "";

@@ -72,7 +72,7 @@ public class SettingsGUI extends javax.swing.JFrame implements  ActionListener {
         saveButton = new javax.swing.JButton();
         cancelButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(this.winClose());
         setResizable(false);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("preferencias jugador 1"));
@@ -258,7 +258,7 @@ public class SettingsGUI extends javax.swing.JFrame implements  ActionListener {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(303, Short.MAX_VALUE)
+                .addContainerGap(304, Short.MAX_VALUE)
                 .addComponent(cancelButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(saveButton)
@@ -268,7 +268,7 @@ public class SettingsGUI extends javax.swing.JFrame implements  ActionListener {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -302,17 +302,17 @@ public class SettingsGUI extends javax.swing.JFrame implements  ActionListener {
         else if (evt.getSource() == player2Color) {
             SettingsGUI.this.player2ColorActionPerformed(evt);
         }
-        else if (evt.getSource() == cancelButton) {
-            SettingsGUI.this.cancelButtonActionPerformed(evt);
-        }
-        else if (evt.getSource() == saveButton) {
-            SettingsGUI.this.saveButtonActionPerformed(evt);
-        }
         else if (evt.getSource() == hintWhiteColorSelector) {
             SettingsGUI.this.hintWhiteColorSelectorActionPerformed(evt);
         }
         else if (evt.getSource() == hintBlackColorSelector) {
             SettingsGUI.this.hintBlackColorSelectorActionPerformed(evt);
+        }
+        else if (evt.getSource() == saveButton) {
+            SettingsGUI.this.saveButtonActionPerformed(evt);
+        }
+        else if (evt.getSource() == cancelButton) {
+            SettingsGUI.this.cancelButtonActionPerformed(evt);
         }
     }// </editor-fold>//GEN-END:initComponents
 
@@ -320,6 +320,12 @@ public class SettingsGUI extends javax.swing.JFrame implements  ActionListener {
         this.controller.close();
     }//GEN-LAST:event_cancelButtonActionPerformed
 
+    
+    private int winClose() {
+        this.cancelButtonActionPerformed(null);
+        return 0;
+    }
+    
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         int colorPlayer1 = this.getPlayer1Color().getText().compareToIgnoreCase("white") == 0?ReversiToken.WHITE:ReversiToken.BLACK;
         int colorPlayer2 = this.getPlayer2Color().getText().compareToIgnoreCase("white") == 0?ReversiToken.WHITE:ReversiToken.BLACK;

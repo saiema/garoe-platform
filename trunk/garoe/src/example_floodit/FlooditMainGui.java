@@ -57,7 +57,7 @@ public class FlooditMainGui extends javax.swing.JFrame {
         pistaMenuItem = new javax.swing.JMenuItem();
         jugarMenuItem = new javax.swing.JMenuItem();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setResizable(false);
 
         stepsMadeLabel.setText("Steps made: ");

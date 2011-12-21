@@ -79,7 +79,7 @@ public class ReversiGUI extends javax.swing.JFrame implements ActionListener, Mo
         helpMenu = new javax.swing.JMenu();
         aboutMenuItem = new javax.swing.JMenuItem();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(this.winClose());
         setResizable(false);
 
         player1Name.setText("jugador1");
@@ -320,6 +320,12 @@ public class ReversiGUI extends javax.swing.JFrame implements ActionListener, Mo
         this.controller.exitGame();
     }//GEN-LAST:event_exitMenuItemActionPerformed
 
+    
+    private int winClose() {
+        this.exitMenuItemActionPerformed(null);
+        return 0;
+    }
+    
     private void boardMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boardMouseReleased
         int row = this.board.rowAtPoint(evt.getPoint());
         int col = this.board.columnAtPoint(evt.getPoint());

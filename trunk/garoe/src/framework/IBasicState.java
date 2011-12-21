@@ -26,5 +26,11 @@ public interface IBasicState {
      * @return true sii este objeto cumple con el invariante de lo que representa : {@code boolean}
      */
 	public boolean repOk();
+    
+    /**
+     * Crea un clon del objeto
+     * @return un nuevo objeto con toda la estructura interna clonada de este : {@code IBasicState}
+     */
+    public IBasicState clone();
 	
 }

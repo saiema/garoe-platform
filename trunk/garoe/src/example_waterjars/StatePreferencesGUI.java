@@ -10,15 +10,24 @@
  */
 package example_waterjars;
 
+import java.awt.event.ActionListener;
+import javax.swing.event.ChangeListener;
+
 /**
  *
  * @author BigEma
  */
-public class StatePreferencesGUI extends javax.swing.JFrame {
-
+public class StatePreferencesGUI extends javax.swing.JFrame implements ActionListener, ChangeListener {
+    private WaterJarsPreferencesController controller;
+    
+    
     /** Creates new form StatePreferencesGUI */
     public StatePreferencesGUI() {
         initComponents();
+    }
+    
+    public void setController(WaterJarsPreferencesController controller) {
+        this.controller = controller;
     }
 
     /** This method is called from within the constructor to
@@ -46,6 +55,8 @@ public class StatePreferencesGUI extends javax.swing.JFrame {
         jar1Goal = new javax.swing.JSpinner();
         jar2Used = new javax.swing.JCheckBox();
         jar2Goal = new javax.swing.JSpinner();
+        useAnyJar = new javax.swing.JCheckBox();
+        generalGoal = new javax.swing.JSpinner();
         saveButton = new javax.swing.JButton();
         cancelButton = new javax.swing.JButton();
 
@@ -62,10 +73,12 @@ public class StatePreferencesGUI extends javax.swing.JFrame {
         jLabel2.setText("capacidad");
 
         jar1Cap.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(1), Integer.valueOf(1), null, Integer.valueOf(1)));
+        jar1Cap.addChangeListener(this);
 
         jLabel3.setText("contenido");
 
         jar1Cont.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(1)));
+        jar1Cont.addChangeListener(this);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -74,28 +87,26 @@ public class StatePreferencesGUI extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addComponent(jar1Cap, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(18, 18, 18)
-                        .addComponent(jar1Cont, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)))
-                .addContainerGap())
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jar1Cont)
+                    .addComponent(jar1Cap, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE))
+                .addContainerGap(49, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel2)
-                    .addComponent(jar1Cap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jar1Cap, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel3)
-                    .addComponent(jar1Cont, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(48, Short.MAX_VALUE))
+                    .addComponent(jar1Cont, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Jarra 2"));
@@ -106,10 +117,13 @@ public class StatePreferencesGUI extends javax.swing.JFrame {
         jLabel1.setText("capacidad");
 
         jar2Cap.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(1), Integer.valueOf(1), null, Integer.valueOf(1)));
+        jar2Cap.setMaximumSize(new java.awt.Dimension(41, 28));
+        jar2Cap.addChangeListener(this);
 
         jLabel4.setText("contenido");
 
         jar2Cont.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(1)));
+        jar2Cont.addChangeListener(this);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -118,28 +132,26 @@ public class StatePreferencesGUI extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jar2Cap, javax.swing.GroupLayout.DEFAULT_SIZE, 84, Short.MAX_VALUE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addGap(18, 18, 18)
-                        .addComponent(jar2Cont, javax.swing.GroupLayout.DEFAULT_SIZE, 85, Short.MAX_VALUE)))
-                .addGap(16, 16, 16))
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel1))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jar2Cap, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jar2Cont, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(63, 63, 63))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel1)
-                    .addComponent(jar2Cap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jar2Cap, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel4)
-                    .addComponent(jar2Cont, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(48, Short.MAX_VALUE))
+                    .addComponent(jar2Cont, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -147,60 +159,77 @@ public class StatePreferencesGUI extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 188, Short.MAX_VALUE))
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, Short.MAX_VALUE)
             .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 140, Short.MAX_VALUE)
+            .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, Short.MAX_VALUE)
         );
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Meta"));
 
         jar1Used.setText("jarra 1");
+        jar1Used.addActionListener(this);
 
         jar1Goal.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(1)));
+        jar1Goal.addChangeListener(this);
 
         jar2Used.setText("jarra 2");
+        jar2Used.addActionListener(this);
 
-        jar2Goal.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(1)));
+        jar2Goal.setModel(new javax.swing.SpinnerNumberModel());
+        jar2Goal.addChangeListener(this);
+
+        useAnyJar.setText("cualquiera");
+        useAnyJar.addActionListener(this);
+
+        generalGoal.setModel(new javax.swing.SpinnerNumberModel());
+        generalGoal.addChangeListener(this);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(96, 96, 96)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jar1Used)
-                        .addGap(18, 18, 18)
-                        .addComponent(jar1Goal, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addComponent(jar2Used)
-                        .addGap(18, 18, 18)
-                        .addComponent(jar2Goal)))
-                .addContainerGap(128, Short.MAX_VALUE))
+                .addGap(113, 113, 113)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jar1Used)
+                    .addComponent(jar2Used)
+                    .addComponent(useAnyJar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(generalGoal, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jar2Goal)
+                        .addComponent(jar1Goal, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)))
+                .addContainerGap(110, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jar1Used)
                     .addComponent(jar1Goal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jar2Used)
                     .addComponent(jar2Goal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(useAnyJar)
+                    .addComponent(generalGoal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         saveButton.setText("guardar");
+        saveButton.addActionListener(this);
 
         cancelButton.setText("cancelar");
+        cancelButton.addActionListener(this);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -221,7 +250,7 @@ public class StatePreferencesGUI extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(saveButton)
                     .addComponent(cancelButton))
@@ -229,7 +258,99 @@ public class StatePreferencesGUI extends javax.swing.JFrame {
         );
 
         pack();
+    }
+
+    // Code for dispatching events from components to event handlers.
+
+    public void actionPerformed(java.awt.event.ActionEvent evt) {
+        if (evt.getSource() == useAnyJar) {
+            StatePreferencesGUI.this.useAnyJarActionPerformed(evt);
+        }
+        else if (evt.getSource() == jar1Used) {
+            StatePreferencesGUI.this.jar1UsedActionPerformed(evt);
+        }
+        else if (evt.getSource() == jar2Used) {
+            StatePreferencesGUI.this.jar2UsedActionPerformed(evt);
+        }
+        else if (evt.getSource() == cancelButton) {
+            StatePreferencesGUI.this.cancelButtonActionPerformed(evt);
+        }
+        else if (evt.getSource() == saveButton) {
+            StatePreferencesGUI.this.saveButtonActionPerformed(evt);
+        }
+    }
+
+    public void stateChanged(javax.swing.event.ChangeEvent evt) {
+        if (evt.getSource() == jar1Cap) {
+            StatePreferencesGUI.this.jar1CapStateChanged(evt);
+        }
+        else if (evt.getSource() == jar1Cont) {
+            StatePreferencesGUI.this.jar1ContStateChanged(evt);
+        }
+        else if (evt.getSource() == jar2Cap) {
+            StatePreferencesGUI.this.jar2CapStateChanged(evt);
+        }
+        else if (evt.getSource() == jar2Cont) {
+            StatePreferencesGUI.this.jar2ContStateChanged(evt);
+        }
+        else if (evt.getSource() == jar1Goal) {
+            StatePreferencesGUI.this.jar1GoalStateChanged(evt);
+        }
+        else if (evt.getSource() == jar2Goal) {
+            StatePreferencesGUI.this.jar2GoalStateChanged(evt);
+        }
+        else if (evt.getSource() == generalGoal) {
+            StatePreferencesGUI.this.generalGoalStateChanged(evt);
+        }
     }// </editor-fold>//GEN-END:initComponents
+
+    private void useAnyJarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_useAnyJarActionPerformed
+        this.controller.changeAnyJarIsUsed(this.useAnyJar.isSelected());
+    }//GEN-LAST:event_useAnyJarActionPerformed
+
+    private void jar1CapStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jar1CapStateChanged
+        this.controller.changeJar1Cap((Integer)this.jar1Cap.getValue());
+    }//GEN-LAST:event_jar1CapStateChanged
+
+    private void jar1ContStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jar1ContStateChanged
+        this.controller.changeJar1Cont((Integer)this.jar1Cont.getValue());
+    }//GEN-LAST:event_jar1ContStateChanged
+
+    private void jar2CapStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jar2CapStateChanged
+        this.controller.changeJar2Cap((Integer)this.jar2Cap.getValue());
+    }//GEN-LAST:event_jar2CapStateChanged
+
+    private void jar2ContStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jar2ContStateChanged
+        this.controller.changeJar2Cont((Integer)this.jar2Cont.getValue());
+    }//GEN-LAST:event_jar2ContStateChanged
+
+    private void jar1UsedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jar1UsedActionPerformed
+        this.controller.changeJar1isUsed(this.jar1Used.isSelected());
+    }//GEN-LAST:event_jar1UsedActionPerformed
+
+    private void jar2UsedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jar2UsedActionPerformed
+        this.controller.changeJar2isUsed(this.jar2Used.isSelected());
+    }//GEN-LAST:event_jar2UsedActionPerformed
+
+    private void jar1GoalStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jar1GoalStateChanged
+        this.controller.changeJar1Goal((Integer)this.jar1Goal.getValue());
+    }//GEN-LAST:event_jar1GoalStateChanged
+
+    private void jar2GoalStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jar2GoalStateChanged
+        this.controller.changeJar2Goal((Integer)this.jar2Goal.getValue());
+    }//GEN-LAST:event_jar2GoalStateChanged
+
+    private void generalGoalStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_generalGoalStateChanged
+        this.controller.changeGeneralGoal((Integer)this.generalGoal.getValue());
+    }//GEN-LAST:event_generalGoalStateChanged
+
+    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
+        this.controller.exit();
+    }//GEN-LAST:event_cancelButtonActionPerformed
+
+    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
+        this.controller.save();
+    }//GEN-LAST:event_saveButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -268,6 +389,7 @@ public class StatePreferencesGUI extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancelButton;
+    private javax.swing.JSpinner generalGoal;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -285,5 +407,25 @@ public class StatePreferencesGUI extends javax.swing.JFrame {
     private javax.swing.JSpinner jar2Goal;
     private javax.swing.JCheckBox jar2Used;
     private javax.swing.JButton saveButton;
+    private javax.swing.JCheckBox useAnyJar;
     // End of variables declaration//GEN-END:variables
+
+
+    public void update(WaterJarsState state) {
+        this.jar1Cap.setValue(state.getJar1Cap());
+        this.jar2Cap.setValue(state.getJar2Cap());
+        this.jar1Cont.setValue(state.getJar1Cont());
+        this.jar2Cont.setValue(state.getJar2Cont());
+        this.jar1Used.setSelected(state.getJar1isUsed());
+        this.jar2Used.setSelected(state.getJar2isUsed());
+        this.useAnyJar.setSelected(state.getAnyJarIsUsed());
+        this.jar1Goal.setValue(state.getJar1Goal());
+        this.jar2Goal.setValue(state.getJar2Goal());
+        this.generalGoal.setValue(state.getGoal());
+    }
+    
+    public void enableSave(boolean enable) {
+        this.saveButton.setEnabled(enable);
+    }
+    
 }

@@ -53,7 +53,7 @@ public class AIgui extends javax.swing.JFrame implements ActionListener {
         saveButton = new javax.swing.JButton();
         cancelButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(this.winClose());
         setResizable(false);
 
         engineLabel.setText("AI engine");
@@ -61,6 +61,8 @@ public class AIgui extends javax.swing.JFrame implements ActionListener {
         engineSelector.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "MinMax con poda Alfa-Beta" }));
 
         maxTreeLevelLabel.setText("Max tree level");
+
+        treeLevelSpinner.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(1)));
 
         maxSearchTimeLabel.setText("Max search time (ms)");
         maxSearchTimeLabel.setEnabled(false);
@@ -88,7 +90,7 @@ public class AIgui extends javax.swing.JFrame implements ActionListener {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(engineLabel)
                         .addGap(30, 30, 30)
-                        .addComponent(engineSelector, 0, 304, Short.MAX_VALUE))
+                        .addComponent(engineSelector, 0, 332, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(maxTreeLevelLabel)
@@ -156,6 +158,12 @@ public class AIgui extends javax.swing.JFrame implements ActionListener {
         this.controller.close();
     }//GEN-LAST:event_cancelButtonActionPerformed
 
+    
+    private int winClose() {
+        this.cancelButtonActionPerformed(null);
+        return 0;
+    }
+    
     /**
      * @param args the command line arguments
      */

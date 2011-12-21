@@ -10,6 +10,7 @@
  */
 package example_waterjars;
 
+import java.awt.Color;
 import java.awt.event.ActionListener;
 
 /**
@@ -17,10 +18,15 @@ import java.awt.event.ActionListener;
  * @author BigEma
  */
 public class WaterJarsGUI extends javax.swing.JFrame implements ActionListener {
-
+    private WaterJarsMainController mainController;
+    
     /** Creates new form WaterJarsGUI */
     public WaterJarsGUI() {
         initComponents();
+    }
+    
+    public void setMainController(WaterJarsMainController mainController) {
+        this.mainController = mainController;
     }
 
     /** This method is called from within the constructor to
@@ -44,6 +50,7 @@ public class WaterJarsGUI extends javax.swing.JFrame implements ActionListener {
         jar2FillButton = new javax.swing.JButton();
         jar2EmptyButton = new javax.swing.JButton();
         jar2TransferButton = new javax.swing.JButton();
+        success = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         newMenuItem = new javax.swing.JMenuItem();
@@ -70,10 +77,13 @@ public class WaterJarsGUI extends javax.swing.JFrame implements ActionListener {
         jar1Ocuppied.setText("ocupado: ");
 
         jar1FillButton.setText("llenar");
+        jar1FillButton.addActionListener(this);
 
         jar1EmptyButton.setText("vaciar");
+        jar1EmptyButton.addActionListener(this);
 
         jar1TransferButton.setText("transferir");
+        jar1TransferButton.addActionListener(this);
 
         javax.swing.GroupLayout jar1PanelLayout = new javax.swing.GroupLayout(jar1Panel);
         jar1Panel.setLayout(jar1PanelLayout);
@@ -88,7 +98,7 @@ public class WaterJarsGUI extends javax.swing.JFrame implements ActionListener {
                         .addComponent(jar1EmptyButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jar1FillButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(jar1Ocuppied))
-                .addContainerGap(99, Short.MAX_VALUE))
+                .addContainerGap(64, Short.MAX_VALUE))
         );
         jar1PanelLayout.setVerticalGroup(
             jar1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -97,7 +107,7 @@ public class WaterJarsGUI extends javax.swing.JFrame implements ActionListener {
                 .addComponent(jar1Capacity)
                 .addGap(18, 18, 18)
                 .addComponent(jar1Ocuppied)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addComponent(jar1TransferButton)
                 .addGap(18, 18, 18)
                 .addComponent(jar1EmptyButton)
@@ -116,10 +126,13 @@ public class WaterJarsGUI extends javax.swing.JFrame implements ActionListener {
         jar2Ocuppied.setText("ocupado: ");
 
         jar2FillButton.setText("llenar");
+        jar2FillButton.addActionListener(this);
 
         jar2EmptyButton.setText("vaciar");
+        jar2EmptyButton.addActionListener(this);
 
         jar2TransferButton.setText("transferir");
+        jar2TransferButton.addActionListener(this);
 
         javax.swing.GroupLayout jar2PanelLayout = new javax.swing.GroupLayout(jar2Panel);
         jar2Panel.setLayout(jar2PanelLayout);
@@ -130,9 +143,9 @@ public class WaterJarsGUI extends javax.swing.JFrame implements ActionListener {
                 .addGroup(jar2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jar2Capacity)
                     .addComponent(jar2Ocuppied))
-                .addContainerGap(123, Short.MAX_VALUE))
+                .addContainerGap(97, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jar2PanelLayout.createSequentialGroup()
-                .addContainerGap(101, Short.MAX_VALUE)
+                .addContainerGap(69, Short.MAX_VALUE)
                 .addGroup(jar2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jar2FillButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jar2EmptyButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -146,7 +159,7 @@ public class WaterJarsGUI extends javax.swing.JFrame implements ActionListener {
                 .addComponent(jar2Capacity)
                 .addGap(18, 18, 18)
                 .addComponent(jar2Ocuppied)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 105, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addComponent(jar2TransferButton)
                 .addGap(18, 18, 18)
                 .addComponent(jar2EmptyButton)
@@ -154,6 +167,13 @@ public class WaterJarsGUI extends javax.swing.JFrame implements ActionListener {
                 .addComponent(jar2FillButton)
                 .addContainerGap())
         );
+
+        success.setBackground(new java.awt.Color(255, 51, 51));
+        success.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        success.setText("EXITO!");
+        success.setEnabled(false);
+        success.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        success.setOpaque(true);
 
         fileMenu.setMnemonic('j');
         fileMenu.setText("Jarras");
@@ -176,7 +196,8 @@ public class WaterJarsGUI extends javax.swing.JFrame implements ActionListener {
 
         estadoInicialMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
         estadoInicialMenuItem.setMnemonic('e');
-        estadoInicialMenuItem.setText("Estado inicial");
+        estadoInicialMenuItem.setText("Estado problema");
+        estadoInicialMenuItem.addActionListener(this);
         preferencesMenu.add(estadoInicialMenuItem);
 
         iaMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_I, java.awt.event.InputEvent.CTRL_MASK));
@@ -192,6 +213,7 @@ public class WaterJarsGUI extends javax.swing.JFrame implements ActionListener {
         clueMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_P, java.awt.event.InputEvent.CTRL_MASK));
         clueMenuItem.setMnemonic('p');
         clueMenuItem.setText("Pista");
+        clueMenuItem.addActionListener(this);
         iaMenu.add(clueMenuItem);
 
         menuBar.add(iaMenu);
@@ -202,6 +224,7 @@ public class WaterJarsGUI extends javax.swing.JFrame implements ActionListener {
         aboutMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.CTRL_MASK));
         aboutMenuItem.setMnemonic('a');
         aboutMenuItem.setText("Acerca de");
+        aboutMenuItem.addActionListener(this);
         helpMenu.add(aboutMenuItem);
 
         menuBar.add(helpMenu);
@@ -216,11 +239,16 @@ public class WaterJarsGUI extends javax.swing.JFrame implements ActionListener {
                 .addComponent(jar1Panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jar2Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE))
+            .addComponent(success, javax.swing.GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jar2Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 301, Short.MAX_VALUE)
-            .addComponent(jar1Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 301, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jar2Panel, javax.swing.GroupLayout.Alignment.LEADING, 0, 264, Short.MAX_VALUE)
+                    .addComponent(jar1Panel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 264, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(success, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE))
         );
 
         pack();
@@ -229,14 +257,86 @@ public class WaterJarsGUI extends javax.swing.JFrame implements ActionListener {
     // Code for dispatching events from components to event handlers.
 
     public void actionPerformed(java.awt.event.ActionEvent evt) {
-        if (evt.getSource() == exitMenuItem) {
+        if (evt.getSource() == jar1FillButton) {
+            WaterJarsGUI.this.jar1FillButtonActionPerformed(evt);
+        }
+        else if (evt.getSource() == jar1EmptyButton) {
+            WaterJarsGUI.this.jar1EmptyButtonActionPerformed(evt);
+        }
+        else if (evt.getSource() == jar1TransferButton) {
+            WaterJarsGUI.this.jar1TransferButtonActionPerformed(evt);
+        }
+        else if (evt.getSource() == jar2FillButton) {
+            WaterJarsGUI.this.jar2FillButtonActionPerformed(evt);
+        }
+        else if (evt.getSource() == jar2EmptyButton) {
+            WaterJarsGUI.this.jar2EmptyButtonActionPerformed(evt);
+        }
+        else if (evt.getSource() == jar2TransferButton) {
+            WaterJarsGUI.this.jar2TransferButtonActionPerformed(evt);
+        }
+        else if (evt.getSource() == exitMenuItem) {
             WaterJarsGUI.this.exitMenuItemActionPerformed(evt);
+        }
+        else if (evt.getSource() == estadoInicialMenuItem) {
+            WaterJarsGUI.this.estadoInicialMenuItemActionPerformed(evt);
+        }
+        else if (evt.getSource() == aboutMenuItem) {
+            WaterJarsGUI.this.aboutMenuItemActionPerformed(evt);
+        }
+        else if (evt.getSource() == clueMenuItem) {
+            WaterJarsGUI.this.clueMenuItemActionPerformed(evt);
         }
     }// </editor-fold>//GEN-END:initComponents
 
     private void exitMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItemActionPerformed
-        System.exit(0);
+        this.mainController.exit();
     }//GEN-LAST:event_exitMenuItemActionPerformed
+
+    private void jar1TransferButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jar1TransferButtonActionPerformed
+        this.mainController.transferToJar2();
+        if (isHintMarked()) this.mainController.nextHint(); 
+    }//GEN-LAST:event_jar1TransferButtonActionPerformed
+
+    private void jar1EmptyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jar1EmptyButtonActionPerformed
+        this.mainController.emptyJar1();
+        if (isHintMarked()) this.mainController.nextHint();
+    }//GEN-LAST:event_jar1EmptyButtonActionPerformed
+
+    private void jar1FillButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jar1FillButtonActionPerformed
+        this.mainController.fillJar1();
+        if (isHintMarked()) this.mainController.nextHint();
+    }//GEN-LAST:event_jar1FillButtonActionPerformed
+
+    private void jar2TransferButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jar2TransferButtonActionPerformed
+        this.mainController.transferTojar1();
+        if (isHintMarked()) this.mainController.nextHint();
+    }//GEN-LAST:event_jar2TransferButtonActionPerformed
+
+    private void jar2EmptyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jar2EmptyButtonActionPerformed
+        this.mainController.emptyJar2();
+        if (isHintMarked()) this.mainController.nextHint();
+    }//GEN-LAST:event_jar2EmptyButtonActionPerformed
+
+    private void jar2FillButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jar2FillButtonActionPerformed
+        this.mainController.fillJar2();
+        if (isHintMarked()) this.mainController.nextHint();
+    }//GEN-LAST:event_jar2FillButtonActionPerformed
+
+    private void estadoInicialMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_estadoInicialMenuItemActionPerformed
+        StatePreferencesGUI prefGui = new StatePreferencesGUI();
+        WaterJarsPreferencesController prefController = new WaterJarsPreferencesController(this.mainController,prefGui);
+        prefGui.setController(prefController);
+        prefController.show();
+    }//GEN-LAST:event_estadoInicialMenuItemActionPerformed
+
+    private void aboutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutMenuItemActionPerformed
+        this.mainController.about();
+    }//GEN-LAST:event_aboutMenuItemActionPerformed
+
+    private void clueMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clueMenuItemActionPerformed
+        this.mainController.hint();
+    }//GEN-LAST:event_clueMenuItemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -297,5 +397,107 @@ public class WaterJarsGUI extends javax.swing.JFrame implements ActionListener {
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem newMenuItem;
     private javax.swing.JMenu preferencesMenu;
+    private javax.swing.JLabel success;
     // End of variables declaration//GEN-END:variables
+
+
+
+
+    public void update(WaterJarsState state) {
+        //Update jars status
+        this.jar1Capacity.setText("capacidad: "+state.getJar1Cap());
+        this.jar2Capacity.setText("capacidad: "+state.getJar2Cap());
+        this.jar1Ocuppied.setText("contenido: "+state.getJar1Cont());
+        this.jar2Ocuppied.setText("contenido: "+state.getJar2Cont());
+        
+        //update enabled buttons and success status
+        if (state.success()) {
+            enableButtons(false);
+            this.success.setBackground(Color.GREEN);
+        } else {
+            enableFill1Button(state.getJar1Cont() < state.getJar1Cap());
+            enableFill2Button(state.getJar2Cont() < state.getJar2Cap());
+            enableEmpty1Button(state.getJar1Cont() > 0);
+            enableEmpty2Button(state.getJar2Cont() > 0);
+            enableTransfer1Button(state.getJar1Cont()==0?false:state.getJar2Cont() < state.getJar2Cap());
+            enableTransfer2Button(state.getJar2Cont()==0?false:state.getJar1Cont() < state.getJar1Cap());
+        }
+    }
+    
+    public void enableButtons(boolean enable) {
+        enableFill1Button(enable);
+        enableFill2Button(enable);
+        enableEmpty1Button(enable);
+        enableEmpty2Button(enable);
+        enableTransfer1Button(enable);
+        enableTransfer2Button(enable);
+    }
+    
+    private void enableFill1Button(boolean enable) {
+        this.jar1FillButton.setEnabled(enable);
+    }
+    
+    private void enableFill2Button(boolean enable) {
+        this.jar2FillButton.setEnabled(enable);
+    }
+    
+    private void enableEmpty1Button(boolean enable) {
+        this.jar1EmptyButton.setEnabled(enable);
+    }
+    
+    private void enableEmpty2Button(boolean enable) {
+        this.jar2EmptyButton.setEnabled(enable);
+    }
+    
+    private void enableTransfer1Button(boolean enable) {
+        this.jar1TransferButton.setEnabled(enable);
+    }
+    
+    private void enableTransfer2Button(boolean enable) {
+        this.jar2TransferButton.setEnabled(enable);
+    }
+    
+    public void unpaintAllButtons() {
+        paintFill1Button(null);
+        paintFill2Button(null);
+        paintEmpty1Button(null);
+        paintEmpty2Button(null);
+        paintTransfer1Button(null);
+        paintTransfer2Button(null);
+    }
+    
+    public void paintFill1Button(Color c) {
+        this.jar1FillButton.setBackground(c);
+    }
+    
+    public void paintFill2Button(Color c) {
+        this.jar2FillButton.setBackground(c);
+    }
+    
+    public void paintEmpty1Button(Color c) {
+        this.jar1EmptyButton.setBackground(c);
+    }
+    
+    public void paintEmpty2Button(Color c) {
+        this.jar2EmptyButton.setBackground(c);
+    }
+    
+    public void paintTransfer1Button(Color c) {
+        this.jar1TransferButton.setBackground(c);
+    }
+    
+    public void paintTransfer2Button(Color c) {
+        this.jar2TransferButton.setBackground(c);
+    }
+    
+    private boolean isHintMarked() {
+        boolean f1b = this.jar1FillButton.getBackground() != null;
+        boolean f2b = this.jar2FillButton.getBackground() != null;
+        boolean e1b = this.jar1EmptyButton.getBackground() != null;
+        boolean e2b = this.jar2EmptyButton.getBackground() != null;
+        boolean t1b = this.jar1TransferButton.getBackground() != null;
+        boolean t2b = this.jar2TransferButton.getBackground() != null;
+        return f1b || f2b || e1b || e2b || t1b || t2b;
+    }
+
 }

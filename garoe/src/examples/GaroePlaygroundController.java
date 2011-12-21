@@ -12,12 +12,13 @@ public class GaroePlaygroundController {
     private GaroePlaygroundGUI mainGUI;
     private ReversiGame reversi;
     private FlooditGame floodit;
+    private WaterJarsGame waterJars;
     
     public GaroePlaygroundController(GaroePlaygroundGUI mainGUI) {
         this.mainGUI = mainGUI;
         this.reversi = new ReversiGame(this);
         this.floodit = new FlooditGame(this);
-        
+        this.waterJars = new WaterJarsGame(this);
     }
     
     public void startMainGUI() {
@@ -37,9 +38,12 @@ public class GaroePlaygroundController {
         floodit.start();
     }
     
-    public void showAbout() {
-        
+    public void startWaterJars() {
+        this.mainGUI.setEnabled(false);
+        this.mainGUI.setVisible(false);
+        waterJars.start();
     }
+    
     
     public void exit() {
         this.mainGUI.setVisible(false);

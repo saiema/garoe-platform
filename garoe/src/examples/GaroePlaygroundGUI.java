@@ -42,6 +42,7 @@ public class GaroePlaygroundGUI extends javax.swing.JFrame implements MouseListe
         gamesPanel = new javax.swing.JPanel();
         reversi = new javax.swing.JButton();
         floodit = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         gameImage = new javax.swing.JLabel();
@@ -72,6 +73,10 @@ public class GaroePlaygroundGUI extends javax.swing.JFrame implements MouseListe
         floodit.addMouseListener(this);
         floodit.addActionListener(this);
 
+        jButton1.setText("Jarras");
+        jButton1.addMouseListener(this);
+        jButton1.addActionListener(this);
+
         javax.swing.GroupLayout gamesPanelLayout = new javax.swing.GroupLayout(gamesPanel);
         gamesPanel.setLayout(gamesPanelLayout);
         gamesPanelLayout.setHorizontalGroup(
@@ -79,9 +84,10 @@ public class GaroePlaygroundGUI extends javax.swing.JFrame implements MouseListe
             .addGroup(gamesPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(gamesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(floodit, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(reversi, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         gamesPanelLayout.setVerticalGroup(
             gamesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -90,7 +96,9 @@ public class GaroePlaygroundGUI extends javax.swing.JFrame implements MouseListe
                 .addComponent(reversi)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(floodit)
-                .addContainerGap(361, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1)
+                .addContainerGap(328, Short.MAX_VALUE))
         );
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("información del juego"));
@@ -202,7 +210,7 @@ public class GaroePlaygroundGUI extends javax.swing.JFrame implements MouseListe
                 .addComponent(gamesPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -247,6 +255,9 @@ public class GaroePlaygroundGUI extends javax.swing.JFrame implements MouseListe
         else if (evt.getSource() == winclassicMenuItem) {
             GaroePlaygroundGUI.this.winclassicMenuItemActionPerformed(evt);
         }
+        else if (evt.getSource() == jButton1) {
+            GaroePlaygroundGUI.this.jButton1ActionPerformed(evt);
+        }
     }
 
     public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -258,6 +269,9 @@ public class GaroePlaygroundGUI extends javax.swing.JFrame implements MouseListe
         }
         else if (evt.getSource() == floodit) {
             GaroePlaygroundGUI.this.flooditMouseEntered(evt);
+        }
+        else if (evt.getSource() == jButton1) {
+            GaroePlaygroundGUI.this.jButton1MouseEntered(evt);
         }
     }
 
@@ -398,6 +412,15 @@ public class GaroePlaygroundGUI extends javax.swing.JFrame implements MouseListe
         this.repaint();
     }//GEN-LAST:event_winclassicMenuItemActionPerformed
 
+    private void jButton1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseEntered
+        this.gameImage.setIcon(new ImageIcon(System.class.getResource("/images/jarrasagua.jpg")));
+        this.gameInfo.setText("        Jarras de agua\n\nReglas:\nHay dos jarras de agua, cada una\ncon una capacidad fija.\nEl objetivo es lograr que las\njarras terminen con un cierto\ncontenido de agua aplicando\nsolamente las siguientes\nacciones:\n\n1) vaciar una jarra\n2) llenar una jarra\n3) transferir el contenido\n   de una jarra a la otra");
+    }//GEN-LAST:event_jButton1MouseEntered
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.controller.startWaterJars();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -442,6 +465,7 @@ public class GaroePlaygroundGUI extends javax.swing.JFrame implements MouseListe
     private javax.swing.JTextPane gameInfo;
     private javax.swing.JPanel gamesPanel;
     private javax.swing.JMenu helpMenu;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;

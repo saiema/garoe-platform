@@ -112,7 +112,7 @@
     </Menu>
   </NonVisualComponents>
   <Properties>
-    <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="defaultCloseOperation" type="int" value="0"/>
     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
       <Dimension value="[420, 350]"/>
     </Property>
@@ -142,7 +142,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jar2Panel" pref="202" max="32767" attributes="0"/>
           </Group>
-          <Component id="success" alignment="0" pref="402" max="32767" attributes="0"/>
+          <Component id="success" alignment="0" pref="408" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -195,7 +195,7 @@
                       </Group>
                       <Component id="jar1Ocuppied" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="64" max="32767" attributes="0"/>
+                  <EmptySpace pref="99" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -206,7 +206,7 @@
                   <Component id="jar1Capacity" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jar1Ocuppied" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="24" max="32767" attributes="0"/>
+                  <EmptySpace pref="68" max="32767" attributes="0"/>
                   <Component id="jar1TransferButton" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jar1EmptyButton" min="-2" max="-2" attributes="0"/>
@@ -285,10 +285,10 @@
                       <Component id="jar2Capacity" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Component id="jar2Ocuppied" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="97" max="32767" attributes="0"/>
+                  <EmptySpace pref="123" max="32767" attributes="0"/>
               </Group>
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace pref="69" max="32767" attributes="0"/>
+                  <EmptySpace pref="101" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="jar2FillButton" alignment="1" max="32767" attributes="0"/>
                       <Component id="jar2EmptyButton" alignment="1" max="32767" attributes="0"/>
@@ -305,7 +305,7 @@
                   <Component id="jar2Capacity" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jar2Ocuppied" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="24" max="32767" attributes="0"/>
+                  <EmptySpace pref="68" max="32767" attributes="0"/>
                   <Component id="jar2TransferButton" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jar2EmptyButton" min="-2" max="-2" attributes="0"/>

@@ -69,6 +69,7 @@ public class EngineReportGUI extends javax.swing.JDialog implements ActionListen
         jPanel1 = new javax.swing.JPanel();
         report = new javax.swing.JTextField();
 
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setResizable(false);
         addWindowListener(this);
 

@@ -49,7 +49,7 @@ public class GaroePlaygroundAbout extends javax.swing.JDialog implements ActionL
             }
         });
         this.imageGaroe.setIcon(new ImageIcon(System.class.getResource("/images/garoe.gif")));
-        this.textGaroe.setText("Prueba conceptual de la plataforma Garoé\n\nUna interfaz en común para\npoder probar las distintas pruebas de concepto\n\nVersión: 0.3\nAutores: Carla Noelia Fiori\nSimón Emmanuel Gutiérrez Brida");
+        this.textGaroe.setText("Prueba conceptual de la plataforma Garoé\n\nUna interfaz en común para\npoder probar las distintas pruebas de concepto\n\nVersión: 0.55\nAutores: Carla Noelia Fiori\nSimón Emmanuel Gutiérrez Brida");
     }
 
     /** @return the return status of this dialog - one of RET_OK or RET_CANCEL */

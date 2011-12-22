@@ -77,7 +77,7 @@ public class AboutFloodit extends javax.swing.JDialog implements  WindowListener
         aboutTextArea.setColumns(20);
         aboutTextArea.setEditable(false);
         aboutTextArea.setRows(5);
-        aboutTextArea.setText("Version: 0.44\nVersion IA: 0.42\n\nAutores:\n\nCarla N. Fiori\nSimón E. Gutiérrez Brida\n\n\tReglas\n\nPrimero se empieza seleccionado\nuno de los colores del menú.\n \nEl color de la zona cambiara\ny se extenderá a los espacios\nadyacentes que tengan el mismo\ncolor seleccionado, por lo que\npodrás cubrir zonas\ndel tablero. \n\nEl objetivo del juego es cubrir\ntodo el tablero de un mismo\ncolor en a lo sumo 25 pasos. \n");
+        aboutTextArea.setText("Version: 0.53\nVersion IA: 0.42\n\nAutores:\n\nCarla N. Fiori\nSimón E. Gutiérrez Brida\n\n\tReglas\n\nPrimero se empieza seleccionado\nuno de los colores del menú.\n \nEl color de la zona cambiara\ny se extenderá a los espacios\nadyacentes que tengan el mismo\ncolor seleccionado, por lo que\npodrás cubrir zonas\ndel tablero. \n\nEl objetivo del juego es cubrir\ntodo el tablero de un mismo\ncolor en a lo sumo 25 pasos. \n");
         jScrollPane1.setViewportView(aboutTextArea);
 
         flooditLabel.setFont(new java.awt.Font("Segoe Print", 3, 36));

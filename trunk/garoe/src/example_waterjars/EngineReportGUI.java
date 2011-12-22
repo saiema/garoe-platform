@@ -4,42 +4,39 @@
  */
 
 /*
- * AboutFloodit.java
+ * EngineReportGUI.java
  *
- * Created on 08-nov-2011, 19:44:41
+ * Created on 21-dic-2011, 22:12:30
  */
-package example_reversi;
+package example_waterjars;
 
-import example_floodit.*;
 import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowListener;
 import javax.swing.AbstractAction;
 import javax.swing.ActionMap;
-import javax.swing.ImageIcon;
 import javax.swing.InputMap;
 import javax.swing.JComponent;
+import javax.swing.JTextField;
 import javax.swing.KeyStroke;
 
 /**
  *
  * @author BigEma
  */
-public class AboutReversi extends javax.swing.JDialog implements  WindowListener {
+public class EngineReportGUI extends javax.swing.JDialog implements ActionListener, WindowListener {
 
     /** A return status code - returned if Cancel button has been pressed */
     public static final int RET_CANCEL = 0;
     /** A return status code - returned if OK button has been pressed */
     public static final int RET_OK = 1;
 
-    /** Creates new form AboutFloodit
-     * @param parent : la interfaz padre : {@code Frame}
-     * @param modal : define la forma en que se mostrará la interfaz gráfica : {@code boolean}
-     */
-    public AboutReversi(java.awt.Frame parent, boolean modal) {
+    /** Creates new form EngineReportGUI */
+    public EngineReportGUI(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        this.flooditLabel.setIcon(new ImageIcon(System.class.getResource("/images/reversi.jpg")));
+
         // Close the dialog when Esc is pressed
         String cancelName = "cancel";
         InputMap inputMap = getRootPane().getInputMap(JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
@@ -67,53 +64,78 @@ public class AboutReversi extends javax.swing.JDialog implements  WindowListener
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        aboutTextArea = new javax.swing.JTextArea();
-        flooditLabel = new javax.swing.JLabel();
-        flooditVersion = new javax.swing.JLabel();
+        okButton = new javax.swing.JButton();
+        cancelButton = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        report = new javax.swing.JTextField();
 
-        setResizable(false);
         addWindowListener(this);
 
-        aboutTextArea.setColumns(20);
-        aboutTextArea.setEditable(false);
-        aboutTextArea.setRows(5);
-        aboutTextArea.setText("Version: 0.53\nVersion IA: 0.42\n\nAutores:\n\nCarla N. Fiori\nSimón E. Gutiérrez Brida\n\n\tReglas\n\nA un jugador se le asigna un\ncolor y se dice que lleva las\nfichas de ese color, lo mismo\npara el adversario con el otro\ncolor.\n\nLos jugadores deben hacer un\nmovimiento por turno, a menos\nque no se pueda hacer ninguno,\npasando en ese caso el turno\ndel jugador contrario.\n\nEl movimiento consiste en\ncolocar una ficha de forma que\nflanquee una o varias fichas\ndel color contrario y voltear\nesas fichas para que pasen a\nmostrar el propio color.\nPara que las fichas estén\nflanqueadas, deben formar una\nlínea continua recta (diagonal\nu ortogonal) de fichas del\nmismo color entre dos fichas\ndel color contrario (una de\nellas la recién colocada y la\notra ya presente). ");
-        jScrollPane1.setViewportView(aboutTextArea);
+        okButton.setText("OK");
+        okButton.addActionListener(this);
 
-        flooditLabel.setFont(new java.awt.Font("Segoe Print", 3, 36));
+        cancelButton.setText("Cancel");
+        cancelButton.addActionListener(this);
 
-        flooditVersion.setFont(new java.awt.Font("Courier New", 3, 14));
-        flooditVersion.setText("beta");
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Reporte"));
+
+        report.setEditable(false);
+        report.setText("jTextField1");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(report, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(report, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(flooditLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
-                .addComponent(flooditVersion)
+                .addContainerGap(250, Short.MAX_VALUE)
+                .addComponent(okButton, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cancelButton)
                 .addContainerGap())
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {cancelButton, okButton});
+
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(flooditVersion)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(flooditLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cancelButton)
+                    .addComponent(okButton))
+                .addContainerGap())
         );
+
+        getRootPane().setDefaultButton(okButton);
 
         pack();
     }
 
     // Code for dispatching events from components to event handlers.
+
+    public void actionPerformed(java.awt.event.ActionEvent evt) {
+        if (evt.getSource() == okButton) {
+            EngineReportGUI.this.okButtonActionPerformed(evt);
+        }
+        else if (evt.getSource() == cancelButton) {
+            EngineReportGUI.this.cancelButtonActionPerformed(evt);
+        }
+    }
 
     public void windowActivated(java.awt.event.WindowEvent evt) {
     }
@@ -122,8 +144,8 @@ public class AboutReversi extends javax.swing.JDialog implements  WindowListener
     }
 
     public void windowClosing(java.awt.event.WindowEvent evt) {
-        if (evt.getSource() == AboutReversi.this) {
-            AboutReversi.this.closeDialog(evt);
+        if (evt.getSource() == EngineReportGUI.this) {
+            EngineReportGUI.this.closeDialog(evt);
         }
     }
 
@@ -138,7 +160,15 @@ public class AboutReversi extends javax.swing.JDialog implements  WindowListener
 
     public void windowOpened(java.awt.event.WindowEvent evt) {
     }// </editor-fold>//GEN-END:initComponents
+
+    private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
+        doClose(RET_OK);
+    }//GEN-LAST:event_okButtonActionPerformed
     
+    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
+        doClose(RET_CANCEL);
+    }//GEN-LAST:event_cancelButtonActionPerformed
+
     /** Closes the dialog */
     private void closeDialog(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_closeDialog
         doClose(RET_CANCEL);
@@ -167,13 +197,13 @@ public class AboutReversi extends javax.swing.JDialog implements  WindowListener
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AboutReversi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EngineReportGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AboutReversi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EngineReportGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AboutReversi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EngineReportGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AboutReversi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(EngineReportGUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -181,7 +211,7 @@ public class AboutReversi extends javax.swing.JDialog implements  WindowListener
         java.awt.EventQueue.invokeLater(new Runnable() {
 
             public void run() {
-                AboutReversi dialog = new AboutReversi(new javax.swing.JFrame(), true);
+                EngineReportGUI dialog = new EngineReportGUI(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
 
                     @Override
@@ -194,10 +224,15 @@ public class AboutReversi extends javax.swing.JDialog implements  WindowListener
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextArea aboutTextArea;
-    private javax.swing.JLabel flooditLabel;
-    private javax.swing.JLabel flooditVersion;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton cancelButton;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton okButton;
+    private javax.swing.JTextField report;
     // End of variables declaration//GEN-END:variables
     private int returnStatus = RET_CANCEL;
+
+    public JTextField getReport() {
+        return report;
+    }
+    
 }

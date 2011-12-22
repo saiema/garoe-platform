@@ -79,12 +79,12 @@ public class DepthFirstSearchEngine<State extends IBasicState> extends SearchEng
 
     @Override
     public String getReport() {
-        return "report";
+        return "nodos visitados: "+this.visitedNodes+" | "+"tiempo utilizado: "+this.timeUsed+"ms";
     }
 
     @Override
     public String status() {
-        return "status";
+        return "nodos visitados: "+this.visitedNodes+" | "+"tiempo utilizado: "+this.timeUsed+"ms";
     }
    
 }

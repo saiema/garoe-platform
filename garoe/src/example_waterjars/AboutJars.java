@@ -77,7 +77,7 @@ public class AboutJars extends javax.swing.JDialog implements  WindowListener {
         aboutTextArea.setColumns(20);
         aboutTextArea.setEditable(false);
         aboutTextArea.setRows(5);
-        aboutTextArea.setText("Version: ???\nVersion IA: ???\n\nAutores:\n\nCarla N. Fiori\nSimón E. Gutiérrez Brida\n\n\tReglas\n\nHay dos jarras de agua, cada una\ncon una capacidad fija.\nEl objetivo es lograr que las\njarras terminen con un cierto\ncontenido de agua aplicando\nsolamente las siguientes\nacciones:\n\n1) vaciar una jarra\n2) llenar una jarra\n3) transferir el contenido\n   de una jarra a la otra ");
+        aboutTextArea.setText("Version: 0.55\nVersion IA: 0.54\n\nAutores:\n\nCarla N. Fiori\nSimón E. Gutiérrez Brida\n\n\tReglas\n\nHay dos jarras de agua, cada una\ncon una capacidad fija.\nEl objetivo es lograr que las\njarras terminen con un cierto\ncontenido de agua aplicando\nsolamente las siguientes\nacciones:\n\n1) vaciar una jarra\n2) llenar una jarra\n3) transferir el contenido\n   de una jarra a la otra ");
         jScrollPane1.setViewportView(aboutTextArea);
 
         flooditLabel.setFont(new java.awt.Font("Segoe Print", 3, 36));

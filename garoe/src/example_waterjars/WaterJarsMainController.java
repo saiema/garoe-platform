@@ -160,6 +160,9 @@ public class WaterJarsMainController {
         }
         if (solutionFound) {
             nextHint();
+            EngineReportGUI report = new EngineReportGUI(this.gui,true);
+            report.getReport().setText(this.ai.getReport());
+            report.setVisible(true);
         }
         return solutionFound;
     }

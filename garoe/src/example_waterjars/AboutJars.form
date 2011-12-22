@@ -64,7 +64,7 @@
             <Property name="columns" type="int" value="20"/>
             <Property name="editable" type="boolean" value="false"/>
             <Property name="rows" type="int" value="5"/>
-            <Property name="text" type="java.lang.String" value="Version: ???&#xa;Version IA: ???&#xa;&#xa;Autores:&#xa;&#xa;Carla N. Fiori&#xa;Sim&#xf3;n E. Guti&#xe9;rrez Brida&#xa;&#xa;&#x9;Reglas&#xa;&#xa;Hay dos jarras de agua, cada una&#xa;con una capacidad fija.&#xa;El objetivo es lograr que las&#xa;jarras terminen con un cierto&#xa;contenido de agua aplicando&#xa;solamente las siguientes&#xa;acciones:&#xa;&#xa;1) vaciar una jarra&#xa;2) llenar una jarra&#xa;3) transferir el contenido&#xa;   de una jarra a la otra "/>
+            <Property name="text" type="java.lang.String" value="Version: 0.55&#xa;Version IA: 0.54&#xa;&#xa;Autores:&#xa;&#xa;Carla N. Fiori&#xa;Sim&#xf3;n E. Guti&#xe9;rrez Brida&#xa;&#xa;&#x9;Reglas&#xa;&#xa;Hay dos jarras de agua, cada una&#xa;con una capacidad fija.&#xa;El objetivo es lograr que las&#xa;jarras terminen con un cierto&#xa;contenido de agua aplicando&#xa;solamente las siguientes&#xa;acciones:&#xa;&#xa;1) vaciar una jarra&#xa;2) llenar una jarra&#xa;3) transferir el contenido&#xa;   de una jarra a la otra "/>
           </Properties>
         </Component>
       </SubComponents>

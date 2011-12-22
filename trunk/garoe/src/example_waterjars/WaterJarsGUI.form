@@ -16,8 +16,11 @@
                   <KeyStroke key="Ctrl+N"/>
                 </Property>
                 <Property name="mnemonic" type="int" value="110"/>
-                <Property name="text" type="java.lang.String" value="Nuevo"/>
+                <Property name="text" type="java.lang.String" value="Reiniciar"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newMenuItemActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="exitMenuItem">
               <Properties>
@@ -59,6 +62,9 @@
                 <Property name="mnemonic" type="int" value="102"/>
                 <Property name="text" type="java.lang.String" value="Preferencias IA"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="iaMenuItemActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>

@@ -38,7 +38,7 @@ public class AboutJars extends javax.swing.JDialog implements  WindowListener {
     public AboutJars(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        //this.flooditLabel.setIcon(new ImageIcon(System.class.getResource("/images/reversi.jpg")));
+        this.flooditLabel.setIcon(new ImageIcon(System.class.getResource("/images/jarrasagua.jpg")));
         // Close the dialog when Esc is pressed
         String cancelName = "cancel";
         InputMap inputMap = getRootPane().getInputMap(JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);

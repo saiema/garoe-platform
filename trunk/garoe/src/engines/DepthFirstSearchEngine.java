@@ -21,6 +21,8 @@ import java.util.List;
 public class DepthFirstSearchEngine<State extends IBasicState> extends SearchEngine<State> {
 
     private List<State> visited;
+    private int visitedNodes;
+    private long timeUsed;
     
     /**
      * Constructor de la clase
@@ -37,7 +39,13 @@ public class DepthFirstSearchEngine<State extends IBasicState> extends SearchEng
         visited = new LinkedList<State>();
         path = new LinkedList<State>();
         State initial = this.searchProblem.getInitialState();
-        return performSearch(initial);
+        this.visitedNodes = 0;
+        this.timeUsed = 0;
+        long startingTime = System.nanoTime();
+        boolean found = performSearch(initial);
+        long finishTime = System.nanoTime();
+        this.timeUsed = finishTime - startingTime;
+        return found;
     }
     
     
@@ -47,7 +55,7 @@ public class DepthFirstSearchEngine<State extends IBasicState> extends SearchEng
      * @return true sii se encuentra un estado exitoso : {@code boolean} 
      */
     private boolean performSearch (State state){
-        if (!visited.contains(state)) visited.add(state);
+        if (!visited.contains(state)) {visited.add(state);this.visitedNodes++;}
         if (state.success()){
             path.add(state);
             return true;
@@ -58,6 +66,7 @@ public class DepthFirstSearchEngine<State extends IBasicState> extends SearchEng
                 State current = succesors.get(i);
                 if (!visited.contains(current)) {
                     visited.add(current);
+                    this.visitedNodes++;
                     if (performSearch(current)){
                         found = true;
                         path.add(state);

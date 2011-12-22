@@ -180,7 +180,8 @@ public class WaterJarsGUI extends javax.swing.JFrame implements ActionListener {
 
         newMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.CTRL_MASK));
         newMenuItem.setMnemonic('n');
-        newMenuItem.setText("Nuevo");
+        newMenuItem.setText("Reiniciar");
+        newMenuItem.addActionListener(this);
         fileMenu.add(newMenuItem);
 
         exitMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_X, java.awt.event.InputEvent.CTRL_MASK));
@@ -203,6 +204,7 @@ public class WaterJarsGUI extends javax.swing.JFrame implements ActionListener {
         iaMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_I, java.awt.event.InputEvent.CTRL_MASK));
         iaMenuItem.setMnemonic('f');
         iaMenuItem.setText("Preferencias IA");
+        iaMenuItem.addActionListener(this);
         preferencesMenu.add(iaMenuItem);
 
         menuBar.add(preferencesMenu);
@@ -281,11 +283,17 @@ public class WaterJarsGUI extends javax.swing.JFrame implements ActionListener {
         else if (evt.getSource() == estadoInicialMenuItem) {
             WaterJarsGUI.this.estadoInicialMenuItemActionPerformed(evt);
         }
+        else if (evt.getSource() == clueMenuItem) {
+            WaterJarsGUI.this.clueMenuItemActionPerformed(evt);
+        }
         else if (evt.getSource() == aboutMenuItem) {
             WaterJarsGUI.this.aboutMenuItemActionPerformed(evt);
         }
-        else if (evt.getSource() == clueMenuItem) {
-            WaterJarsGUI.this.clueMenuItemActionPerformed(evt);
+        else if (evt.getSource() == newMenuItem) {
+            WaterJarsGUI.this.newMenuItemActionPerformed(evt);
+        }
+        else if (evt.getSource() == iaMenuItem) {
+            WaterJarsGUI.this.iaMenuItemActionPerformed(evt);
         }
     }// </editor-fold>//GEN-END:initComponents
 
@@ -337,6 +345,17 @@ public class WaterJarsGUI extends javax.swing.JFrame implements ActionListener {
     private void clueMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clueMenuItemActionPerformed
         this.mainController.hint();
     }//GEN-LAST:event_clueMenuItemActionPerformed
+
+    private void newMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newMenuItemActionPerformed
+        this.mainController.resetState();
+    }//GEN-LAST:event_newMenuItemActionPerformed
+
+    private void iaMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iaMenuItemActionPerformed
+        IAgui iaGui = new IAgui();
+        WaterJarsIAController iaController = new WaterJarsIAController(this.mainController, iaGui);
+        iaGui.setController(iaController);
+        iaController.show();
+    }//GEN-LAST:event_iaMenuItemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -404,6 +423,9 @@ public class WaterJarsGUI extends javax.swing.JFrame implements ActionListener {
 
 
     public void update(WaterJarsState state) {
+        //limpiar cartel de exito
+        this.success.setBackground(Color.RED);
+        
         //Update jars status
         this.jar1Capacity.setText("capacidad: "+state.getJar1Cap());
         this.jar2Capacity.setText("capacidad: "+state.getJar2Cap());
@@ -491,12 +513,12 @@ public class WaterJarsGUI extends javax.swing.JFrame implements ActionListener {
     }
     
     private boolean isHintMarked() {
-        boolean f1b = this.jar1FillButton.getBackground() != null;
-        boolean f2b = this.jar2FillButton.getBackground() != null;
-        boolean e1b = this.jar1EmptyButton.getBackground() != null;
-        boolean e2b = this.jar2EmptyButton.getBackground() != null;
-        boolean t1b = this.jar1TransferButton.getBackground() != null;
-        boolean t2b = this.jar2TransferButton.getBackground() != null;
+        boolean f1b = this.jar1FillButton.getBackground() == Color.GREEN;
+        boolean f2b = this.jar2FillButton.getBackground() == Color.GREEN;
+        boolean e1b = this.jar1EmptyButton.getBackground() == Color.GREEN;
+        boolean e2b = this.jar2EmptyButton.getBackground() == Color.GREEN;
+        boolean t1b = this.jar1TransferButton.getBackground() == Color.GREEN;
+        boolean t2b = this.jar2TransferButton.getBackground() == Color.GREEN;
         return f1b || f2b || e1b || e2b || t1b || t2b;
     }
 

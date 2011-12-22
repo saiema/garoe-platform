@@ -5,6 +5,7 @@
 package example_waterjars;
 
 import engines.DepthFirstSearchEngine;
+import engines.IterativeDeepeningSearchEngine;
 import examples.GaroePlaygroundController;
 import framework.IRule;
 import framework.SearchEngine;
@@ -19,6 +20,7 @@ import java.util.List;
  */
 public class WaterJarsMainController {
     private WaterJarsState state;
+    private WaterJarsState stateBackup;
     private WaterJarsGUI gui;
     private boolean standAlone = true;
     private GaroePlaygroundController mainController = null;
@@ -31,6 +33,7 @@ public class WaterJarsMainController {
     public WaterJarsMainController(WaterJarsState state, WaterJarsGUI gui) {
         this.gui = gui;
         this.state = state;
+        this.stateBackup = state.clone();
         this.rules = new LinkedList<IRule<WaterJarsState>>();
         rules.add(new WaterJarsEmptyRule());
         rules.add(new WaterJarsFillRule());
@@ -40,15 +43,31 @@ public class WaterJarsMainController {
     }
     
     public void changeAI(String aiName) {
-        //TODO: COMPLETE
+        if (aiName.compareToIgnoreCase("DepthFirstSearhEngine")==0) {
+            this.ai = new DepthFirstSearchEngine<WaterJarsState>(problem);
+        } else if (aiName.compareToIgnoreCase("IterativeDeepeningSearchEngine")==0) {
+            this.ai = new IterativeDeepeningSearchEngine<WaterJarsState>(problem);
+        }
     }
     
     public String currentAI() {
-        return ai.getClass().getName(); //TODO: CHECK!!!!
+        return ai.getClass().getSimpleName(); //TODO: CHECK!!!!
+    }
+
+    public SearchEngine<WaterJarsState> getAi() {
+        return ai;
     }
     
     public void setIterativeDeepening(int minHeight, int stepSize, int maxIterations) {
-        //TODO: COMPLETE
+        ((IterativeDeepeningSearchEngine)this.ai).setMaxTreeLevel(minHeight);
+        ((IterativeDeepeningSearchEngine)this.ai).setStep(stepSize);
+        ((IterativeDeepeningSearchEngine)this.ai).setMaxIterations(maxIterations);
+    }
+    
+    public void resetState() {
+        this.state = this.stateBackup.clone();
+        this.gui.unpaintAllButtons();
+        this.gui.update(state);
     }
     
     public void setMainController(GaroePlaygroundController mainController) {
@@ -58,6 +77,7 @@ public class WaterJarsMainController {
     
     public void setNewState(WaterJarsState state) {
         this.state = state;
+        this.stateBackup = state.clone();
         this.gui.unpaintAllButtons();
     }
     

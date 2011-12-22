@@ -10,15 +10,24 @@
  */
 package example_waterjars;
 
+import java.awt.event.ActionListener;
+import java.util.List;
+import javax.swing.event.ChangeListener;
+
 /**
  *
  * @author BigEma
  */
-public class IAgui extends javax.swing.JFrame {
+public class IAgui extends javax.swing.JFrame implements ActionListener, ChangeListener {
+    private WaterJarsIAController controller;
 
     /** Creates new form IAgui */
     public IAgui() {
         initComponents();
+    }
+    
+    public void setController(WaterJarsIAController controller) {
+        this.controller = controller;
     }
 
     /** This method is called from within the constructor to
@@ -52,6 +61,7 @@ public class IAgui extends javax.swing.JFrame {
         jLabel1.setText("motor");
 
         engineSelector.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        engineSelector.addActionListener(this);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -61,7 +71,7 @@ public class IAgui extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(engineSelector, 0, 323, Short.MAX_VALUE)
+                .addComponent(engineSelector, 0, 362, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -78,7 +88,8 @@ public class IAgui extends javax.swing.JFrame {
 
         jLabel2.setText("iteraciones máximas");
 
-        maxIterations.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(1)));
+        maxIterations.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(0), Integer.valueOf(-1), null, Integer.valueOf(1)));
+        maxIterations.addChangeListener(this);
 
         jLabel3.setForeground(new java.awt.Color(153, 153, 153));
         jLabel3.setText("(infinitas: 0)");
@@ -86,10 +97,12 @@ public class IAgui extends javax.swing.JFrame {
         jLabel4.setText("altura inicial");
 
         initialMaxHeight.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(1), Integer.valueOf(1), null, Integer.valueOf(1)));
+        initialMaxHeight.addChangeListener(this);
 
         jLabel5.setText("tamaño incrementos");
 
         stepSize.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(1), Integer.valueOf(1), null, Integer.valueOf(1)));
+        stepSize.addChangeListener(this);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -134,8 +147,10 @@ public class IAgui extends javax.swing.JFrame {
         );
 
         saveButton.setText("guardar");
+        saveButton.addActionListener(this);
 
         cancelButton.setText("cancelar");
+        cancelButton.addActionListener(this);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -144,7 +159,7 @@ public class IAgui extends javax.swing.JFrame {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(237, Short.MAX_VALUE)
+                .addContainerGap(262, Short.MAX_VALUE)
                 .addComponent(cancelButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(saveButton)
@@ -164,7 +179,57 @@ public class IAgui extends javax.swing.JFrame {
         );
 
         pack();
+    }
+
+    // Code for dispatching events from components to event handlers.
+
+    public void actionPerformed(java.awt.event.ActionEvent evt) {
+        if (evt.getSource() == engineSelector) {
+            IAgui.this.engineSelectorActionPerformed(evt);
+        }
+        else if (evt.getSource() == saveButton) {
+            IAgui.this.saveButtonActionPerformed(evt);
+        }
+        else if (evt.getSource() == cancelButton) {
+            IAgui.this.cancelButtonActionPerformed(evt);
+        }
+    }
+
+    public void stateChanged(javax.swing.event.ChangeEvent evt) {
+        if (evt.getSource() == maxIterations) {
+            IAgui.this.maxIterationsStateChanged(evt);
+        }
+        else if (evt.getSource() == initialMaxHeight) {
+            IAgui.this.initialMaxHeightStateChanged(evt);
+        }
+        else if (evt.getSource() == stepSize) {
+            IAgui.this.stepSizeStateChanged(evt);
+        }
     }// </editor-fold>//GEN-END:initComponents
+
+    private void engineSelectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_engineSelectorActionPerformed
+        this.controller.setSelectedIA((String)this.engineSelector.getSelectedItem());
+    }//GEN-LAST:event_engineSelectorActionPerformed
+
+    private void maxIterationsStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_maxIterationsStateChanged
+        this.controller.setMaxIterations((Integer)this.maxIterations.getValue());
+    }//GEN-LAST:event_maxIterationsStateChanged
+
+    private void initialMaxHeightStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_initialMaxHeightStateChanged
+        this.controller.setMaxTreeLevel((Integer)this.initialMaxHeight.getValue());
+    }//GEN-LAST:event_initialMaxHeightStateChanged
+
+    private void stepSizeStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_stepSizeStateChanged
+        this.controller.setStep((Integer)this.stepSize.getValue());
+    }//GEN-LAST:event_stepSizeStateChanged
+
+    private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
+        this.controller.save();
+    }//GEN-LAST:event_saveButtonActionPerformed
+
+    private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
+        this.controller.exit();
+    }//GEN-LAST:event_cancelButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -216,4 +281,35 @@ public class IAgui extends javax.swing.JFrame {
     private javax.swing.JButton saveButton;
     private javax.swing.JSpinner stepSize;
     // End of variables declaration//GEN-END:variables
+
+
+    public void loadSelector(List<String> ias) {
+        this.engineSelector.setModel(new javax.swing.DefaultComboBoxModel(
+                        ias.toArray()
+                        ));
+    }
+    
+    private void setSelectedIA(String ia) {
+        this.engineSelector.getModel().setSelectedItem(ia);
+    }
+    
+    private void enableIDSEO(boolean enable) {
+        this.maxIterations.setEnabled(enable);
+        this.initialMaxHeight.setEnabled(enable);
+        this.stepSize.setEnabled(enable);
+    }
+    
+    public void update(String ia) {
+        setSelectedIA(ia);
+        if (ia.compareToIgnoreCase("IterativeDeepeningSearchEngine")==0) {
+            enableIDSEO(true);
+            this.initialMaxHeight.setValue(this.controller.getMaxTreeLevel());
+            this.stepSize.setValue(this.controller.getStep());
+            this.maxIterations.setValue(this.controller.getMaxIterations());
+        } else {
+            enableIDSEO(false);
+        }
+    }
+
+
 }

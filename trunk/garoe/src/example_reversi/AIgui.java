@@ -53,7 +53,7 @@ public class AIgui extends javax.swing.JFrame implements ActionListener {
         saveButton = new javax.swing.JButton();
         cancelButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(this.winClose());
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setResizable(false);
 
         engineLabel.setText("AI engine");
@@ -103,7 +103,7 @@ public class AIgui extends javax.swing.JFrame implements ActionListener {
                             .addComponent(treeLevelSpinner, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(saveButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 262, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 290, Short.MAX_VALUE)
                         .addComponent(cancelButton)))
                 .addContainerGap())
         );
@@ -158,11 +158,6 @@ public class AIgui extends javax.swing.JFrame implements ActionListener {
         this.controller.close();
     }//GEN-LAST:event_cancelButtonActionPerformed
 
-    
-    private int winClose() {
-        this.cancelButtonActionPerformed(null);
-        return 0;
-    }
     
     /**
      * @param args the command line arguments

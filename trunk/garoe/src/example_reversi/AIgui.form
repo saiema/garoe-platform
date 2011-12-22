@@ -2,9 +2,7 @@
 
 <Form version="1.5" maxVersion="1.7" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
-    <Property name="defaultCloseOperation" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-      <Connection code="this.winClose()" type="code"/>
-    </Property>
+    <Property name="defaultCloseOperation" type="int" value="0"/>
     <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
@@ -48,7 +46,7 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="saveButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="262" max="32767" attributes="0"/>
+                      <EmptySpace pref="290" max="32767" attributes="0"/>
                       <Component id="cancelButton" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>

@@ -25,6 +25,7 @@ import utils.Pair;
  * @author BigEma
  */
 public class ReversiGUI extends javax.swing.JFrame implements ActionListener, MouseListener {
+    private static final long serialVersionUID = 1L;
     private ReversiController controller;
     private List<Pair<Integer,Integer>> currentAvailableMoves = new LinkedList<Pair<Integer,Integer>>();
     private ReversiBoardRenderer render;
@@ -79,7 +80,7 @@ public class ReversiGUI extends javax.swing.JFrame implements ActionListener, Mo
         helpMenu = new javax.swing.JMenu();
         aboutMenuItem = new javax.swing.JMenuItem();
 
-        setDefaultCloseOperation(this.winClose());
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setResizable(false);
 
         player1Name.setText("jugador1");
@@ -320,11 +321,6 @@ public class ReversiGUI extends javax.swing.JFrame implements ActionListener, Mo
         this.controller.exitGame();
     }//GEN-LAST:event_exitMenuItemActionPerformed
 
-    
-    private int winClose() {
-        this.exitMenuItemActionPerformed(null);
-        return 0;
-    }
     
     private void boardMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_boardMouseReleased
         int row = this.board.rowAtPoint(evt.getPoint());

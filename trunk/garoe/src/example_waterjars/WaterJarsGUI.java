@@ -63,7 +63,7 @@ public class WaterJarsGUI extends javax.swing.JFrame implements ActionListener {
         helpMenu = new javax.swing.JMenu();
         aboutMenuItem = new javax.swing.JMenuItem();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(420, 350));
         setResizable(false);
 
@@ -98,7 +98,7 @@ public class WaterJarsGUI extends javax.swing.JFrame implements ActionListener {
                         .addComponent(jar1EmptyButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jar1FillButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(jar1Ocuppied))
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addContainerGap(99, Short.MAX_VALUE))
         );
         jar1PanelLayout.setVerticalGroup(
             jar1PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -107,7 +107,7 @@ public class WaterJarsGUI extends javax.swing.JFrame implements ActionListener {
                 .addComponent(jar1Capacity)
                 .addGap(18, 18, 18)
                 .addComponent(jar1Ocuppied)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
                 .addComponent(jar1TransferButton)
                 .addGap(18, 18, 18)
                 .addComponent(jar1EmptyButton)
@@ -143,9 +143,9 @@ public class WaterJarsGUI extends javax.swing.JFrame implements ActionListener {
                 .addGroup(jar2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jar2Capacity)
                     .addComponent(jar2Ocuppied))
-                .addContainerGap(97, Short.MAX_VALUE))
+                .addContainerGap(123, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jar2PanelLayout.createSequentialGroup()
-                .addContainerGap(69, Short.MAX_VALUE)
+                .addContainerGap(101, Short.MAX_VALUE)
                 .addGroup(jar2PanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jar2FillButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jar2EmptyButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -159,7 +159,7 @@ public class WaterJarsGUI extends javax.swing.JFrame implements ActionListener {
                 .addComponent(jar2Capacity)
                 .addGap(18, 18, 18)
                 .addComponent(jar2Ocuppied)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
                 .addComponent(jar2TransferButton)
                 .addGap(18, 18, 18)
                 .addComponent(jar2EmptyButton)
@@ -241,7 +241,7 @@ public class WaterJarsGUI extends javax.swing.JFrame implements ActionListener {
                 .addComponent(jar1Panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jar2Panel, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE))
-            .addComponent(success, javax.swing.GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE)
+            .addComponent(success, javax.swing.GroupLayout.DEFAULT_SIZE, 408, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -277,23 +277,23 @@ public class WaterJarsGUI extends javax.swing.JFrame implements ActionListener {
         else if (evt.getSource() == jar2TransferButton) {
             WaterJarsGUI.this.jar2TransferButtonActionPerformed(evt);
         }
+        else if (evt.getSource() == newMenuItem) {
+            WaterJarsGUI.this.newMenuItemActionPerformed(evt);
+        }
         else if (evt.getSource() == exitMenuItem) {
             WaterJarsGUI.this.exitMenuItemActionPerformed(evt);
         }
         else if (evt.getSource() == estadoInicialMenuItem) {
             WaterJarsGUI.this.estadoInicialMenuItemActionPerformed(evt);
         }
+        else if (evt.getSource() == iaMenuItem) {
+            WaterJarsGUI.this.iaMenuItemActionPerformed(evt);
+        }
         else if (evt.getSource() == clueMenuItem) {
             WaterJarsGUI.this.clueMenuItemActionPerformed(evt);
         }
         else if (evt.getSource() == aboutMenuItem) {
             WaterJarsGUI.this.aboutMenuItemActionPerformed(evt);
-        }
-        else if (evt.getSource() == newMenuItem) {
-            WaterJarsGUI.this.newMenuItemActionPerformed(evt);
-        }
-        else if (evt.getSource() == iaMenuItem) {
-            WaterJarsGUI.this.iaMenuItemActionPerformed(evt);
         }
     }// </editor-fold>//GEN-END:initComponents
 

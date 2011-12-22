@@ -72,7 +72,7 @@ public class SettingsGUI extends javax.swing.JFrame implements  ActionListener {
         saveButton = new javax.swing.JButton();
         cancelButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(this.winClose());
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setResizable(false);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("preferencias jugador 1"));
@@ -188,7 +188,7 @@ public class SettingsGUI extends javax.swing.JFrame implements  ActionListener {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(player2ColorLabel)
                     .addComponent(player2Color))
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addContainerGap(77, Short.MAX_VALUE))
         );
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("preferencias guia jugadas"));
@@ -225,7 +225,7 @@ public class SettingsGUI extends javax.swing.JFrame implements  ActionListener {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                                 .addGap(15, 15, 15)
                                 .addComponent(hintBlackColorSelector, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(221, Short.MAX_VALUE))
+                .addContainerGap(222, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -320,11 +320,6 @@ public class SettingsGUI extends javax.swing.JFrame implements  ActionListener {
         this.controller.close();
     }//GEN-LAST:event_cancelButtonActionPerformed
 
-    
-    private int winClose() {
-        this.cancelButtonActionPerformed(null);
-        return 0;
-    }
     
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
         int colorPlayer1 = this.getPlayer1Color().getText().compareToIgnoreCase("white") == 0?ReversiToken.WHITE:ReversiToken.BLACK;

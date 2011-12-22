@@ -50,7 +50,7 @@ public class EndGameDialog extends javax.swing.JFrame implements ActionListener 
         message = new javax.swing.JTextField();
         okButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(this.winClose());
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setBounds(new java.awt.Rectangle(0, 22, 300, 300));
         setResizable(false);
         getContentPane().setLayout(new java.awt.GridBagLayout());
@@ -104,10 +104,6 @@ public class EndGameDialog extends javax.swing.JFrame implements ActionListener 
         this.dispose();
     }//GEN-LAST:event_okButtonActionPerformed
 
-    private int winClose() {
-        this.okButtonActionPerformed(null);
-        return 0;
-    }
     
     /**
      * @param args the command line arguments

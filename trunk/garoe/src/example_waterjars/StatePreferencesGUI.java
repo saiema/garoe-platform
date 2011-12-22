@@ -60,7 +60,7 @@ public class StatePreferencesGUI extends javax.swing.JFrame implements ActionLis
         saveButton = new javax.swing.JButton();
         cancelButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setResizable(false);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Estado inicial"));
@@ -93,7 +93,7 @@ public class StatePreferencesGUI extends javax.swing.JFrame implements ActionLis
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jar1Cont)
                     .addComponent(jar1Cap, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE))
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addContainerGap(78, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -106,7 +106,7 @@ public class StatePreferencesGUI extends javax.swing.JFrame implements ActionLis
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel3)
                     .addComponent(jar1Cont, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Jarra 2"));
@@ -151,7 +151,7 @@ public class StatePreferencesGUI extends javax.swing.JFrame implements ActionLis
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel4)
                     .addComponent(jar2Cont, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -199,13 +199,13 @@ public class StatePreferencesGUI extends javax.swing.JFrame implements ActionLis
                     .addComponent(jar1Used)
                     .addComponent(jar2Used)
                     .addComponent(useAnyJar))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(generalGoal, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jar2Goal)
                         .addComponent(jar1Goal, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)))
-                .addContainerGap(110, Short.MAX_VALUE))
+                .addContainerGap(124, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -237,7 +237,7 @@ public class StatePreferencesGUI extends javax.swing.JFrame implements ActionLis
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(236, Short.MAX_VALUE)
+                .addContainerGap(283, Short.MAX_VALUE)
                 .addComponent(cancelButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(saveButton)
@@ -263,20 +263,20 @@ public class StatePreferencesGUI extends javax.swing.JFrame implements ActionLis
     // Code for dispatching events from components to event handlers.
 
     public void actionPerformed(java.awt.event.ActionEvent evt) {
-        if (evt.getSource() == useAnyJar) {
-            StatePreferencesGUI.this.useAnyJarActionPerformed(evt);
-        }
-        else if (evt.getSource() == jar1Used) {
+        if (evt.getSource() == jar1Used) {
             StatePreferencesGUI.this.jar1UsedActionPerformed(evt);
         }
         else if (evt.getSource() == jar2Used) {
             StatePreferencesGUI.this.jar2UsedActionPerformed(evt);
         }
-        else if (evt.getSource() == cancelButton) {
-            StatePreferencesGUI.this.cancelButtonActionPerformed(evt);
+        else if (evt.getSource() == useAnyJar) {
+            StatePreferencesGUI.this.useAnyJarActionPerformed(evt);
         }
         else if (evt.getSource() == saveButton) {
             StatePreferencesGUI.this.saveButtonActionPerformed(evt);
+        }
+        else if (evt.getSource() == cancelButton) {
+            StatePreferencesGUI.this.cancelButtonActionPerformed(evt);
         }
     }
 

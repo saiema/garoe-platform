@@ -53,6 +53,13 @@ Flood-It:
 ctrl+p : pista
 ctrl+j : interfaz de IA
 
+Jarras de agua:
+
+ctrl+n : reiniciar problema (reinicia los contenidos de las jarras al valor inicial)
+ctrl+p : activa modo pista (los movimientos para resolver se marcan en verde)
+ctrl+e : interfaz para definición del problema
+ctrl+i : interfaz de preferencias de IA
+
 -----------------
 Notas especiales
 -----------------

@@ -8,7 +8,9 @@ package framework;
  */
 public interface IBasicState {
 	
-	
+	//TODO: HACER Y COMENTAR
+    //public IBasicState getParent();
+    
 	/**
 	 * Indica que este estado no puede tener ningun estado sucesor, es decir que es una hoja
 	 * @return true sii este estado es hoja : {@code boolean}

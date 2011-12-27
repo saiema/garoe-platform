@@ -67,7 +67,9 @@ public class EngineReportGUI extends javax.swing.JDialog implements ActionListen
         okButton = new javax.swing.JButton();
         cancelButton = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
+        engineUsedLabel = new javax.swing.JLabel();
         report = new javax.swing.JTextField();
+        engineUsed = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setResizable(false);
@@ -81,20 +83,34 @@ public class EngineReportGUI extends javax.swing.JDialog implements ActionListen
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Reporte"));
 
+        engineUsedLabel.setText("Motor utilizado:");
+
         report.setEditable(false);
         report.setText("jTextField1");
+
+        engineUsed.setEditable(false);
+        engineUsed.setText("jTextField1");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(report, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(engineUsedLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(engineUsed, javax.swing.GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE))
+            .addComponent(report, javax.swing.GroupLayout.DEFAULT_SIZE, 569, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(engineUsedLabel)
+                    .addComponent(engineUsed, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(report, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -102,7 +118,7 @@ public class EngineReportGUI extends javax.swing.JDialog implements ActionListen
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(250, Short.MAX_VALUE)
+                .addContainerGap(386, Short.MAX_VALUE)
                 .addComponent(okButton, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cancelButton)
@@ -227,14 +243,20 @@ public class EngineReportGUI extends javax.swing.JDialog implements ActionListen
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cancelButton;
+    private javax.swing.JTextField engineUsed;
+    private javax.swing.JLabel engineUsedLabel;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton okButton;
     private javax.swing.JTextField report;
     // End of variables declaration//GEN-END:variables
     private int returnStatus = RET_CANCEL;
 
-    public JTextField getReport() {
-        return report;
+    public void setReport(String report) {
+        this.report.setText(report);
+    }
+    
+    public void setEngine(String engine) {
+        this.engineUsed.setText(engine);
     }
     
 }

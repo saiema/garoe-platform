@@ -34,6 +34,7 @@ public class FlooditState implements IinformedState {
     //generacion
     static public final int ALL_RANDOM_MODE = 0;
     static public final int REDUCED_BY_CONTEXT_MODE = 1;
+    static public final int REDUCED_BY_CONTEXT_MODE_2 = 2;
     private int genMode = ALL_RANDOM_MODE;
 	
 	
@@ -54,6 +55,18 @@ public class FlooditState implements IinformedState {
 		firstToken = board[0][0];
 	}
     
+    public void easy() {
+        this.genMode = REDUCED_BY_CONTEXT_MODE;
+    }
+    
+    public void medium() {
+        this.genMode = REDUCED_BY_CONTEXT_MODE_2;
+    }
+    
+    public void hard() {
+        this.genMode = ALL_RANDOM_MODE;
+    }
+    
     public void setGeneratorMode(int mode) {
         this.genMode = mode;
     }
@@ -64,7 +77,7 @@ public class FlooditState implements IinformedState {
         int color = 0;
         if (mode == this.ALL_RANDOM_MODE) {
             color = colorGenerator.nextInt(DEFAULT_COLORS);
-        } else if (mode == this.REDUCED_BY_CONTEXT_MODE) {
+        } else if (mode == this.REDUCED_BY_CONTEXT_MODE || mode == this.REDUCED_BY_CONTEXT_MODE_2) {
             if (row == 0 && col == 0) {
                 return genColor(this.ALL_RANDOM_MODE,row,col);
             } else if (row == 0) {
@@ -76,7 +89,13 @@ public class FlooditState implements IinformedState {
                 }
                 filteredColors.add(board[row-1][col].getColor());
             }
-            int remainingColors = 4 - filteredColors.size();
+            int remainingColors = 0;
+            if (mode == REDUCED_BY_CONTEXT_MODE) {
+                remainingColors = 4 - filteredColors.size();
+            } else if (mode == REDUCED_BY_CONTEXT_MODE_2) {
+                remainingColors = 5 - filteredColors.size();
+            }
+            
             for (int i = remainingColors; i > 0;i--) {
                 boolean newColorFound = false;
                 int newColor = 0;

@@ -69,7 +69,7 @@ public class BestFirstSearchEngine<EvalState extends IinformedState> extends Sea
 			while (!found && !queue.isEmpty()) {
 				EvalState current = queue.poll();
 				if (performSearch(current)) {
-					path.add(current);
+					path.add(state);
 					found = true;
 				}
 			}

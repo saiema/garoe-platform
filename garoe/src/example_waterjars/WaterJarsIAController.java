@@ -33,6 +33,7 @@ public class WaterJarsIAController {
         List<String> ias = new LinkedList<String>();
         ias.add("DepthFirstSearchEngine");
         ias.add("IterativeDeepeningSearchEngine");
+        ias.add("BreadthFirstSearchEngine");
         this.gui.loadSelector(ias);
         if (this.selectedIA.compareToIgnoreCase("IterativeDeepeningSearchEngine")==0) {
             this.maxTreeLevel = ((IterativeDeepeningSearchEngine)this.mainController.getAi()).getMaxTreeLevel();

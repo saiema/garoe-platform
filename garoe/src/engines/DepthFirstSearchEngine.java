@@ -41,10 +41,10 @@ public class DepthFirstSearchEngine<State extends IBasicState> extends SearchEng
         State initial = this.searchProblem.getInitialState();
         this.visitedNodes = 0;
         this.timeUsed = 0;
-        long startingTime = System.nanoTime();
+        long startingTime = System.currentTimeMillis();
         boolean found = performSearch(initial);
-        long finishTime = System.nanoTime();
-        this.timeUsed = finishTime - startingTime;
+        long finishTime = System.currentTimeMillis();
+        this.timeUsed = (finishTime - startingTime);
         return found;
     }
     
@@ -79,12 +79,28 @@ public class DepthFirstSearchEngine<State extends IBasicState> extends SearchEng
 
     @Override
     public String getReport() {
-        return "nodos visitados: "+this.visitedNodes+" | "+"tiempo utilizado: "+this.timeUsed+"ms";
+        if (this.path.isEmpty()){
+            return "no se encontro solucion | nodos visitados: "+this.visitedNodes+" | "+"tiempo utilizado: "+this.timeUsed+"ms";
+        } else { 
+           return "solucion encontrada | nodos visitados: "+this.visitedNodes+" | "+"tiempo utilizado: "+this.timeUsed+"ms"; 
+        }
     }
 
     @Override
     public String status() {
-        return "nodos visitados: "+this.visitedNodes+" | "+"tiempo utilizado: "+this.timeUsed+"ms";
+        if (this.path.isEmpty()){
+            return "no se encontro solucion | nodos visitados: "+this.visitedNodes+" | "+"tiempo utilizado: "+this.timeUsed+"ms";
+        } else { 
+           return "solucion encontrada | nodos visitados: "+this.visitedNodes+" | "+"tiempo utilizado: "+this.timeUsed+"ms"; 
+        }
+    }
+    
+    public long getTimeUsed() {
+        return this.timeUsed;
+    }
+    
+    public Integer getNodesVisited() {
+        return this.visitedNodes;
     }
    
 }

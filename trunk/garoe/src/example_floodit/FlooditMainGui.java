@@ -56,6 +56,10 @@ public class FlooditMainGui extends javax.swing.JFrame {
         iaMenu = new javax.swing.JMenu();
         pistaMenuItem = new javax.swing.JMenuItem();
         jugarMenuItem = new javax.swing.JMenuItem();
+        difficultMenu = new javax.swing.JMenu();
+        easyDifficulty = new javax.swing.JMenuItem();
+        mediumDifficulty = new javax.swing.JMenuItem();
+        hardDifficulty = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setResizable(false);
@@ -183,6 +187,22 @@ public class FlooditMainGui extends javax.swing.JFrame {
 
         menuBar.add(iaMenu);
 
+        difficultMenu.setText("Dificultad");
+
+        easyDifficulty.setMnemonic('f');
+        easyDifficulty.setText("Fácil");
+        difficultMenu.add(easyDifficulty);
+
+        mediumDifficulty.setMnemonic('i');
+        mediumDifficulty.setText("Intermedio");
+        difficultMenu.add(mediumDifficulty);
+
+        hardDifficulty.setMnemonic('d');
+        hardDifficulty.setText("Difícil");
+        difficultMenu.add(hardDifficulty);
+
+        menuBar.add(difficultMenu);
+
         setJMenuBar(menuBar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -243,13 +263,17 @@ public class FlooditMainGui extends javax.swing.JFrame {
     private javax.swing.JButton botonRojo;
     private javax.swing.JButton botonRosa;
     private javax.swing.JButton botonVerde;
+    private javax.swing.JMenu difficultMenu;
+    private javax.swing.JMenuItem easyDifficulty;
     private javax.swing.JMenuItem exitMenuItem;
     private javax.swing.JMenu fileMenu;
+    private javax.swing.JMenuItem hardDifficulty;
     private javax.swing.JMenu helpMenu;
     private javax.swing.JMenu iaMenu;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JMenuItem jugarMenuItem;
     private javax.swing.JPanel mainPanel;
+    private javax.swing.JMenuItem mediumDifficulty;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenuItem newGameMenuItem;
     private javax.swing.JLabel numberStepsMadeLabel;
@@ -313,6 +337,20 @@ public class FlooditMainGui extends javax.swing.JFrame {
     public JMenuItem getPistaMenuItem() {
         return pistaMenuItem;
     }
+
+    public JMenuItem getEasyDifficulty() {
+        return easyDifficulty;
+    }
+
+    public JMenuItem getHardDifficulty() {
+        return hardDifficulty;
+    }
+
+    public JMenuItem getMediumDifficulty() {
+        return mediumDifficulty;
+    }
+    
+    
     
     //ADD LISTENER BUTTONS
     
@@ -328,6 +366,9 @@ public class FlooditMainGui extends javax.swing.JFrame {
         this.pistaMenuItem.addActionListener(lis);
         this.jugarMenuItem.addActionListener(lis);
         this.aboutMenuItem.addActionListener(lis);
+        this.easyDifficulty.addActionListener(lis);
+        this.mediumDifficulty.addActionListener(lis);
+        this.hardDifficulty.addActionListener(lis);
     }
     
     //UPDATE Y AUXILIARES

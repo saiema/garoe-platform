@@ -4,6 +4,7 @@
  */
 package example_waterjars;
 
+import engines.BreadthFirstSearchEngine;
 import engines.DepthFirstSearchEngine;
 import engines.IterativeDeepeningSearchEngine;
 import examples.GaroePlaygroundController;
@@ -43,15 +44,17 @@ public class WaterJarsMainController {
     }
     
     public void changeAI(String aiName) {
-        if (aiName.compareToIgnoreCase("DepthFirstSearhEngine")==0) {
+        if (aiName.compareToIgnoreCase("DepthFirstSearchEngine")==0) {
             this.ai = new DepthFirstSearchEngine<WaterJarsState>(problem);
         } else if (aiName.compareToIgnoreCase("IterativeDeepeningSearchEngine")==0) {
             this.ai = new IterativeDeepeningSearchEngine<WaterJarsState>(problem);
+        } else if (aiName.compareToIgnoreCase("BreadthFirstSearchEngine")==0) {
+            this.ai = new BreadthFirstSearchEngine<WaterJarsState>(problem);
         }
     }
     
     public String currentAI() {
-        return ai.getClass().getSimpleName(); //TODO: CHECK!!!!
+        return ai.getClass().getSimpleName();
     }
 
     public SearchEngine<WaterJarsState> getAi() {
@@ -158,11 +161,12 @@ public class WaterJarsMainController {
             }
             solutionFound = true;
         }
+        EngineReportGUI report = new EngineReportGUI(this.gui,true);
+        report.setReport(this.ai.getReport());
+        report.setEngine(this.ai.getClass().getSimpleName());
+        report.setVisible(true);
         if (solutionFound) {
             nextHint();
-            EngineReportGUI report = new EngineReportGUI(this.gui,true);
-            report.getReport().setText(this.ai.getReport());
-            report.setVisible(true);
         }
         return solutionFound;
     }

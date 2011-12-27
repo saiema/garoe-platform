@@ -16,6 +16,7 @@ public class FlooditController implements ActionListener{
 	private FlooditState model;
     private boolean standAlone = true;
     private GaroePlaygroundController mainController = null;
+    private int difficulty = 0;
 	
     /**
      * Constructor de la clase
@@ -74,7 +75,13 @@ public class FlooditController implements ActionListener{
 			exit();
 		} else if (this.gui.getNewGameMenuItem() == source) {
 			this.model = new FlooditState();
-            this.model.setGeneratorMode(FlooditState.REDUCED_BY_CONTEXT_MODE);
+            if (this.difficulty == 0) {
+                this.model.easy();
+            } else if (this.difficulty == 1) {
+                this.model.medium();
+            } else if (this.difficulty == 2) {
+                this.model.hard();
+            }
 			this.model.populateBoard();
 			this.gui.enableButtons(true);
 			update = true;
@@ -99,7 +106,28 @@ public class FlooditController implements ActionListener{
 			} else {
 				System.out.println("NO SE PUEDE GANAR EN MENOS DE 25 MOVIMIENTOS");
 			}
-		}
+		} else if (this.gui.getEasyDifficulty() == source) {
+            this.difficulty = 0;
+            this.model = new FlooditState();
+            this.model.easy();
+			this.model.populateBoard();
+			this.gui.enableButtons(true);
+            update = true;
+        } else if (this.gui.getMediumDifficulty() == source) {
+            this.difficulty = 1;
+            this.model = new FlooditState();
+            this.model.medium();
+			this.model.populateBoard();
+			this.gui.enableButtons(true);
+            update = true;
+        } else if (this.gui.getHardDifficulty() == source) {
+            this.difficulty = 2;
+            this.model = new FlooditState();
+            this.model.hard();
+			this.model.populateBoard();
+			this.gui.enableButtons(true);
+            update = true;
+        }
 		if (update) {
             cleanButtons();
 			this.gui.update(model);

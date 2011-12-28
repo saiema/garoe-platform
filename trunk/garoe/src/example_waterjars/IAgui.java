@@ -52,6 +52,9 @@ public class IAgui extends javax.swing.JFrame implements ActionListener, ChangeL
         stepSize = new javax.swing.JSpinner();
         saveButton = new javax.swing.JButton();
         cancelButton = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        maxNodes = new javax.swing.JSpinner();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -152,6 +155,34 @@ public class IAgui extends javax.swing.JFrame implements ActionListener, ChangeL
         cancelButton.setText("cancelar");
         cancelButton.addActionListener(this);
 
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Opciones del motor (Depth-First-Search)"));
+
+        jLabel6.setText("nodos máximos: ");
+
+        maxNodes.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(1)));
+        maxNodes.addChangeListener(this);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(maxNodes, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(193, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(maxNodes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -164,6 +195,7 @@ public class IAgui extends javax.swing.JFrame implements ActionListener, ChangeL
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(saveButton)
                 .addContainerGap())
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -171,7 +203,9 @@ public class IAgui extends javax.swing.JFrame implements ActionListener, ChangeL
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(saveButton)
                     .addComponent(cancelButton))
@@ -205,6 +239,9 @@ public class IAgui extends javax.swing.JFrame implements ActionListener, ChangeL
         else if (evt.getSource() == stepSize) {
             IAgui.this.stepSizeStateChanged(evt);
         }
+        else if (evt.getSource() == maxNodes) {
+            IAgui.this.maxNodesStateChanged(evt);
+        }
     }// </editor-fold>//GEN-END:initComponents
 
     private void engineSelectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_engineSelectorActionPerformed
@@ -230,6 +267,10 @@ public class IAgui extends javax.swing.JFrame implements ActionListener, ChangeL
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
         this.controller.exit();
     }//GEN-LAST:event_cancelButtonActionPerformed
+
+    private void maxNodesStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_maxNodesStateChanged
+        this.controller.setMaxNodes((Integer)this.maxNodes.getValue());
+    }//GEN-LAST:event_maxNodesStateChanged
 
     /**
      * @param args the command line arguments
@@ -275,9 +316,12 @@ public class IAgui extends javax.swing.JFrame implements ActionListener, ChangeL
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JSpinner maxIterations;
+    private javax.swing.JSpinner maxNodes;
     private javax.swing.JButton saveButton;
     private javax.swing.JSpinner stepSize;
     // End of variables declaration//GEN-END:variables
@@ -299,6 +343,10 @@ public class IAgui extends javax.swing.JFrame implements ActionListener, ChangeL
         this.stepSize.setEnabled(enable);
     }
     
+    private void enableDFSEO(boolean enable) {
+        this.maxNodes.setEnabled(enable);
+    }
+    
     public void update(String ia) {
         setSelectedIA(ia);
         if (ia.compareToIgnoreCase("IterativeDeepeningSearchEngine")==0) {
@@ -308,6 +356,12 @@ public class IAgui extends javax.swing.JFrame implements ActionListener, ChangeL
             this.maxIterations.setValue(this.controller.getMaxIterations());
         } else {
             enableIDSEO(false);
+        }
+        if (ia.compareToIgnoreCase("DepthFirstSearchEngine")==0) {
+            enableDFSEO(true);
+            this.maxNodes.setValue(this.controller.getMaxNodes());
+        } else {
+            enableDFSEO(false);
         }
     }
 

@@ -6,6 +6,7 @@ package example_waterjars;
 
 import engines.BreadthFirstSearchEngine;
 import engines.DepthFirstSearchEngine;
+import engines.DepthFirstSearchWithVisitedControlEngine;
 import engines.IterativeDeepeningSearchEngine;
 import examples.GaroePlaygroundController;
 import framework.IRule;
@@ -40,16 +41,18 @@ public class WaterJarsMainController {
         rules.add(new WaterJarsFillRule());
         rules.add(new WaterJarsTransferRule());
         problem = new SearchProblem<WaterJarsState>(state,rules);
-        ai = new DepthFirstSearchEngine<WaterJarsState>(problem);
+        ai = new DepthFirstSearchWithVisitedControlEngine<WaterJarsState>(problem);
     }
     
     public void changeAI(String aiName) {
-        if (aiName.compareToIgnoreCase("DepthFirstSearchEngine")==0) {
-            this.ai = new DepthFirstSearchEngine<WaterJarsState>(problem);
+        if (aiName.compareToIgnoreCase("DepthFirstSearchWithVisitedControlEngine")==0) {
+            this.ai = new DepthFirstSearchWithVisitedControlEngine<WaterJarsState>(problem);
         } else if (aiName.compareToIgnoreCase("IterativeDeepeningSearchEngine")==0) {
             this.ai = new IterativeDeepeningSearchEngine<WaterJarsState>(problem);
         } else if (aiName.compareToIgnoreCase("BreadthFirstSearchEngine")==0) {
             this.ai = new BreadthFirstSearchEngine<WaterJarsState>(problem);
+        } else if (aiName.compareToIgnoreCase("DepthFirstSearchEngine")==0) {
+            this.ai = new DepthFirstSearchEngine<WaterJarsState>(problem);
         }
     }
     
@@ -65,6 +68,10 @@ public class WaterJarsMainController {
         ((IterativeDeepeningSearchEngine)this.ai).setMaxTreeLevel(minHeight);
         ((IterativeDeepeningSearchEngine)this.ai).setStep(stepSize);
         ((IterativeDeepeningSearchEngine)this.ai).setMaxIterations(maxIterations);
+    }
+    
+    public void setDepthFirstSearch(int maxNodes) {
+        ((DepthFirstSearchEngine)this.ai).setMaxNodes(maxNodes);
     }
     
     public void resetState() {
@@ -151,10 +158,7 @@ public class WaterJarsMainController {
         boolean solutionFound = false;
         this.problem.setInitialState(this.state);
         if (this.ai.performSearch()) {
-            this.lastSearchResult = new LinkedList<WaterJarsState>();
-            for (WaterJarsState step:this.ai.getPath()) {
-                 this.lastSearchResult.add(0, step);
-            }
+            this.lastSearchResult = this.ai.getPath();
             this.lastSearchResult.remove(0); //Remueve el estado inicial
             for (WaterJarsState step:this.lastSearchResult) {
                 System.out.println(step.lastStepDone);

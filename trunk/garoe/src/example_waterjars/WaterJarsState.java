@@ -11,6 +11,7 @@ import framework.IBasicState;
  * @author simon
  */
 public class WaterJarsState implements IBasicState{
+    private WaterJarsState parent;
     private int jar1Cap;
     private int jar2Cap;
     private int jar1Cont;
@@ -230,6 +231,16 @@ public class WaterJarsState implements IBasicState{
         boolean jar1ContEquals = this.jar1Cont == other.jar1Cont;
         boolean jar2ContEquals = this.jar2Cont == other.jar2Cont;
         return jar1CapEquals && jar2CapEquals && jar1ContEquals && jar2ContEquals;
+    }
+
+    @Override
+    public IBasicState getParent() {
+        return this.parent;
+    }
+
+    @Override
+    public void setParent(IBasicState parent) {
+        this.parent = (WaterJarsState)parent;
     }
     
 }

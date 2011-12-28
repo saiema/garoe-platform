@@ -58,8 +58,10 @@ public class IAController {
     }
     
     public void next() {
-        this.model.changeColor(this.moves.get(this.moves.size()-1).getColorOfToken(0, 0));
-        this.moves.remove(this.moves.size()-1);
+//        this.model.changeColor(this.moves.get(this.moves.size()-1).getColorOfToken(0, 0));
+        this.model.changeColor(this.moves.get(0).getColorOfToken(0, 0));
+//        this.moves.remove(this.moves.size()-1);
+        this.moves.remove(0);
         this.mainGui.update(model);
         updateList();
     }
@@ -68,8 +70,9 @@ public class IAController {
         boolean boardCanBeSolved = this.searchEngine.performSearch();
 		if (boardCanBeSolved) {
 			this.moves = this.searchEngine.getPath();
-            this.moves.remove(this.moves.size()-1); //TODO: PARCHE TEMPORAL
-            System.out.println("El siguiente movimiento es: " + colorIntToString(this.moves.get(this.moves.size()-1).getColorOfToken(0, 0)));
+//            this.moves.remove(this.moves.size()-1); //TODO: PARCHE TEMPORAL
+            this.moves.remove(0);
+            System.out.println("El siguiente movimiento es: " + colorIntToString(this.moves.get(0).getColorOfToken(0, 0)));
         }
         this.iaGui.setButtonsState(boardCanBeSolved);
 		return boardCanBeSolved;
@@ -94,7 +97,8 @@ public class IAController {
     private void updateList() {
         List<String> newMoveList = new LinkedList<String>();
         for (FlooditState s:this.moves) {
-            newMoveList.add(0, colorIntToString(s.getColorOfToken(0,0)));
+//            newMoveList.add(0, colorIntToString(s.getColorOfToken(0,0)));
+            newMoveList.add(colorIntToString(s.getColorOfToken(0,0)));
         }
         this.iaGui.updateListModel(newMoveList);
         this.iaGui.setButtonsState(!this.moves.isEmpty());
@@ -102,7 +106,8 @@ public class IAController {
     
     public void hint() {
         if (!this.moves.isEmpty()) {
-            int hint = this.moves.get(this.moves.size()-1).getColorOfToken(0, 0);
+//            int hint = this.moves.get(this.moves.size()-1).getColorOfToken(0, 0);
+            int hint = this.moves.get(0).getColorOfToken(0, 0);
             String stringHint = colorIntToString(hint);
             if (stringHint.compareToIgnoreCase("verde")==0) {
                 //this.mainGui.getBotonVerde().setForeground(Color.green);

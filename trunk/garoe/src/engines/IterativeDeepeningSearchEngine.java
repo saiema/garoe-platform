@@ -25,7 +25,6 @@ public class IterativeDeepeningSearchEngine<State extends IBasicState> extends S
     private int visitedNodes = 0;
     private long timeUsed = 0;
     
-    private List<State> visited;
     
     public IterativeDeepeningSearchEngine(SearchProblem<State> problem) {
         super(problem);
@@ -62,7 +61,8 @@ public class IterativeDeepeningSearchEngine<State extends IBasicState> extends S
     
     @Override
     public boolean performSearch() {
-        this.visited = new LinkedList<State>();
+        int localIterations = this.maxIterations;
+        int localMaxTreeLevel = this.maxTreeLevel;
         this.visitedNodes = 0;
         this.timeUsed = 0;
         boolean stopSearch = false;
@@ -71,27 +71,26 @@ public class IterativeDeepeningSearchEngine<State extends IBasicState> extends S
         boolean found = false;
         long startingTime = System.currentTimeMillis();
         while(!stopSearch) {
-            this.visited = new LinkedList<State>();
             this.path = new LinkedList<State>();
-            if (iterativeSearch(initial, this.maxTreeLevel)) {
+            if (iterativeSearch(initial, localMaxTreeLevel)) {
                 stopSearch = true;
                 found = true;
-            } else if (this.maxIterations == -1 || this.maxIterations > 0) {
-                this.maxTreeLevel += this.step;
-                this.maxIterations = this.maxIterations==-1?-1:this.maxIterations - 1;
+            } else if (localIterations == -1 || localIterations > 0) {
+                localMaxTreeLevel += this.step;
+                localIterations = localIterations==-1?-1:localIterations - 1;
             } else {
                 stopSearch = true;
             }
         }
         long finishTime = System.currentTimeMillis();
         this.timeUsed = (finishTime - startingTime);
+        if (!found) current = null;
         return found;
     }
     
     private boolean iterativeSearch(State state, int level) {
-        if (!visited.contains(state)) {visited.add(state);this.visitedNodes++;}
         if (state.success()){
-            path.add(state);
+            current = state;
             return true;
         } else if (level == 0) {
             return false;
@@ -99,14 +98,11 @@ public class IterativeDeepeningSearchEngine<State extends IBasicState> extends S
             boolean found = false;
             List<State>succesors = this.searchProblem.getSuccessors(state);
             for (int i = 0 ;i < succesors.size()&& !found;i++) {
-                State current = succesors.get(i);
-                if (!visited.contains(current)) {
-                    visited.add(current);
-                    this.visitedNodes++;
-                    if (iterativeSearch(current, level--)){
-                        found = true;
-                        path.add(state);
-                    }
+                current = succesors.get(i);
+                this.visitedNodes++;
+                int newLevel = level - 1;
+                if (iterativeSearch(current, newLevel)){
+                    found = true;
                 }
             }
             return found;

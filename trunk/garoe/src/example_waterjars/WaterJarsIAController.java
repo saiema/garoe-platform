@@ -4,6 +4,7 @@
  */
 package example_waterjars;
 
+import engines.DepthFirstSearchEngine;
 import engines.IterativeDeepeningSearchEngine;
 import java.util.LinkedList;
 import java.util.List;
@@ -19,6 +20,7 @@ public class WaterJarsIAController {
     private int step;
     private int maxTreeLevel;
     private int maxIterations;
+    private int maxNodes;
     
     public WaterJarsIAController(WaterJarsMainController mainController, IAgui gui) {
         this.mainController = mainController;
@@ -31,9 +33,10 @@ public class WaterJarsIAController {
         this.gui.setEnabled(true);
         this.gui.setVisible(true);
         List<String> ias = new LinkedList<String>();
-        ias.add("DepthFirstSearchEngine");
+        ias.add("DepthFirstSearchWithVisitedControlEngine");
         ias.add("IterativeDeepeningSearchEngine");
         ias.add("BreadthFirstSearchEngine");
+        ias.add("DepthFirstSearchEngine");
         this.gui.loadSelector(ias);
         if (this.selectedIA.compareToIgnoreCase("IterativeDeepeningSearchEngine")==0) {
             this.maxTreeLevel = ((IterativeDeepeningSearchEngine)this.mainController.getAi()).getMaxTreeLevel();
@@ -45,6 +48,11 @@ public class WaterJarsIAController {
             this.maxTreeLevel = 1;
             this.step = 1;
         }
+        if (this.selectedIA.compareToIgnoreCase("DepthFirstSearchEngine")==0) {
+            this.maxNodes = ((DepthFirstSearchEngine)this.mainController.getAi()).getMaxNodes();
+        } else {
+            this.maxNodes = 0;
+        }
         this.gui.update(selectedIA);
     }
     
@@ -52,6 +60,9 @@ public class WaterJarsIAController {
         this.mainController.changeAI(selectedIA);
         if (this.selectedIA.compareToIgnoreCase("IterativeDeepeningSearchEngine")==0) {
             this.mainController.setIterativeDeepening(this.maxTreeLevel, this.step, this.maxIterations);
+        }
+        if (this.selectedIA.compareToIgnoreCase("DepthFirstSearchEngine")==0) {
+            this.mainController.setDepthFirstSearch(this.maxNodes);
         }
         exit();
     }
@@ -90,6 +101,14 @@ public class WaterJarsIAController {
 
     public void setStep(int step) {
         this.step = step;
+    }
+    
+    public int getMaxNodes() {
+        return this.maxNodes;
+    }
+    
+    public void setMaxNodes(int nodes) {
+        this.maxNodes = nodes;
     }
     
     

@@ -3,6 +3,7 @@
  */
 package framework;
 
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -38,7 +39,21 @@ public abstract class SearchEngine<State extends IBasicState> extends BasicSearc
 	 * @return el camino desde el estado inicial al estado exitoso : {@code List<State>}
 	 */
 	final public List<State> getPath() {
-		return this.path;
+        if (this.path == null || this.path.isEmpty()) { //la lista de camino no se creo en el motor
+            if (this.getSolution() == null) {
+                return new LinkedList<State>();
+            } else {
+                this.path = new LinkedList<State>();
+                State local_current = this.getSolution();
+                while (local_current != null) {
+                    this.path.add(0,local_current);
+                    local_current = (State)local_current.getParent();
+                }
+                return this.path;
+            }
+        } else {
+            return this.path;
+        }
 	}
 	
 }

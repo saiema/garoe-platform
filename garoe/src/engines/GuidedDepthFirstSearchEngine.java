@@ -38,7 +38,9 @@ public class GuidedDepthFirstSearchEngine<EvalState extends IinformedState> exte
         visited = new LinkedList<EvalState>();
         path = new LinkedList<EvalState>();
         EvalState initial = this.searchProblem.getInitialState();
-        return performSearch(initial);
+        boolean found = performSearch(initial);
+        if (!found) current = null;
+        return found;
     }
     
     
@@ -50,7 +52,8 @@ public class GuidedDepthFirstSearchEngine<EvalState extends IinformedState> exte
     private boolean performSearch (EvalState state){
         visited.add(state);
         if (state.success()){
-            path.add(state);
+            //path.add(state);
+            current = state;
             return true;
         } else {
             boolean found = false;
@@ -60,12 +63,12 @@ public class GuidedDepthFirstSearchEngine<EvalState extends IinformedState> exte
                 insert(orderedSuccesors,s);
             }
             for (int i = 0 ;i < orderedSuccesors.size()&& !found;i++) {
-                EvalState current = orderedSuccesors.get(i);
+                current = orderedSuccesors.get(i);
                 if (!visited.contains(current)) {
                     visited.add(current);
                     if (performSearch(current)){
                         found = true;
-                        path.add(state);
+                        //path.add(state);
                     }
                 }
             }

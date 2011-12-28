@@ -39,7 +39,9 @@ public class BestFirstSearchEngine<EvalState extends IinformedState> extends Sea
 	@Override
 	public boolean performSearch() {
 		queue.clear();
-		return performSearch(this.searchProblem.getInitialState());
+        boolean found = performSearch(this.searchProblem.getInitialState());
+        if (!found)current = null;
+        return found;
 	}
     
     /**
@@ -58,23 +60,27 @@ public class BestFirstSearchEngine<EvalState extends IinformedState> extends Sea
      * @return true sii se encuentra un estado exitoso : {@code boolean}
      */
 	private boolean performSearch(EvalState state) {
-		if (state.success()) {
-			path.add(state);
-			return true;
-		} else {
-			for (EvalState child : this.searchProblem.getSuccessors(state)) {
-				insert(queue, child);
-			}
-			boolean found = false;
-			while (!found && !queue.isEmpty()) {
-				EvalState current = queue.poll();
-				if (performSearch(current)) {
-					path.add(state);
-					found = true;
-				}
-			}
-			return found;
+		boolean found = false;
+        boolean stopSearch = false;
+        found = state.success();
+        current = state;
+        while (!found && !stopSearch) {
+            for (EvalState succesor:this.searchProblem.getSuccessors(current)) {
+                if (!queue.contains(succesor)) {
+                    insert(queue,succesor);
+                }
+            }
+            if (queue.isEmpty()) {
+                stopSearch = true;
+            } else {
+                current = queue.poll();
+                found = current.success();
+            }
 		}
+        if (!found) {
+            current = null;
+        }
+        return found;
 	}
 
     /**

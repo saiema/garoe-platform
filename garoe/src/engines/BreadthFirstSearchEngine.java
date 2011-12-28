@@ -23,7 +23,6 @@ import framework.SearchProblem;
 public class BreadthFirstSearchEngine<State extends IBasicState> extends SearchEngine<State> {
 	private List<String> log;
 	private Queue<State> queue;
-    private List<State> visited;
     private int visitedNodes;
     private long timeUsed;
 	
@@ -41,7 +40,6 @@ public class BreadthFirstSearchEngine<State extends IBasicState> extends SearchE
 	@Override
 	public boolean performSearch() {
 		queue.clear();
-        this.visited = new LinkedList<State>();
         this.timeUsed = 0;
         this.visitedNodes = 0;
         long startingTime = System.currentTimeMillis();
@@ -61,34 +59,28 @@ public class BreadthFirstSearchEngine<State extends IBasicState> extends SearchE
      * @return true sii se encuentra un estado exitoso : {@code boolean}
      */
 	private boolean performSearch(State state) {
-        if (!this.visited.contains(state)) {
-            this.visited.add(state);
-            this.visitedNodes++;
-        }
-		if (state.success()) {
-			path.add(state);
-			return true;
-		} else {
-			boolean found = false;
-            for (State succesor:this.searchProblem.getSuccessors(state)) {
-                if (!this.visited.contains(succesor) && !queue.contains(succesor)) {
+        boolean found = false;
+        boolean stopSearch = false;
+        found = state.success();
+        current = state;
+        while (!found && !stopSearch) {
+            for (State succesor:this.searchProblem.getSuccessors(current)) {
+                if (!queue.contains(succesor)) {
                     queue.add(succesor);
+                    this.visitedNodes++;
                 }
             }
-            //queue.addAll(this.searchProblem.getSuccessors(state));
-			while (!found && !queue.isEmpty()) {
-				State current = queue.poll();
-                if (!this.visited.contains(current)) {
-                    this.visited.add(current);
-                    this.visitedNodes++;
-                    if (performSearch(current)) {
-                        path.add(state);
-                        found = true;
-                    }
-                }
-			}
-			return found;
+            if (queue.isEmpty()) {
+                stopSearch = true;
+            } else {
+                current = queue.poll();
+                found = current.success();
+            }
 		}
+        if (!found) {
+            current = null;
+        }
+        return found;
 	}
 
    

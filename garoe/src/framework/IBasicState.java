@@ -8,8 +8,21 @@ package framework;
  */
 public interface IBasicState {
 	
-	//TODO: HACER Y COMENTAR
-    //public IBasicState getParent();
+	/**
+     * Indica cual es el estado del cual deriva este estado
+     * @return el estado del cual este estado deriva : {@code IBasicState}
+     * <hr>
+     * <b>Solo la raíz tiene {@code parent == null}</b>
+     */
+    public IBasicState getParent();
+    
+    /**
+     * Define el estado del cual este deriva
+     * @param parent : el estado del cual este deriva : {@code IBasicState}
+     * <hr>
+     * <b>Solo la raíz tiene {@code parent == null}</b>
+     */
+    public void setParent(IBasicState parent);
     
 	/**
 	 * Indica que este estado no puede tener ningun estado sucesor, es decir que es una hoja

@@ -3,6 +3,7 @@
  */
 package example_floodit;
 
+import framework.IBasicState;
 import java.util.HashSet;
 import java.util.Random;
 
@@ -18,6 +19,7 @@ import java.util.TreeSet;
  * @version 0.1
  */
 public class FlooditState implements IinformedState {
+    private FlooditState parent;
 	public static int verde = 0;
 	public static int amarillo = 1;
 	public static int rojo = 2;
@@ -265,6 +267,16 @@ public class FlooditState implements IinformedState {
         int otherSameColor = other.firstToken.checkSameColors(new HashSet<FlooditToken>());
         return (thisSameColor == otherSameColor);
     }*/
+
+    @Override
+    public IBasicState getParent() {
+        return this.parent;
+    }
+
+    @Override
+    public void setParent(IBasicState parent) {
+        this.parent = (FlooditState)parent;
+    }
 
 
 }

@@ -18,17 +18,17 @@ import java.util.List;
  * @see IBasicState
  * @see SearchEngine
  */
-public class DepthFirstSearchEngine<State extends IBasicState> extends SearchEngine<State> {
+public class DepthFirstSearchWithVisitedControlEngine<State extends IBasicState> extends SearchEngine<State> {
 
+    private List<State> visited;
     private int visitedNodes;
     private long timeUsed;
-    private int maxNodes = -1;
     
     /**
      * Constructor de la clase
      * @param searchProblem : el problema sobre el cual opera el motor : {@code SearchProblem<State>}
      */
-    public DepthFirstSearchEngine(SearchProblem<State> searchProblem){
+    public DepthFirstSearchWithVisitedControlEngine(SearchProblem<State> searchProblem){
         super(searchProblem);
     }
     
@@ -36,6 +36,7 @@ public class DepthFirstSearchEngine<State extends IBasicState> extends SearchEng
     
     @Override
     public boolean performSearch() {
+        visited = new LinkedList<State>();
         path = new LinkedList<State>();
         State initial = this.searchProblem.getInitialState();
         this.visitedNodes = 0;
@@ -48,14 +49,6 @@ public class DepthFirstSearchEngine<State extends IBasicState> extends SearchEng
         return found;
     }
     
-    public void setMaxNodes(int nodes) {
-        this.maxNodes = nodes;
-    }
-    
-    public int getMaxNodes() {
-        return this.maxNodes;
-    }
-    
     
     /**
      * Realiza el algoritmo de búsqueda "Depth First Search"
@@ -63,21 +56,26 @@ public class DepthFirstSearchEngine<State extends IBasicState> extends SearchEng
      * @return true sii se encuentra un estado exitoso : {@code boolean} 
      */
     private boolean performSearch (State state){
+        if (!visited.contains(state)) {visited.add(state);this.visitedNodes++;}
         if (state.success()){
+            current = state;
+//            path.add(state);
             return true;
-        } else if (!(this.maxNodes == -1?false:this.visitedNodes>=this.maxNodes)) {
+        } else {
             boolean found = false;
             List<State>succesors = this.searchProblem.getSuccessors(state);
-            for (int i = 0 ;i < succesors.size()&& !found && !(this.maxNodes == -1?false:this.visitedNodes>=this.maxNodes);i++) {
+            for (int i = 0 ;i < succesors.size()&& !found;i++) {
                 current = succesors.get(i);
-                this.visitedNodes++;
-                if (!(this.maxNodes == -1?false:this.visitedNodes>=this.maxNodes) && performSearch(current)){
-                    found = true;
+                if (!visited.contains(current)) {
+                    visited.add(current);
+                    this.visitedNodes++;
+                    if (performSearch(current)){
+                        found = true;
+//                        path.add(state);
+                    }
                 }
             }
             return found;
-        } else {
-            return false;
         }
     }
 

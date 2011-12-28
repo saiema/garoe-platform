@@ -3,6 +3,7 @@
  */
 package example_reversi;
 
+import framework.IBasicState;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -17,6 +18,7 @@ import framework.IStateAdversary;
  * @version 0.1
  */
 public class ReversiState implements IStateAdversary {
+    private ReversiState parent;
 	protected ReversiToken[][] board = new ReversiToken[8][8];
 	protected List<Pair<Integer,Integer>> blackAvailableMoves;
 	protected List<Pair<Integer,Integer>> whiteAvailableMoves;
@@ -763,6 +765,16 @@ public class ReversiState implements IStateAdversary {
     
     public int getWhiteCount() {
         return this.whiteCount;
+    }
+
+    @Override
+    public IBasicState getParent() {
+        return this.parent;
+    }
+
+    @Override
+    public void setParent(IBasicState parent) {
+        this.parent = (ReversiState)parent;
     }
 	
 	

@@ -41,7 +41,9 @@ public class SearchProblem<State extends IBasicState> {
 		List<State> successors = new LinkedList<State>();
 		for (IRule<State> rule : rules) {
 			if (rule.isApplicable(s)) {
-				successors.addAll(rule.apply(s));
+                List<State> rule_succesors = rule.apply(s);
+                for (State child:rule_succesors) child.setParent(s);
+				successors.addAll(rule_succesors);
 			}
 		}
 		return successors;

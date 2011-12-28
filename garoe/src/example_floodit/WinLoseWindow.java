@@ -59,6 +59,7 @@ public class WinLoseWindow extends javax.swing.JFrame implements ActionListener 
         okButon = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         jPanel1.setMaximumSize(new java.awt.Dimension(126, 120));
         jPanel1.setMinimumSize(new java.awt.Dimension(126, 120));

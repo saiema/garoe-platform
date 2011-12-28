@@ -84,11 +84,6 @@ public class MinMaxABSearchEngine<AdversaryState extends IStateAdversary> extend
 			stateCount+=succesors.size();
 			int currentSuccesor = 0;
 			if (depth == this.maxTreeLevel) this.current = (succesors.isEmpty())?null:succesors.get(0);
-			if (depth == this.maxTreeLevel) {
-				for (AdversaryState s : succesors) {
-					System.out.println(s.toString());
-				}
-			}
 			while (currentSuccesor < succesors.size() && currAlfa.compareTo(currBeta) < 0) {
 				lookedCount++;
 				AdversaryState curr = succesors.get(currentSuccesor);

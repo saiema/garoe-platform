@@ -23,4 +23,4 @@ Garoé es una plataforma distribuida como librería _jar_ diseñada para permiti
 
 
 
-versión en inglés
+~versión en inglés~

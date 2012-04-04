@@ -1,0 +1,26 @@
+= *GAROÉ* =
+
+
+Garoé es una plataforma distribuida como librería _jar_ diseñada para permitir el desarrollo de aplicaciones que contienen algún problema de búsqueda dentro. Los puntos principales que fueron tenidos en cuenta para el diseño de esta plataforma fueron:
+
+ # Facilitar la implementación de soluciones a problemas de búsqueda (tanto parciales como totales)
+ # Brindar la mayor independencia entre los módulos de una solución (estado, reglas, problema, motor)
+   * Permitir el intercambio de módulos
+   * Permitir la reutilización de módulos
+   * Permitir una fácil integración de una solución a un problema de búsqueda a cualquier aplicación
+ # Permitir la expansión de la plataforma
+
+== Indice de contenidos ==
+
+ # lalala
+ # lololo
+ # jujuju
+
+
+
+
+
+
+
+
+versión en inglés

@@ -12,9 +12,9 @@ Garoé es una plataforma distribuida como librería _jar_ diseñada para permiti
 
 == Indice de contenidos ==
 
- # lalala
- # lololo
- # jujuju
+ # obtener la plataforma
+ # uso de la plataforma
+ # extensión de la plataforma
 
 
 

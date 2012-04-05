@@ -6,7 +6,7 @@ La plataforma Garoé permite un desarrollo ágil de soluciones para problemas de
 
 Para un problema de búsqueda se tiene siempre un estado, un estado particular va a tener atributos y métodos particulares al problema y así también otros que van a ser particulares al tipo del problema, estos últimos siempre deben estar disponibles y tener los mismos tipos sea cual sea el estado particular.
 
-Al crear un nuevo estado se debe distinguir a que (agregar wiki)tipo de búsqueda(agregar wiki) corresponde para determinar a cual estado abstracto va a implementar el nuevo estado particular.
+Al crear un nuevo estado se debe distinguir a que [garoe_wiki_tipo_busquedas_es tipo de búsqueda] corresponde para determinar a cual estado abstracto va a implementar el nuevo estado particular.
 
 En general nuestro estado va a estar definido como:
 

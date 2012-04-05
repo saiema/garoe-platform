@@ -4,7 +4,7 @@ La plataforma puede descargarse bien desde el repositorio en forma de código fu
 
 === *Plataforma como código fuente* ===
 
-Para poder utilizar el código fuente, primero se debe descargar desde la sección de [http://code.google.com/p/garoe-platform/source/checkout fuentes] con algún cliente subversion (NetBeans ya trae incorporado varios clientes para control de versiones).
+Para poder utilizar el código fuente, primero se debe descargar desde la sección de [http://code.google.com/p/garoe-platform/source/checkout fuentes] con algún cliente subversion (netbeans ya trae incorporado varios clientes para control de versiones).
 
 Teniendo el código se puede crear un proyecto nuevo utilizando código ya existente (en caso de utilizar un IDE como eclipse o netbeans).
 

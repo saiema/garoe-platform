@@ -16,4 +16,4 @@ Una vez descargada la libreria, solo es necesario agregar el _jar_ al proyecto (
 
 
 
-[garoe_wiki principal] | siguiente
+[garoe_wiki principal] | [garoe_wiki_uso_es siguiente]

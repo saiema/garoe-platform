@@ -18,6 +18,8 @@ Donde *!EstadoAbstracto* es uno de los estados definidos tanto en el paquete "_f
 
 Para conocer los métodos requeridos se puede consultar el javadoc generado en la sección [http://code.google.com/p/garoe-platform/downloads/list descargas]
 
+*Cualquier estado debe implementar los métodos de "_*IBasicState*_".*
+
 === *Reglas* ===
 
 reglotototas

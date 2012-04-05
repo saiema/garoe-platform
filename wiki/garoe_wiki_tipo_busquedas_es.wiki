@@ -4,9 +4,9 @@ La plataforma está diseñada para trabajar con tres tipos de búsqueda, aunque 
 
 Estos tipos son:
 
- # Búsqueda no informada
- # Búsqueda informada
- # Búsqueda con adversario
+ # [Búsqueda no informada]
+ # [Búsqueda informada]
+ # [Búsqueda con adversario]
 
 == *Búsqueda no informada* ==
 

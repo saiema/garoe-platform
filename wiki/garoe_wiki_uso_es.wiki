@@ -14,7 +14,7 @@ En general nuestro estado va a estar definido como:
 public class NuevoEstado implements EstadoAbstracto
 </code>
 
-Donde !*EstadoAbstracto* es uno de los estados definidos tanto en el paquete "_framework_" de la librería o de algún otro definido en el proyecto nuevo.
+Donde *!EstadoAbstracto* es uno de los estados definidos tanto en el paquete "_framework_" de la librería o de algún otro definido en el proyecto nuevo.
 
 === *Reglas* ===
 

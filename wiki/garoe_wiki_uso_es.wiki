@@ -1,10 +1,20 @@
 == *Uso de la plataforma* ==
 
-fjkhsklnhdhununynedljkuqjjjkjñji
+La plataforma Garoé permite un desarrollo ágil de soluciones para problemas de búsqueda así como la reutilización de módulos ya implementados, por lo que se explicará el uso para ambos casos.
 
 === *Estado* ===
 
-estadetes
+Para un problema de búsqueda se tiene siempre un estado, un estado particular va a tener atributos y métodos particulares al problema y así también otros que van a ser particulares al tipo del problema, estos últimos siempre deben estar disponibles y tener los mismos tipos sea cual sea el estado particular.
+
+Al crear un nuevo estado se debe distinguir a que (agregar wiki)tipo de búsqueda(agregar wiki) corresponde para determinar a cual estado abstracto va a implementar el nuevo estado particular.
+
+En general nuestro estado va a estar definido como:
+
+<code languaje="java">
+public class NuevoEstado implements EstadoAbstracto
+</code>
+
+Donde "EstadoAbstracto" es uno de los estados definidos tanto en el paquete "_framework_" de la librería o de algún otro definido en el proyecto nuevo.
 
 === *Reglas* ===
 

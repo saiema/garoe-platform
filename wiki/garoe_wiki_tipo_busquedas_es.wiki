@@ -1,0 +1,21 @@
+= *Tipos de búsqueda* =
+
+La plataforma está diseñada para trabajar con tres tipos de búsqueda, aunque es posible extenderla de ser necesario.
+
+Estos tipos son:
+
+ #Búsqueda no informada
+ #Búsqueda informada
+ #Búsqueda con adversario
+
+== *Búsqueda no informada* ==
+
+En la búsqueda no informada se parte de un estado inicial y se exploran todos los estados obtenibles formando una estructura de árbol, la búsqueda termina cuando se encuentra un estado exitoso o cuando no quedan estados por explorar.
+
+Es necesario tener las siguientes funciones:
+ *Determinar si un estado es exitoso
+ *Determinar si un estado es final (no se le puede aplicar ningún cambio)
+
+== *Búsqueda informada* ==
+
+== *Búsqueda con adversario* ==

@@ -16,6 +16,8 @@ public class NuevoEstado implements EstadoAbstracto
 
 Donde *!EstadoAbstracto* es uno de los estados definidos tanto en el paquete "_framework_" de la librería o de algún otro definido en el proyecto nuevo.
 
+Para conocer los métodos requeridos se puede consultar el javadoc generado en la sección [http://code.google.com/p/garoe-platform/downloads/list descargas]
+
 === *Reglas* ===
 
 reglotototas

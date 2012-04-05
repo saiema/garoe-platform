@@ -13,7 +13,7 @@ Garoé es una plataforma distribuida como librería _jar_ diseñada para permiti
 == Indice de contenidos ==
 
  # [garoe_wiki_obtener_es  obtener la plataforma]
- # uso de la plataforma
+ # [garoe_wiki_uso_es uso de la plataforma]
  # extensión de la plataforma
 
 

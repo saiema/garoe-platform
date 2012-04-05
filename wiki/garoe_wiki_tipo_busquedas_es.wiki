@@ -29,3 +29,11 @@ Es necesario tener las siguientes funciones:
 La plataforma utiliza una clase "_!IComparable_" para definir los valores de evaluación, actualmente hay dos clases implementadas, "_*!ComparableInt*_" y "_*!ComparableFloat*_".
 
 == *Búsqueda con adversario* ==
+
+En un problema de búsqueda con adversario un estado ahora puede pertenecer a uno u otro jugador (turno) y salvo juegos muy simples el árbol de búsqueda no puede desarrollarse hasta llegar a un estado final, por lo que en general se hacen búsqueda hasta n niveles.
+
+Es necesario tener las siguientes funciones:
+ * Determinar si un estado es min o max (los turnos posibles)
+ * Determinar si el estado es exitoso para min o para max (manteniendo que un estado es exitoso si y solo si es exitoso para min o para max de forma exclusiva)
+
+[garoe_wiki principal]

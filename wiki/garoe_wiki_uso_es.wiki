@@ -22,7 +22,24 @@ Para conocer los métodos requeridos se puede consultar el javadoc generado en l
 
 === *Reglas* ===
 
-reglotototas
+Cada problema tiene asociado un conjunto de reglas de cambio de estado, cada regla describe una acción determinada que se le puede aplicar a un estado no final, ejemplos de estas pueden ser:
+
+ * Colocar una ficha (ta-te-ti, reversi, 4 en raya)
+ * Mover un personaje (problema de indiana)
+ * Vaciar, llenar una jarra (problema de las jarras)
+
+Es posible tener distintos niveles de granularidad al definir reglas, por ejemplo en el ta-te-ti se podría tener una sola regla _!Mover_ o una regla por cada casillero del tablero. Este nivel afecta en cuan simple es cada regla y a la eficiencia.
+
+Una regla debe ser capaz de dos cosas:
+
+ # Verificar si la regla se aplica a un estado
+ # Aplicar la regla a un estado y devolver la lista de estados conseguidos
+
+Las reglas se definen para un tipo particular pero pueden usarse en cualquier problema que utilice el mismo estado o compatible.
+
+<code languaje="java">
+public class Regla1 implements <IRule<MiEstado>>
+</code>
 
 === *Problema* ===
 

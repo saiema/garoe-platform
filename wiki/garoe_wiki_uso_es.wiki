@@ -43,11 +43,25 @@ public class Regla1 implements <IRule<MiEstado>>
 
 === *Problema* ===
 
-problema la la la
+La plataforma provee un problema genérico que puede ser utilizado para cualquier solución a problemas de búsqueda, un problema solo debe proveer un constructor, formas de obtener y definir el estado inicial del mismo y una forma de obtener los sucesores de un estado. El enfoque de utilizar reglas permite un algoritmo genérico de obtención de sucesores:
+
+<code languaje="java">
+public List<State> getSuccessors(State s) {
+		List<State> successors = new LinkedList<State>();
+		for (IRule<State> rule : rules) {
+		    if (rule.isApplicable(s)) {
+                       successors.addAll(rule.apply(s));
+                    }
+                }
+		return successors;
+}
+</code>
+
+Lo que se debe cumplir es que las reglas operen sobre el mismo estado del problema o uno compatible.
 
 === *Motor* ===
 
-implementación y diseño
+COMPLETAAAAAAAARRRRRRRRRRRRRR
 
 === *Uniendo las partes* ===
 

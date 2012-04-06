@@ -28,7 +28,7 @@ Cada problema tiene asociado un conjunto de reglas de cambio de estado, cada reg
  * Mover un personaje (problema de indiana)
  * Vaciar, llenar una jarra (problema de las jarras)
 
-Es posible tener distintos niveles de granularidad al definir reglas, por ejemplo en el ta-te-ti se podría tener una sola regla _!Mover_ o una regla por cada casillero del tablero. Este nivel afecta en cuan simple es cada regla y a la eficiencia.
+Es posible tener distintos niveles de granularidad al definir reglas, por ejemplo en el ta-te-ti se podría tener una sola regla _Mover_ o una regla por cada casillero del tablero. Este nivel afecta en cuan simple es cada regla y a la eficiencia.
 
 Una regla debe ser capaz de dos cosas:
 
@@ -168,6 +168,6 @@ SearchEngine<EstadoIndiana> motorGuiado = new BestFirstSearchEngine<EstadoIndian
 SearchEngine<EstadoIndiana> motorNoGuiado = new BreadthFirstSearchEngine<EstadoIndiana>(problemaIndiana);
 </code>
 
-En la zona [http://code.google.com/p/garoe-platform/downloads/list descargas] se encuentra el archivo "_!ejemploParaImplementar.rar_" que contiene el ejemplo anterior (un poco mas elaborado) para que puedan completar su implementación y practicar el uso de la librería.
+En la zona [http://code.google.com/p/garoe-platform/downloads/list descargas] se encuentra el archivo "_ejemploParaImplementar.rar_" que contiene el ejemplo anterior (un poco mas elaborado) para que puedan completar su implementación y practicar el uso de la librería.
 
 [garoe_wiki principal] | [garoe_wiki_obtener_es anterior] | siguiente

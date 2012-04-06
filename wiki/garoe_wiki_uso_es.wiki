@@ -61,7 +61,53 @@ Lo que se debe cumplir es que las reglas operen sobre el mismo estado del proble
 
 === *Motor* ===
 
-COMPLETAAAAAAAARRRRRRRRRRRRRR
+Teniendo en cuenta los [garoe_wiki_tipo_busquedas_es tipos de búsqueda] es fácil distinguir dos tipos distintos de motor de búsqueda, aquellos que devuelven la solución al problema o no la encuentran y aquellos que devuelven el siguiente movimiento (o una serie de movimientos) en algún juego. La diferencia entre que una búsqueda sin adversario sea guiada o no solo se ve dentro del algoritmo de búsqueda pero ambos algoritmos devuelven la solución a un problema.
+
+Por lo tanto existen dos motores abstractos que se distinguen, aquellos para búsquedas con adversario y aquellos para búsqueda sin adversario. Un tercer motor abstracto contiene las características en común a los dos anteriores.
+
+El motor abstracto "_*!SearchEngine*_" usado en búsquedas sin adversario está declarado como:
+
+<code languaje="java">
+public class SearchEngine<State extends IBasicState> extends BasicSearchEngine<State>
+</code>
+
+Esto significa que es posible implementar un motor que extienda a "_*!SearchEngine*_" utilizando cualquier estado que extienda a "_*!IBasicState*_".
+
+Este motor ofrece los métodos:
+
+<code languaje="java">
+abstract public boolean performSearch();
+</code>
+
+para realizar la búsqueda
+
+<code languaje="java">
+final public List<State> getPath()
+</code>
+
+para obtener el camino del estado inicial al final luego de haber realizado una búsqueda.
+
+Este último método ya está implementado y la razón de ser un método "hoja", es decir que no puede ser redefinido por ninguna clase que extienda a "_*!SearchEngine*_", es por que si distintos motores proveen distintas formas de obtener el camino del estado inicial al final, podrían causar como resultado una incompatibilidad entre distintos motores.
+
+El motor abstracto "_*!AdversarySearchEngine*_" usado en búsquedas con adversarios está declarado como:
+
+<code languaje="java">
+abstract public AdversaryState nextMove(AdversaryState state)
+</code>
+
+que dado un estado devuelve el siguiente (realiza una jugada)
+
+Y provee métodos para definir y obtener la altura máxima del árbol de búsqueda.
+
+Finalmente el motor abstracto "_*!BasicSearchEngine*_" que provee atributos y métodos en común para los motores anteriores.
+
+Para implementar un nuevo motor, la clase nueva debería estar definida como:
+
+<code languaje="java">
+public class MiMotor<S extends EstadoMinimoNecesario> extends MotorAbstracto<S>
+</code>
+
+En donde "_*!MotorAbstracto*_" es o bien "_*!AdversarySearchEngine*_" o "_*!SearchEngine*_", "_*!EstadoMinimoNecesario*_" es el estado que contiene los métodos necesarios para mi motor, esta forma de definir un motor le brinda compatibilidad con estados que extiendan al que nosotros pedimos como mínimo.
 
 === *Uniendo las partes* ===
 

@@ -111,6 +111,63 @@ En donde "_*!MotorAbstracto*_" es o bien "_*!AdversarySearchEngine*_" o "_*!Sear
 
 === *Uniendo las partes* ===
 
-como unir las partes
+A continuación se dará un ejemplo para saber como una vez implementadas las partes de una solución a un problema de búsqueda estas se unen.
+
+El ejemplo va a ser el problema de Indiana:
+
+_Indiana Jones junto con su amante, su padre y su abuelo están escapando de los villanos hasta llegan a un puente colgante, con solo una linterna y el puente que solo puede soportar a 2 personas como máximo, todos deben cruzar el puente en a lo sumo M minutos, es de noche y salvo por la pequeña área que ilumina la linterna es imposible ver por donde se camina, esto obliga a no solo cruzar el puente de a dos como máximo sino también a que siempre haya alguien sosteniendo la linterna mientras cruzan, por lo que cuando dos personas cruzan el puente la velocidad es la del mas lento._
+
+El problema generaliza un poco al problema clásico al permitir que los tiempos que tardan en cruzar sean establecidos de forma independiente unos de otros.
+
+En primer lugar (principalmente para demostrar la compatibilidad de los motores de búsqueda) se va a implementar este problema para que pueda usar búsqueda informada. Con esto podemos definir el estado del problema:
+
+<code languaje="java">
+public class EstadoIndiana implements IinformedState
+</code>
+
+Dado que no solo hay que poder cruzar el puente sino regresar a buscar a los que aún no cruzaron se van a necesitar dos reglas:
+
+<code languaje="java">
+public class ReglaCruzar implements IRule<EstadoIndiana>
+public class ReglaVolver implements IRule<EstadoIndiana>
+</code>
+
+Vamos a suponer que el motor de búsqueda ya está implementado (lo cual es cierto ya que la plataforma viene con varios motores de búsqueda listos para usar) y el problema ya está implementado, solo requiere de un conjunto de reglas y un estado inicial.
+
+Finalmente hay que juntar las partes:
+ 
+ # Crear el estado inicial y las reglas
+
+<code languaje="java">
+//estado
+EstadoIndiana estadoInicial = new EstadoIndiana();
+estadoInicial.definirTiempoIndiana(1);
+estadoInicial.definirTiempoAmante(2);
+estadoInicial.definirTiempoPadre(4);
+estadoInicial.definirTiempoAbuelo(5);
+
+//reglas
+List<IRule<EstadoIndiana>> reglasIndiana = new LinkedList<IRule<EstadoIndiana>>;
+reglasIndiana.add(new ReglaCruzar());
+reglasIndiana.add(new ReglaVolver());
+</code>
+
+ # Crear el problema
+
+<code languaje="java">
+SearchProblem<EstadoIndiana> problemaIndiana= new SearchProblem<EstadoIndiana>(estadoInicial, reglasIndiana);
+</code>
+
+ # Crear el motor
+
+<code languaje="java">
+//motor de búsqueda guiada
+SearchEngine<EstadoIndiana> motorGuiado = new BestFirstSearchEngine<EstadoIndiana>(problemaIndiana);
+
+//motor de búsqueda no guiada
+SearchEngine<EstadoIndiana> motorNoGuiado = new BreadthFirstSearchEngine<EstadoIndiana>(problemaIndiana);
+</code>
+
+En la zona [http://code.google.com/p/garoe-platform/downloads/list descargas] se encuentra el archivo "_!ejemploParaImplementar.rar_" que contiene el ejemplo anterior (un poco mas elaborado) para que puedan completar su implementación y practicar el uso de la librería.
 
 [garoe_wiki principal] | [garoe_wiki_obtener_es anterior] | siguiente

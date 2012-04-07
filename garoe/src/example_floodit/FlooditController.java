@@ -3,7 +3,6 @@ package example_floodit;
 import examples.GaroePlaygroundController;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 
 /**

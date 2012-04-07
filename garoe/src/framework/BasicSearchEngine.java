@@ -50,14 +50,14 @@ abstract public class BasicSearchEngine<State extends IBasicState> {
 	/**
 	 * @return el problema sobre el cual esta trabajando el motor : {@code SearchProblem<State>}
 	 */
-	protected SearchProblem<State> getSearchProblem() {
+	public SearchProblem<State> getSearchProblem() {
 		return searchProblem;
 	}
 
 	/**
 	 * @param searchProblem  : el problema sobre el cual trabaja el motor : {@code SearchProblem<State>}
 	 */
-	protected void setSearchProblem(SearchProblem<State> searchProblem) {
+	public void setSearchProblem(SearchProblem<State> searchProblem) {
 		this.searchProblem = searchProblem;
 	}
 

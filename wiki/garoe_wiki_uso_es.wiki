@@ -170,4 +170,4 @@ SearchEngine<EstadoIndiana> motorNoGuiado = new BreadthFirstSearchEngine<EstadoI
 
 En la zona [http://code.google.com/p/garoe-platform/downloads/list descargas] se encuentra el archivo "_ejemploParaImplementar.rar_" que contiene el ejemplo anterior (un poco mas elaborado) para que puedan completar su implementación y practicar el uso de la librería.
 
-[garoe_wiki principal] | [garoe_wiki_obtener_es anterior] | siguiente
+[garoe_wiki principal] | [garoe_wiki_obtener_es anterior] | [garoe_wiki_extension_es siguiente]

@@ -18,12 +18,12 @@ Es aconsejable tomar en cuenta lo siguiente.
 
 La librería se divide en 6 partes
 
-- El framework que representa la base sobre la cual construir
-- Los motores disponibles
-- Ejemplos individuales de uso
-- Demo con todos los ejemplos incluidos
-- Utilidades
-- Imagenes y recursos
+ * El framework que representa la base sobre la cual construir
+ * Los motores disponibles
+ * Ejemplos individuales de uso
+ * Demo con todos los ejemplos incluidos
+ * Utilidades
+ * Imagenes y recursos
 
 
 Cada extensión debe estar sobre la parte correcta, es decir que un nuevo motor no debe incluirse dentro del paquete "framework" pero si una clase que defina un nuevo tipo de motor.

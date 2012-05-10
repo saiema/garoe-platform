@@ -15,6 +15,7 @@ import java.awt.GraphicsEnvironment;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JSlider;
 import javax.swing.JTextField;
 
 /**
@@ -69,6 +70,8 @@ public class SettingsGUI extends javax.swing.JFrame implements  ActionListener {
         hintWhiteColorSelector = new javax.swing.JComboBox();
         colorGuia2Label = new javax.swing.JLabel();
         hintBlackColorSelector = new javax.swing.JComboBox();
+        delayJugadasLabel = new javax.swing.JLabel();
+        delaySlider = new javax.swing.JSlider();
         saveButton = new javax.swing.JButton();
         cancelButton = new javax.swing.JButton();
 
@@ -188,10 +191,10 @@ public class SettingsGUI extends javax.swing.JFrame implements  ActionListener {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(player2ColorLabel)
                     .addComponent(player2Color))
-                .addContainerGap(77, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("preferencias guia jugadas"));
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("preferencias gráficas"));
 
         guideActivated.setText("activar guía");
 
@@ -206,6 +209,14 @@ public class SettingsGUI extends javax.swing.JFrame implements  ActionListener {
         hintBlackColorSelector.setLightWeightPopupEnabled(false);
         hintBlackColorSelector.setMaximumSize(new java.awt.Dimension(56, 20));
         hintBlackColorSelector.addActionListener(this);
+
+        delayJugadasLabel.setText("Retraso jugada IA");
+
+        delaySlider.setMajorTickSpacing(1);
+        delaySlider.setMaximum(5);
+        delaySlider.setPaintLabels(true);
+        delaySlider.setPaintTicks(true);
+        delaySlider.setSnapToTicks(true);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -224,8 +235,14 @@ public class SettingsGUI extends javax.swing.JFrame implements  ActionListener {
                                 .addComponent(hintWhiteColorSelector, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                                 .addGap(15, 15, 15)
-                                .addComponent(hintBlackColorSelector, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(222, Short.MAX_VALUE))
+                                .addComponent(hintBlackColorSelector, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(delaySlider, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addGap(36, 36, 36)
+                                .addComponent(delayJugadasLabel)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -234,11 +251,14 @@ public class SettingsGUI extends javax.swing.JFrame implements  ActionListener {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(colorGuia1Label)
-                    .addComponent(hintWhiteColorSelector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(hintWhiteColorSelector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(delayJugadasLabel))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(colorGuia2Label)
-                    .addComponent(hintBlackColorSelector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(colorGuia2Label)
+                        .addComponent(hintBlackColorSelector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(delaySlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
@@ -252,26 +272,30 @@ public class SettingsGUI extends javax.swing.JFrame implements  ActionListener {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(304, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(cancelButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(saveButton)
-                .addContainerGap())
+                .addGap(36, 36, 36))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(saveButton)
@@ -283,7 +307,7 @@ public class SettingsGUI extends javax.swing.JFrame implements  ActionListener {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 430, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -330,7 +354,8 @@ public class SettingsGUI extends javax.swing.JFrame implements  ActionListener {
         String player2Name = this.getPlayer2NameValue().getText();
         Color hintWhite = getSelectedHintColor(1);
         Color hintBlack = getSelectedHintColor(2);
-        this.controller.save(player1Name, player2Name, colorPlayer1, colorPlayer2, aiPlayer1, aiPlayer2, this.guideActivated.isSelected(),hintWhite,hintBlack);
+        int delay = this.delaySlider.getValue();
+        this.controller.save(player1Name, player2Name, colorPlayer1, colorPlayer2, aiPlayer1, aiPlayer2, this.guideActivated.isSelected(),hintWhite,hintBlack,delay);
         
     }//GEN-LAST:event_saveButtonActionPerformed
 
@@ -482,6 +507,8 @@ public class SettingsGUI extends javax.swing.JFrame implements  ActionListener {
     private javax.swing.JButton cancelButton;
     private javax.swing.JLabel colorGuia1Label;
     private javax.swing.JLabel colorGuia2Label;
+    private javax.swing.JLabel delayJugadasLabel;
+    private javax.swing.JSlider delaySlider;
     private javax.swing.JCheckBox guideActivated;
     private javax.swing.JComboBox hintBlackColorSelector;
     private javax.swing.JComboBox hintWhiteColorSelector;
@@ -529,6 +556,10 @@ public class SettingsGUI extends javax.swing.JFrame implements  ActionListener {
 
     public JButton getPlayer2Color() {
         return player2Color;
+    }
+    
+    public JSlider getDelaySlider() {
+        return this.delaySlider;
     }
     
     

@@ -29,6 +29,8 @@ public class ReversiSettingsController {
         this.settings.getPlayer1BrainsSelect().setSelectedIndex(player1Brains?0:1);
         this.settings.getPlayer2BrainsSelect().setSelectedIndex(player2Brains?0:1);
         this.settings.setHintValue(this.logic.getModel().getGui().getRender().getHint(), this.logic.getModel().getGui().getRender().getWhiteColor(), this.logic.getModel().getGui().getRender().getBlackColor());
+        int delay = logic.getAIdelay();
+        this.settings.getDelaySlider().setValue(delay);
     }
     
     public void show() {
@@ -44,7 +46,8 @@ public class ReversiSettingsController {
         }
     }
     
-    public void save(String name1, String name2, int color1, int color2, boolean ai1, boolean ai2, boolean hintEnable, Color whiteColor, Color blackColor) {
+    public void save(String name1, String name2, int color1, int color2, boolean ai1, boolean ai2, boolean hintEnable, Color whiteColor, Color blackColor, int delay) {
+        this.logic.setAIdelay(delay);
         if (!logic.imPlaying()) {
             this.logic.changePlayersName(0, name1);
             this.logic.changePlayersName(1, name2);

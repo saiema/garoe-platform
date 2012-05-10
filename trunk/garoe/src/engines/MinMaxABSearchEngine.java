@@ -130,8 +130,8 @@ public class MinMaxABSearchEngine<AdversaryState extends IStateAdversary> extend
 		lookedCount = 0;
 		AdversaryState initialState = this.searchProblem.getInitialState();
 		computeValue(initialState);
-		System.out.println("Total states: " + stateCount);
-		System.out.println("I looked " + lookedCount +  " states");
+//		System.out.println("Total states: " + stateCount);
+//		System.out.println("I looked " + lookedCount +  " states");
 		return this.getSolution();
 	}
 	

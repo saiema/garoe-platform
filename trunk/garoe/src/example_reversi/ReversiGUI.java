@@ -429,6 +429,10 @@ public class ReversiGUI extends javax.swing.JFrame implements ActionListener, Mo
         this.board.setVisible(true);
     }
     
+    public void enableBoardInteraction(boolean enable) {
+        this.board.setEnabled(enable);
+    }
+    
     public void paintDisabledBoard() {
         for (int row = 0; row < 8; row++) {
             for (int col = 0; col < 8; col++) {
